@@ -2,7 +2,9 @@ package lm1.listeners.buttons;
 
 import java.io.File;
 
+import lm1.utils.CONS;
 import lm1.utils.Methods;
+import lm1.utils.Methods_LM1;
 import lm1.utils.Tags;
 
 import android.app.Activity;
@@ -68,7 +70,7 @@ public class ButtonOnClickListener implements OnClickListener {
 
 	private void case_actv_main_bt_go() {
 		// TODO Auto-generated method stub
-//		Methods_LM1.showLatNLong(actv);
+		Methods_LM1.showLongNLat(actv, CONS.Main.longitude, CONS.Main.latitude);
 	}
 
 }//public class ButtonOnClickListener implements OnClickListener

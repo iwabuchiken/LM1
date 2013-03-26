@@ -21,6 +21,8 @@ gitk-
 
 git remote add origin git@github.com:iwabuchiken/CM5.git
 
+g p master origin
+
 git remote rm origin
 
 git log --grep=B4 -3
