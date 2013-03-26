@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, IFM9Activity!</string>
+    <string name="app_name">LM1</string>
+    <string name="v1_tv_dir_path">Directory path</string>
+    
+    <!-- Generic items -->
+	    <string name="generic_bt_ok">OK</string>
+	    <string name="generic_bt_cancel">キャンセル</string>
+	    <string name="generic_bt_back">Back</string>
+	
+	    <string name="generic_tv_confirm">確認</string>
+	    <string name="generic_tv_menu">メニュー</string>
+	    <string name="generic_tv_register">登録</string>
+	    <string name="generic_tv_edit">編集</string>
+	    <string name="generic_tv_delete">削除</string>
+   		<string name="generic_tv_no_data">No data</string>
+   		<string name="generic_bt_quit">終了</string>
+   		<string name="generic_go">Go</string>
+    
+	<!-- actv_main.xml -->
+		<string name="actv_main_latitude">緯度</string>
+		<string name="actv_main_longitude">経度</string>
+    
+
+</resources>
