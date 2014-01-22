@@ -1,3 +1,11 @@
+# a p + gitk
+a p && pushd C:\WORKS\WS\WS_Android~\LM1 && gitk
+
+# Gitk / no 'a p'
+pushd C:\WORKS\WS\WS_Android~\LM1
+
+pushd C:\WORKS\WS\WS_Android~\LM1 && gitk
+
 a
 pushd C:\WORKS\WS\WS_Android\LM1
 gitk
