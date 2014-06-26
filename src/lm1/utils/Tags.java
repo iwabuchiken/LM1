@@ -4,7 +4,7 @@ public class Tags {
 
 	public static enum DialogTags {
 		// Generics
-		dlg_generic_dismiss, dlg_generic_dismiss_second_dialog, dlg_generic_dismiss_third_dialog,
+		DLG_GENERIC_DISMISS, DLG_GENERIC_DISMISS_SECOND_DIALOG, dlg_generic_dismiss_third_dialog,
 		// dlg_search.xml
 		dlg_search, dlg_search_ok,
 
@@ -18,7 +18,7 @@ public class Tags {
 		dlg_add_memos_gv,
 
 		// dlg_db_admin.xml
-		dlg_db_admin_lv,
+		DLG_DB_ADMIN_LV,
 
 		// dlg_admin_patterns.xml
 		dlg_admin_patterns_lv,

@@ -35,8 +35,11 @@ public final class R {
         public static final int actv_main_bt_go=0x7f080006;
         public static final int actv_main_tv_lat_data=0x7f080002;
         public static final int actv_main_tv_longi_data=0x7f080005;
-        public static final int menu_actvmain_db=0x7f080008;
-        public static final int menu_settings=0x7f080007;
+        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f080008;
+        public static final int dlg_tmpl_list_cancel_lv=0x7f080007;
+        public static final int list_row_slimple_1_tv=0x7f080009;
+        public static final int menu_actvmain_db=0x7f08000b;
+        public static final int menu_settings=0x7f08000a;
         public static final int tableRow1=0x7f080000;
         public static final int tableRow2=0x7f080003;
         public static final int textView1=0x7f080001;
@@ -44,6 +47,8 @@ public final class R {
     }
     public static final class layout {
         public static final int actv_main=0x7f030000;
+        public static final int dlg_tmpl_list_cancel=0x7f030001;
+        public static final int list_row_simple_1=0x7f030002;
     }
     public static final class menu {
         public static final int actv_main=0x7f070000;
@@ -54,6 +59,15 @@ public final class R {
         public static final int actv_main_latitude=0x7f05000e;
         public static final int actv_main_longitude=0x7f05000f;
         public static final int app_name=0x7f050001;
+        public static final int dlg_db_admin_item_backup_db=0x7f050012;
+        public static final int dlg_db_admin_item_create_table_locations=0x7f050016;
+        public static final int dlg_db_admin_item_drop_table_locations=0x7f050017;
+        public static final int dlg_db_admin_item_exec_sql=0x7f050014;
+        public static final int dlg_db_admin_item_refresh_db=0x7f050013;
+        public static final int dlg_db_admin_item_restore_db=0x7f050015;
+        /**  dlg_db_admin.xml 
+         */
+        public static final int dlg_db_admin_title=0x7f050011;
         public static final int generic_bt_back=0x7f050005;
         public static final int generic_bt_cancel=0x7f050004;
         /**  Generic items 

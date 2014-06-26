@@ -3,6 +3,7 @@ package lm1.main;
 import lm1.listeners.buttons.ButtonOnClickListener;
 import lm1.listeners.buttons.ButtonOnTouchListener;
 import lm1.utils.CONS;
+import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.location.Location;
 import android.location.LocationListener;
@@ -55,7 +56,7 @@ public class MainActv extends Activity implements LocationListener {
 		
 		case R.id.menu_actvmain_db://---------------
 			
-			Methods_dlg.dlg_db_activity(this);
+			Methods_dlg.dlg_Db_Activity(this);
 //			Methods.db_backup(this);
 			
 			break;// case R.id.main_opt_menu_backup_db

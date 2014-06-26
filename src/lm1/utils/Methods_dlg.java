@@ -11,9 +11,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lm1.listeners.dialog.DB_OCL;
+import lm1.listeners.dialog.DB_OTL;
+import lm1.listeners.dialog.DOI_CL;
+import lm1.main.R;
+import lm1.utils.Tags.DialogTags;
+
 import org.apache.commons.lang.StringUtils;
 
-import cm7.main.R;
 import android.app.Activity;
 import android.app.Dialog;
 import android.database.Cursor;
@@ -29,12 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import app.items.AI;
-import app.items.BM;
-import app.listeners.dialog.DB_OCL;
-import app.listeners.dialog.DB_OTL;
-import app.listeners.dialog.DOI_CL;
-import app.utils.Tags.DialogTags;
 
 public class Methods_dlg {
 
@@ -59,26 +58,14 @@ public class Methods_dlg {
 		 * 2. Prep => List
 			****************************/
 		String[] choices = {
-				actv.getString(R.string.dlg_db_admin_item_exec_sql),
+//				actv.getString(R.string.dlg_db_admin_item_exec_sql),
 				
 				actv.getString(R.string.dlg_db_admin_item_backup_db),
-				actv.getString(R.string.dlg_db_admin_item_refresh_db),
-				actv.getString(R.string.dlg_db_admin_item_impfile),
+				actv.getString(R.string.dlg_db_admin_item_create_table_locations),
+				actv.getString(R.string.dlg_db_admin_item_drop_table_locations),
+//				actv.getString(R.string.dlg_db_admin_item_refresh_db),
 				
-//				actv.getString(R.string.dlg_db_admin_item_drop_table_cm7),
-//				actv.getString(R.string.dlg_db_admin_item_create_table_cm7),
-				
-//				actv.getString(R.string.dlg_db_admin_item_drop_table_refresh_history),
-//				actv.getString(
-//						R.string.dlg_db_admin_item_create_table_refresh_history),
-				
-//				actv.getString(R.string.dlg_db_admin_item_drop_table_bm),
-//				actv.getString(R.string.dlg_db_admin_item_create_table_bm),
-				
-//				actv.getString(R.string.dlg_db_admin_item_drop_table_memo_patterns),
-//				actv.getString(R.string.dlg_db_admin_item_create_table_memo_patterns),
-//					actv.getString(R.string.dlg_db_admin_item_refresh_db)
-					};
+		};
 		
 		List<String> list = new ArrayList<String>();
 		
@@ -167,111 +154,6 @@ public class Methods_dlg {
 	
 	}//public static Dialog dlg_template_okCancel()
 
-	public static
-	Dialog dlg_template_okCancel_SecondDialog
-		(Activity actv, int layoutId, int titleStringId,
-			int okButtonId, int cancelButtonId,
-			Tags.DialogTags okTag, Tags.DialogTags cancelTag,
-			
-			Dialog dlg1, BM bm) {
-		/****************************
-		* Steps
-		* 1. Set up
-		* 2. Add listeners => OnTouch
-		* 3. Add listeners => OnClick
-		****************************/
-		
-		// 
-		Dialog dlg2 = new Dialog(actv);
-		
-		//
-		dlg2.setContentView(layoutId);
-		
-		// Title
-		dlg2.setTitle(titleStringId);
-		
-		/****************************
-		* 2. Add listeners => OnTouch
-		****************************/
-		//
-		Button btn_ok = (Button) dlg2.findViewById(okButtonId);
-		Button btn_cancel = (Button) dlg2.findViewById(cancelButtonId);
-		
-		//
-		btn_ok.setTag(okTag);
-		btn_cancel.setTag(cancelTag);
-		
-		//
-		btn_ok.setOnTouchListener(new DB_OTL(actv, dlg2));
-		btn_cancel.setOnTouchListener(new DB_OTL(actv, dlg2));
-		
-		/****************************
-		* 3. Add listeners => OnClick
-		****************************/
-		//
-		btn_ok.setOnClickListener(new DB_OCL(actv, dlg1, dlg2, bm));
-		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg2));
-		
-		//
-		//dlg2.show();
-		
-		return dlg2;
-	
-	}//public static Dialog dlg_template_okCancel_SecondDialog()
-	
-	public static
-	Dialog dlg_template_okCancel_SecondDialog
-	(Activity actv, int layoutId, String title,
-			int okButtonId, int cancelButtonId,
-			Tags.DialogTags okTag, Tags.DialogTags cancelTag,
-			
-			Dialog dlg1, BM bm) {
-		/****************************
-		 * Steps
-		 * 1. Set up
-		 * 2. Add listeners => OnTouch
-		 * 3. Add listeners => OnClick
-		 ****************************/
-		
-		// 
-		Dialog dlg2 = new Dialog(actv);
-		
-		//
-		dlg2.setContentView(layoutId);
-		
-		// Title
-		dlg2.setTitle(title);
-//		dlg2.setTitle(titleStringId);
-		
-		/****************************
-		 * 2. Add listeners => OnTouch
-		 ****************************/
-		//
-		Button btn_ok = (Button) dlg2.findViewById(okButtonId);
-		Button btn_cancel = (Button) dlg2.findViewById(cancelButtonId);
-		
-		//
-		btn_ok.setTag(okTag);
-		btn_cancel.setTag(cancelTag);
-		
-		//
-		btn_ok.setOnTouchListener(new DB_OTL(actv, dlg2));
-		btn_cancel.setOnTouchListener(new DB_OTL(actv, dlg2));
-		
-		/****************************
-		 * 3. Add listeners => OnClick
-		 ****************************/
-		//
-		btn_ok.setOnClickListener(new DB_OCL(actv, dlg1, dlg2, bm));
-		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg2));
-		
-		//
-		//dlg2.show();
-		
-		return dlg2;
-		
-	}//public static Dialog dlg_template_okCancel_SecondDialog()
-
 	public static Dialog 
 	dlg_Template_Cancel
 	(Activity actv,
@@ -310,52 +192,5 @@ public class Methods_dlg {
 		
 		return dlg;		
 	}//dlg_Template_Cancel
-
-	
-	private static Dialog 
-	dlg_template_okCancel_SecondDialog
-	(Activity actv,
-			int layoutId, String title, 
-			int okButtonId, int cancelButtonId, 
-			DialogTags okTag, DialogTags cancelTag, 
-			Dialog dlg1, AI ai) {
-		// TODO Auto-generated method stub
-		Dialog dlg2 = new Dialog(actv);
-		
-		//
-		dlg2.setContentView(layoutId);
-		
-		// Title
-		dlg2.setTitle(title);
-//		dlg2.setTitle(titleStringId);
-		
-		/****************************
-		 * 2. Add listeners => OnTouch
-		 ****************************/
-		//
-		Button btn_ok = (Button) dlg2.findViewById(okButtonId);
-		Button btn_cancel = (Button) dlg2.findViewById(cancelButtonId);
-		
-		//
-		btn_ok.setTag(okTag);
-		btn_cancel.setTag(cancelTag);
-		
-		//
-		btn_ok.setOnTouchListener(new DB_OTL(actv, dlg2));
-		btn_cancel.setOnTouchListener(new DB_OTL(actv, dlg2));
-		
-		/****************************
-		 * 3. Add listeners => OnClick
-		 ****************************/
-		//
-		btn_ok.setOnClickListener(new DB_OCL(actv, dlg1, dlg2, ai));
-		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg2));
-		
-		//
-		//dlg2.show();
-		
-		return dlg2;
-		
-	}//dlg_template_okCancel_SecondDialog
 	
 }//public class Methods_dialog
