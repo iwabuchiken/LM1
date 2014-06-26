@@ -5,7 +5,7 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import lm1.main.ActvMain;
+import lm1.main.MainActv;
 import lm1.main.R;
 
 public class Methods_LM1 {
