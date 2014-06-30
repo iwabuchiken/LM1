@@ -62,9 +62,13 @@ public class DBUtils extends SQLiteOpenHelper{
 	createTable()
 	
 	@param columns, types => use non-full version
-	@return true => Table created or exists
+	//@return true => Table created or exists
+		@return -1	=> Table doesn't exist<br>
+				-2	=> SQLException<br>
+				1	=> Table created
 	 ******************************/
-	public static boolean 
+	public static int 
+//	public static boolean 
 	createTable
 	(Activity actv, 
 			String tableName, 
@@ -87,12 +91,13 @@ public class DBUtils extends SQLiteOpenHelper{
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Table exists => " + tableName);
 			
-			// debug
-			String msg_Toast = "Table exists => " + tableName;
-			Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+//			// debug
+//			String msg_Toast = "Table exists => " + tableName;
+//			Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
 			
 			
-			return true;
+			return -1;
+//			return true;
 	//		return false;
 		}//if (!tableExists(SQLiteDatabase db, String tableName))
 		
@@ -140,7 +145,8 @@ public class DBUtils extends SQLiteOpenHelper{
 			
 			wdb.close();
 			
-			return true;
+			return 1;
+//			return true;
 			
 		} catch (SQLException e) {
 			
@@ -151,7 +157,8 @@ public class DBUtils extends SQLiteOpenHelper{
 			
 			wdb.close();
 			
-			return false;
+			return -2;
+//			return false;
 			
 		}//try
 	
@@ -183,6 +190,102 @@ public class DBUtils extends SQLiteOpenHelper{
 		}//if (cursor.getCount() > 0)
 		
 	}//tableExists
+
+	/******************************
+		dropTable
+		@return -1	=> Table doesn't exist<br>
+			-2		=> SQLException<br>
+			1		=> Table dropped
+	 ******************************/
+	public static int
+//	public static boolean
+	dropTable
+	(Activity actv, String tableName) {
+		/***************************************
+		 * Setup: DB
+		 ***************************************/
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		/*------------------------------
+		 * The table exists?
+		 *------------------------------*/
+		// The table exists?
+		boolean tempBool = tableExists(actv, tableName);
+		
+		if (tempBool == true) {
+		
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists: " + tableName);
+
+		} else {//if (tempBool == true)
+			// Log
+			Log.e("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table doesn't exist: " + tableName);
+			
+//			// debug
+//			String msg_Toast = "Table doesn't exist: " + tableName;
+////			Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+//			Methods_dlg.dlg_ShowMessage(actv, msg_Toast);
+
+			return -1;
+//			return false;
+		}//if (tempBool == true)
+
+		/*------------------------------
+		 * Drop the table
+		 *------------------------------*/
+		// Define the sql
+        String sql 
+             = "DROP TABLE " + tableName;
+        
+        // Execute
+        try {
+			wdb.execSQL(sql);
+			
+			// Vacuum
+			wdb.execSQL("VACUUM");
+			
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "The table dropped => " + tableName);
+			
+//			// debug
+//			String msg_Toast = "The table dropped => " + tableName;
+//			Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+			
+			
+			wdb.close();
+			
+			// Return
+			return 1;
+//			return true;
+			
+		} catch (SQLException e) {
+			// TODO ?��?��?��?��?��?��?��?��?��?��?��ꂽ catch ?��u?��?��?��b?��N
+			// Log
+			Log.e("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "DROP TABLE => failed (table=" + tableName + "): " + e.toString());
+			
+//			// debug
+//			Toast.makeText(actv, 
+//						"DROP TABLE => failed(table=" + tableName, 
+//						Toast.LENGTH_LONG).show();
+			
+			wdb.close();
+			
+			// Return
+			return -2;
+//			return false;
+		}//try
+
+	}//public boolean dropTable(String tableName) 
 
 }//public class DBUtils
 

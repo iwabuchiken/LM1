@@ -112,7 +112,7 @@ public class DOI_CL implements OnItemClickListener {
 		} else if (item.equals(actv.getString(
 				R.string.dlg_db_admin_item_drop_table_locations))) {
 			
-//			Methods.db_Backup(actv);
+			Methods.drop_Table(actv, CONS.DB.tname_Locations);
 			
 
 		}
