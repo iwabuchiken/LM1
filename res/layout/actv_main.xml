@@ -1,42 +1,38 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ActvMainActivity" >
+    android:orientation="vertical" >
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp" >
+        android:layout_height="wrap_content" >
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
 
             <TextView
-                android:id="@+id/dlg_tmpl_toast_ok_tv_message"
+                android:id="@+id/actv_main_tv_longi_lbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_weight=".1"
                 android:background="@color/black"
-                android:padding="5dp"
-                android:text="@string/actv_main_latitude"
+                android:padding="10dp"
+                android:text="@string/actv_main_longitude"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/actv_main_tv_lat_data"
+                android:id="@+id/actv_main_tv_longi_str"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="5dp"
-                android:text="@string/generic_tv_no_data"
+                android:padding="10dp"
                 android:textSize="25sp" />
 
         </TableRow>
@@ -44,41 +40,106 @@
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/actv_main_tv_lat_lbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_weight=".1"
                 android:background="@color/black"
-                android:padding="5dp"
-                android:text="@string/actv_main_longitude"
+                android:padding="10dp"
+                android:text="@string/actv_main_latitude"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/actv_main_tv_longi_data"
+                android:id="@+id/actv_main_tv_lat_str"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="5dp"
-                android:text="@string/generic_tv_no_data"
+                android:padding="10dp"
                 android:textSize="25sp" />
 
         </TableRow>
+
     </TableLayout>
 
-    <Button
-        android:id="@+id/actv_main_bt_go"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:text="@string/generic_go"
-        android:textSize="25sp" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp" >
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <Button
+                android:id="@+id/actv_main_bt_get_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/gray1"
+                android:padding="5dp"
+                android:text="@string/actv_main_tv_get_data"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/actv_main_bt_save_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/darkgreen"
+                android:padding="5dp"
+                android:text="@string/actv_main_tv_save_data"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <Button
+                android:id="@+id/actv_main_bt_post_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/brown"
+                android:padding="5dp"
+                android:text="@string/actv_main_tv_post_data"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/actv_main_bt_show_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/gold2"
+                android:padding="5dp"
+                android:text="@string/actv_main_tv_show_map"
+                android:textColor="@color/blue1"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/actv_main_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" >
+
+    </ListView>
+
+</LinearLayout>

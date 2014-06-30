@@ -11,8 +11,12 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        /**  REF color names http://www.workwithcolor.com/color-chart-full-01.htm 
+         */
+        public static final int Arsenic=0x7f04000d;
         public static final int black=0x7f040001;
         public static final int blue1=0x7f040002;
+        public static final int brown=0x7f04000c;
         public static final int darkgreen=0x7f040003;
         public static final int darkolivegreen4=0x7f040005;
         public static final int gold2=0x7f040007;
@@ -32,25 +36,35 @@ public final class R {
         public static final int proj_icon_48x48=0x7f020001;
     }
     public static final class id {
-        public static final int actv_main_bt_go=0x7f080006;
-        public static final int actv_main_tv_lat_data=0x7f080002;
-        public static final int actv_main_tv_longi_data=0x7f080005;
-        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f080008;
-        public static final int dlg_tmpl_list_cancel_lv=0x7f080007;
-        public static final int dlg_tmpl_toast_ok_bt_cancel=0x7f080009;
-        public static final int dlg_tmpl_toast_ok_tv_message=0x7f080001;
-        public static final int list_row_slimple_1_tv=0x7f08000a;
-        public static final int menu_actvmain_db=0x7f08000c;
-        public static final int menu_settings=0x7f08000b;
+        public static final int actv_main_bt_get_data=0x7f080006;
+        public static final int actv_main_bt_go=0x7f08000f;
+        public static final int actv_main_bt_post_data=0x7f080008;
+        public static final int actv_main_bt_save_data=0x7f080007;
+        public static final int actv_main_bt_show_map=0x7f080009;
+        public static final int actv_main_lv=0x7f08000a;
+        public static final int actv_main_tv_lat_data=0x7f08000c;
+        public static final int actv_main_tv_lat_lbl=0x7f080004;
+        public static final int actv_main_tv_lat_str=0x7f080005;
+        public static final int actv_main_tv_longi_data=0x7f08000e;
+        public static final int actv_main_tv_longi_lbl=0x7f080001;
+        public static final int actv_main_tv_longi_str=0x7f080002;
+        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f080011;
+        public static final int dlg_tmpl_list_cancel_lv=0x7f080010;
+        public static final int dlg_tmpl_toast_ok_bt_cancel=0x7f080012;
+        public static final int dlg_tmpl_toast_ok_tv_message=0x7f08000b;
+        public static final int list_row_slimple_1_tv=0x7f080013;
+        public static final int menu_actvmain_db=0x7f080015;
+        public static final int menu_settings=0x7f080014;
         public static final int tableRow1=0x7f080000;
         public static final int tableRow2=0x7f080003;
-        public static final int textView3=0x7f080004;
+        public static final int textView3=0x7f08000d;
     }
     public static final class layout {
         public static final int actv_main=0x7f030000;
-        public static final int dlg_tmpl_list_cancel=0x7f030001;
-        public static final int dlg_tmpl_toast_ok=0x7f030002;
-        public static final int list_row_simple_1=0x7f030003;
+        public static final int actv_main_orig=0x7f030001;
+        public static final int dlg_tmpl_list_cancel=0x7f030002;
+        public static final int dlg_tmpl_toast_ok=0x7f030003;
+        public static final int list_row_simple_1=0x7f030004;
     }
     public static final class menu {
         public static final int actv_main=0x7f070000;
@@ -58,18 +72,22 @@ public final class R {
     public static final class string {
         /**  actv_main.xml 
          */
-        public static final int actv_main_latitude=0x7f05000e;
-        public static final int actv_main_longitude=0x7f05000f;
+        public static final int actv_main_latitude=0x7f050016;
+        public static final int actv_main_longitude=0x7f050017;
+        public static final int actv_main_tv_get_data=0x7f050018;
+        public static final int actv_main_tv_post_data=0x7f05001a;
+        public static final int actv_main_tv_save_data=0x7f050019;
+        public static final int actv_main_tv_show_map=0x7f05001b;
         public static final int app_name=0x7f050001;
-        public static final int dlg_db_admin_item_backup_db=0x7f050012;
-        public static final int dlg_db_admin_item_create_table_locations=0x7f050016;
-        public static final int dlg_db_admin_item_drop_table_locations=0x7f050017;
-        public static final int dlg_db_admin_item_exec_sql=0x7f050014;
-        public static final int dlg_db_admin_item_refresh_db=0x7f050013;
-        public static final int dlg_db_admin_item_restore_db=0x7f050015;
+        public static final int dlg_db_admin_item_backup_db=0x7f050010;
+        public static final int dlg_db_admin_item_create_table_locations=0x7f050014;
+        public static final int dlg_db_admin_item_drop_table_locations=0x7f050015;
+        public static final int dlg_db_admin_item_exec_sql=0x7f050012;
+        public static final int dlg_db_admin_item_refresh_db=0x7f050011;
+        public static final int dlg_db_admin_item_restore_db=0x7f050013;
         /**  dlg_db_admin.xml 
          */
-        public static final int dlg_db_admin_title=0x7f050011;
+        public static final int dlg_db_admin_title=0x7f05000f;
         public static final int generic_bt_back=0x7f050005;
         public static final int generic_bt_cancel=0x7f050004;
         /**  Generic items 
@@ -86,7 +104,7 @@ public final class R {
         public static final int hello=0x7f050000;
         /**  menu: actv_main 
          */
-        public static final int menu_actvmain_db=0x7f050010;
+        public static final int menu_actvmain_db=0x7f05000e;
         public static final int v1_tv_dir_path=0x7f050002;
     }
     public static final class style {

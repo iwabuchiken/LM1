@@ -43,6 +43,8 @@ public class Tags {
 		// actv_main.xml
 		actv_main_bt_go,
 		
+		ACTVMAIN_BT_GETDATA,
+		
 	}//public static enum ButtonTags
 	
 	public static enum ItemTags {

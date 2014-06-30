@@ -19,10 +19,6 @@
    		<string name="generic_bt_quit">終了</string>
    		<string name="generic_go">Go</string>
     
-	<!-- actv_main.xml -->
-		<string name="actv_main_latitude">Latitude</string>
-		<string name="actv_main_longitude">Longitude</string>
-    
 	<!-- menu: actv_main -->
 		<string name="menu_actvmain_db">DB</string>
 		
@@ -38,6 +34,13 @@
 	   	<string name="dlg_db_admin_item_drop_table_locations">
 	   	    							Drop table: locations</string>
 	   	
-	   	
+	<!-- actv_main.xml -->
+		<string name="actv_main_latitude">Latitude</string>
+		<string name="actv_main_longitude">Longitude</string>
+    
+		<string name="actv_main_tv_get_data">Get data</string>
+		<string name="actv_main_tv_save_data">Save data</string>
+		<string name="actv_main_tv_post_data">Post data</string>
+		<string name="actv_main_tv_show_map">Show map</string>	   	
 		
 </resources>

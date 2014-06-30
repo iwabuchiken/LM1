@@ -31,6 +31,7 @@ public class MainActv extends Activity implements LocationListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.actv_main);
+//		setContentView(R.layout.actv_main_orig);
 		
 		this.setTitle(this.getClass().getName());
 		
@@ -129,12 +130,13 @@ public class MainActv extends Activity implements LocationListener {
 		/***************************************
 		 * Buttons
 		 ***************************************/
-		Button btGo = (Button) findViewById(R.id.actv_main_bt_go);
+		Button bt_GetData = (Button) findViewById(R.id.actv_main_bt_get_data);
 		
-		btGo.setTag(Tags.ButtonTags.actv_main_bt_go);
+		bt_GetData.setTag(Tags.ButtonTags.ACTVMAIN_BT_GETDATA);
+//		bt_GetData.setTag(Tags.ButtonTags.actv_main_bt_go);
 		
-		btGo.setOnTouchListener(new ButtonOnTouchListener(this));
-		btGo.setOnClickListener(new ButtonOnClickListener(this));
+		bt_GetData.setOnTouchListener(new ButtonOnTouchListener(this));
+		bt_GetData.setOnClickListener(new ButtonOnClickListener(this));
 
 	}//private void setListeners()
 
