@@ -113,9 +113,26 @@ public class DB_OCL implements OnClickListener {
 			
 			break;
 
+		case DLG_CONFIRM_DROP_TABLE_OK://------------------------------------------------
+			
+			case_DLG_CONFIRM_DROP_TABLE_OK();
+			
+			break;
+			
 		default: // ----------------------------------------------------
 			break;
 		}//switch (tag_name)
 	}//public void onClick(View v)
+
+	private void 
+	case_DLG_CONFIRM_DROP_TABLE_OK() {
+		// TODO Auto-generated method stub
+	
+		// debug
+		String msg_Toast = "Confirmed";
+		Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+		
+		
+	}
 
 }//DialogButtonOnClickListener

@@ -4,9 +4,15 @@ public class Tags {
 
 	public static enum DialogTags {
 		// Generics
-		DLG_GENERIC_DISMISS, DLG_GENERIC_DISMISS_SECOND_DIALOG, dlg_generic_dismiss_third_dialog,
+		DLG_GENERIC_DISMISS, DLG_GENERIC_DISMISS_SECOND_DIALOG, 
+		dlg_generic_dismiss_third_dialog,
+		
 		// dlg_search.xml
 		dlg_search, dlg_search_ok,
+		
+		// drop table
+		DLG_CONFIRM_DROP_TABLE_OK,
+
 
 	}//public static enum DialogTags
 	
@@ -34,6 +40,7 @@ public class Tags {
 		
 		// dlg_bmactv_list_long_click
 		dlg_bmactv_list_long_click,
+		
 		
 	}//public static enum DialogItemTags
 	

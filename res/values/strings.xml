@@ -43,4 +43,7 @@
 		<string name="actv_main_tv_post_data">Post data</string>
 		<string name="actv_main_tv_show_map">Show map</string>	   	
 		
+	<!-- drop table -->
+		<string name="drop_table_message">Drop table?</string>
+		<string name="drop_table_locations">locations</string>
 </resources>

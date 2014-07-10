@@ -1,6 +1,7 @@
 package lm1.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.widget.Toast;
 
 public class Methods {
@@ -87,7 +88,7 @@ public class Methods {
 
 	public static void 
 	drop_Table
-	(Activity actv, String tableName) {
+	(Activity actv, String tableName, Dialog dlg1) {
 		// TODO Auto-generated method stub
 		
 		int res = DBUtils.dropTable(actv, tableName);

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/dlg_tmpl_okcancel_simple_tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/black"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        
+        android:gravity="center"
+        
+        >
+		
+		<!-- Table name -->
+
+        <TextView
+            android:id="@+id/dlg_tmpl_okcancel_simple_tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/black"
+            android:textColor="@color/yello"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/dlg_tmpl_okcancel_simple_btn_ok"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/generic_bt_ok"
+            android:textColor="@color/blue1"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/dlg_tmpl_okcancel_simple_btn_cancel"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/generic_bt_cancel"
+            android:textColor="@color/red"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

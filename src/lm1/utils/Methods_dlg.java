@@ -212,5 +212,93 @@ public class Methods_dlg {
 		dlg.show();
 		
 	}
+
+	public static void 
+	drop_Table_Confirm
+	(Activity actv, String tableName, Dialog dlg1) {
+		// TODO Auto-generated method stub
+
+		Dialog dlg2 = 
+				Methods_dlg.dlg_Template_okCancel_SecondDialog(
+				actv, R.layout.dlg_tmpl_okcancel_simple, 
+				R.string.generic_tv_confirm, 
+				
+				R.id.dlg_tmpl_okcancel_simple_btn_ok, 
+				R.id.dlg_tmpl_okcancel_simple_btn_cancel,
+				
+				Tags.DialogTags.DLG_CONFIRM_DROP_TABLE_OK,
+				Tags.DialogTags.DLG_GENERIC_DISMISS_SECOND_DIALOG,
+				dlg1
+				);
+		
+		TextView tv_Message = 
+				(TextView) dlg2.findViewById(
+							R.id.dlg_tmpl_okcancel_simple_tv_message);
+		
+		TextView tv_Text = 
+				(TextView) dlg2.findViewById(
+						R.id.dlg_tmpl_okcancel_simple_tv_text);
+		
+		tv_Message.setText(actv.getString(R.string.drop_table_message));
+		
+		tv_Text.setText(actv.getString(R.string.drop_table_locations));
+		
+		dlg2.show();
+		
+	}//drop_Table_Confirm
+
+	public static Dialog 
+	dlg_Template_okCancel_SecondDialog
+	(Activity actv, 
+		int layoutId, int titleStringId,
+		int okButtonId, int cancelButtonId,
+		
+		Tags.DialogTags okTag, Tags.DialogTags cancelTag,
+		Dialog dlg1) {
+		/****************************
+		* Steps
+		* 1. Set up
+		* 2. Add listeners => OnTouch
+		* 3. Add listeners => OnClick
+		****************************/
+		
+		// 
+		Dialog dlg2 = new Dialog(actv);
+		
+		//
+		dlg2.setContentView(layoutId);
+		
+		// Title
+		dlg2.setTitle(titleStringId);
+		
+		/****************************
+		* 2. Add listeners => OnTouch
+		****************************/
+		//
+		Button btn_ok = (Button) dlg2.findViewById(okButtonId);
+		Button btn_cancel = (Button) dlg2.findViewById(cancelButtonId);
+		
+		//
+		btn_ok.setTag(okTag);
+		btn_cancel.setTag(cancelTag);
+		
+		//
+		btn_ok.setOnTouchListener(new DB_OTL(actv, dlg2));
+		btn_cancel.setOnTouchListener(new DB_OTL(actv, dlg2));
+		
+		/****************************
+		* 3. Add listeners => OnClick
+		****************************/
+		//
+		btn_ok.setOnClickListener(new DB_OCL(actv, dlg1, dlg2));
+		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg1, dlg2));
+//		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg2));
+		
+		//
+		//dlg2.show();
+		
+		return dlg2;
 	
+	}//dlg_Template_okCancel_SecondDialog
+
 }//public class Methods_dialog

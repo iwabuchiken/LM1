@@ -4,6 +4,7 @@ package lm1.listeners.dialog;
 import lm1.main.R;
 import lm1.utils.CONS;
 import lm1.utils.Methods;
+import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.app.Activity;
 import android.app.Dialog;
@@ -74,6 +75,7 @@ public class DOI_CL implements OnItemClickListener {
 			case_DLG_DB_ADMIN_LV(item);
 			
 			break;
+			
 //		case dlg_db_admin_lv://----------------------------------------------
 //		case DLG_ALACTV_LIST_LONGCLICK://----------------------------------------------
 //			
@@ -109,16 +111,18 @@ public class DOI_CL implements OnItemClickListener {
 			
 			Methods.create_Table(actv, CONS.DB.tname_Locations);
 			
+			dlg1.dismiss();
+			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_db_admin_item_drop_table_locations))) {
 			
-			Methods.drop_Table(actv, CONS.DB.tname_Locations);
+//			Methods.drop_Table(actv, CONS.DB.tname_Locations, dlg1);
+			Methods_dlg.drop_Table_Confirm(actv, CONS.DB.tname_Locations, dlg1);
 			
-
 		}
 	
 		
-		dlg1.dismiss();
+//		dlg1.dismiss();
 		
 		
 	}//case_DLG_DB_ADMIN_LV
