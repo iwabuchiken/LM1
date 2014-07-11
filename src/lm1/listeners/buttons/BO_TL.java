@@ -79,7 +79,7 @@ public class BO_TL implements OnTouchListener {
 			case ACTVMAIN_BT_GETDATA://------------------------------------
 				
 				_Set_Color(v,
-						Color.GRAY, 
+						Color.BLUE, 
 //						R.color.gray1, 
 						Color.WHITE);
 //				Color.WHITE);

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,6 +19,9 @@ import org.apache.commons.lang.StringUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -331,6 +335,75 @@ public class Methods {
 		}//if (keyCode==KeyEvent.KEYCODE_BACK)
 		
 	}//public static void confirm_quit(Activity actv, int keyCode)
+
+	public static void playSound(Activity actv, int bgmResourceId) {
+		// TODO Auto-generated method stub
+		int minBufferSize = AudioTrack.getMinBufferSize(
+				44100,
+				AudioFormat.CHANNEL_CONFIGURATION_MONO, 
+				AudioFormat.ENCODING_PCM_16BIT);
+
+		AudioTrack audioTrack = new AudioTrack(
+			AudioManager.STREAM_MUSIC, 44100,
+			AudioFormat.CHANNEL_CONFIGURATION_MONO, 
+			AudioFormat.ENCODING_PCM_16BIT,
+			minBufferSize,
+			AudioTrack.MODE_STREAM); 
+		
+		float vol = 0.3f;
+		
+		audioTrack.setStereoVolume(vol, vol);
+		
+		audioTrack.play();
+		
+		int i = 0;
+		int bufferSize = 512;
+		byte [] buffer = new byte[bufferSize];
+		//InputStream inputStream = actv.getResources().openRawResource(R.raw.bgm_1);
+		
+//		InputStream inputStream = actv.getResources().openRawResource(R.raw.bgm_2_koto_t150_1second);
+		InputStream inputStream = 
+						actv.getResources().openRawResource(bgmResourceId);
+		
+		try {
+			
+			while((i = inputStream.read(buffer)) != -1)
+			audioTrack.write(buffer, 0, i);
+			
+		} catch (IOException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			
+			inputStream.close();
+			
+			// Log
+			Log.d("Methods_sl.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "Stream closed");
+			
+		} catch (IOException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+
+		audioTrack.stop();
+		
+		// Log
+		Log.d("Methods_sl.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ ":"
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", "Audio stopped");
+		
+	}//public static void playSound(Activity actv, int bgmResourceId)
 
 }//public class Methods
 
