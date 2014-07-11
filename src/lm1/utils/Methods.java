@@ -88,7 +88,8 @@ public class Methods {
 
 	public static void 
 	drop_Table
-	(Activity actv, String tableName, Dialog dlg1) {
+	(Activity actv, String tableName, 
+			Dialog dlg1, Dialog dlg2) {
 		// TODO Auto-generated method stub
 		
 		int res = DBUtils.dropTable(actv, tableName);

@@ -1,6 +1,7 @@
 package lm1.listeners.dialog;
 
 import lm1.utils.CONS;
+import lm1.utils.Methods;
 import lm1.utils.Tags;
 import android.app.Activity;
 import android.app.Dialog;
@@ -128,9 +129,11 @@ public class DB_OCL implements OnClickListener {
 	case_DLG_CONFIRM_DROP_TABLE_OK() {
 		// TODO Auto-generated method stub
 	
-		// debug
-		String msg_Toast = "Confirmed";
-		Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+		Methods.drop_Table(actv, CONS.DB.tname_Locations, dlg1, dlg2);
+		
+//		// debug
+//		String msg_Toast = "Confirmed";
+//		Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
 		
 		
 	}

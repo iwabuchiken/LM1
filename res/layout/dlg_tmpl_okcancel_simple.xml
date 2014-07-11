@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/black"
+            android:gravity="center_vertical|center_horizontal"
             android:padding="5dp"
             android:textColor="@color/white"
             android:textSize="25sp" />
@@ -25,11 +26,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        
-        android:gravity="center"
-        
-        >
+        android:layout_height="wrap_content"
+        android:gravity="center|center_horizontal" >
 		
 		<!-- Table name -->
 
@@ -37,8 +35,10 @@
             android:id="@+id/dlg_tmpl_okcancel_simple_tv_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:background="@color/black"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/yello"
             android:textSize="25dp" />
 
