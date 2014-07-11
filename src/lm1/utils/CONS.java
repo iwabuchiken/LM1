@@ -76,7 +76,8 @@ public class CONS {
 		// Table: Locations
 		
 		////////////////////////////////
-		public static final String tname_Locations = "cm7";
+		public static final String tname_Locations = "locations";
+//		public static final String tname_Locations = "cm7";
 
 		public static final String[] col_names_Locations = {
 			
