@@ -2,6 +2,7 @@ package lm1.main;
 
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.buttons.BO_TL;
+import lm1.tasks.TaskAudioTrack;
 import lm1.utils.CONS;
 import lm1.utils.Methods;
 import lm1.utils.Methods_dlg;
@@ -205,7 +206,8 @@ public class MainActv extends Activity implements LocationListener {
 	}
 
 	@Override
-	public void onLocationChanged(Location loc) {
+	public void 
+	onLocationChanged(Location loc) {
 		// TODO Auto-generated method stub
 		CONS.Main.longitude = loc.getLongitude();
 		
@@ -228,13 +230,26 @@ public class MainActv extends Activity implements LocationListener {
 //			bt_GetData.setEnabled(true);
 			bt_GetData.setVisibility(View.VISIBLE);
 			
+			////////////////////////////////
+
+			// bgm
+
+			////////////////////////////////
+//			int bgmResourceId = R.raw.audio_nature;
+			int bgmResourceId = R.raw.audio_nature_mp3;
+			
+			TaskAudioTrack task = new TaskAudioTrack(this);
+			
+//			task.execute("Start");
+			task.execute(bgmResourceId);
+			
 //			// debug
 //			String toa_msg = "Location obtained";
 //			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
 			
 		}
 
-	}
+	}//onLocationChanged(Location loc)
 
 	@Override
 	public void onProviderDisabled(String arg0) {
