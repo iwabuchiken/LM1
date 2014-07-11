@@ -47,10 +47,12 @@ public class CONS {
 		public static LocationManager mLocationManager;
 			
 		// Longitude
-		public static double longitude = CONS.Admin.INITIAL_LONGITUTDE_VALUE;
+		public static Double longitude;
+//		public static double longitude = CONS.Admin.INITIAL_LONGITUTDE_VALUE;
 		
 		// Longitude
-		public static double latitude = CONS.Admin.INITIAL_LATITUDE_VALUE;
+		public static Double latitude;
+//		public static double latitude = CONS.Admin.INITIAL_LATITUDE_VALUE;
 
 	}//public static class Main
 

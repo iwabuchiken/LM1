@@ -6,6 +6,7 @@ import lm1.utils.CONS;
 import lm1.utils.Methods;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,10 +15,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +49,8 @@ public class MainActv extends Activity implements LocationListener {
 //		CONS..mLocationManager.removeUpdates(this);
 		
 		CONS.Main.locationManager_.removeUpdates(this);
+		
+		CONS.Main.locationObtained = false;
 		
 		// Log
 		String msg_Log = "Location manager => updates removed";
@@ -109,15 +114,19 @@ public class MainActv extends Activity implements LocationListener {
 		/***************************************
 		 * Prepare: data
 		 ***************************************/
-		prepareData();
+		prep_Data();
 		
 	}//protected void onStart()
 	
 
-	private void prepareData() {
+	private void prep_Data() {
 		// TODO Auto-generated method stub
 		CONS.Main.locationManager_ =
 				(LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+		
+		Criteria criteria = _setup_SetCriteria();
+		
+		String provider = CONS.Main.locationManager_.getBestProvider(criteria, true);
 		
 		CONS.Main.locationProvider_ =
 				CONS.Main.locationManager_.getProvider(LocationManager.GPS_PROVIDER);
@@ -201,6 +210,29 @@ public class MainActv extends Activity implements LocationListener {
 		CONS.Main.longitude = loc.getLongitude();
 		
 		CONS.Main.latitude = loc.getLatitude();
+		
+		
+		if (CONS.Main.locationObtained == false
+				&& CONS.Main.longitude != null
+				&& CONS.Main.latitude != null) {
+			
+			CONS.Main.locationObtained = true;
+			
+			// Button "Get data" => bg --> blue
+			Button bt_GetData = (Button) findViewById(R.id.actv_main_bt_get_data);
+			
+			bt_GetData.setBackgroundColor(
+					Color.BLUE);
+//			this.getResources().getColor(R.color.blue1));
+			
+//			bt_GetData.setEnabled(true);
+			bt_GetData.setVisibility(View.VISIBLE);
+			
+//			// debug
+//			String toa_msg = "Location obtained";
+//			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
+			
+		}
 
 	}
 
@@ -229,5 +261,32 @@ public class MainActv extends Activity implements LocationListener {
 	public static LocationProvider getLocationProvider_() {
 		return CONS.Main.locationProvider_;
 	}
+
+	private Criteria _setup_SetCriteria() {
+		// TODO Auto-generated method stub
+		Criteria criteria = new Criteria();
+
+		//Accuracyを指定
+		criteria.setAccuracy(Criteria.ACCURACY_FINE);
+//		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+		
+		//PowerRequirementを指定
+		criteria.setPowerRequirement(Criteria.POWER_LOW);
+		
+		//SpeedRequiredを指定
+		criteria.setSpeedRequired(false);
+		
+		//AltitudeRequiredを指定
+		criteria.setAltitudeRequired(false);
+		
+		//BearingRequiredを指定
+		criteria.setBearingRequired(false);
+		
+		//CostAllowedを指定
+		criteria.setCostAllowed(false);
+
+		return criteria;
+		
+	}//private void _setup_SetCriteria()
 
 }//public class ActvMain extends Activity implements LocationListener
