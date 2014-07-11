@@ -1,8 +1,9 @@
 package lm1.main;
 
-import lm1.listeners.buttons.ButtonOnClickListener;
-import lm1.listeners.buttons.ButtonOnTouchListener;
+import lm1.listeners.buttons.BO_CL;
+import lm1.listeners.buttons.BO_TL;
 import lm1.utils.CONS;
+import lm1.utils.Methods;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.location.Location;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,12 +42,27 @@ public class MainActv extends Activity implements LocationListener {
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
+		
+//		CONS..mLocationManager.removeUpdates(this);
+		
+		CONS.Main.locationManager_.removeUpdates(this);
+		
+		// Log
+		String msg_Log = "Location manager => updates removed";
+		Log.d("MainActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		
 		super.onDestroy();
 	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
+		
+		Methods.confirm_quit(this, keyCode);
+		
 		return super.onKeyDown(keyCode, event);
 	}
 
@@ -87,7 +104,7 @@ public class MainActv extends Activity implements LocationListener {
 		/***************************************
 		 * Set: Listeners
 		 ***************************************/
-		setListeners();
+		set_Listeners();
 		
 		/***************************************
 		 * Prepare: data
@@ -125,19 +142,44 @@ public class MainActv extends Activity implements LocationListener {
 //		
 //	}
 //
-	private void setListeners() {
+	private void set_Listeners() {
 		// TODO Auto-generated method stub
 		/***************************************
 		 * Buttons
 		 ***************************************/
+		/******************************
+			'Get data'
+		 ******************************/
 		Button bt_GetData = (Button) findViewById(R.id.actv_main_bt_get_data);
 		
 		bt_GetData.setTag(Tags.ButtonTags.ACTVMAIN_BT_GETDATA);
 //		bt_GetData.setTag(Tags.ButtonTags.actv_main_bt_go);
 		
-		bt_GetData.setOnTouchListener(new ButtonOnTouchListener(this));
-		bt_GetData.setOnClickListener(new ButtonOnClickListener(this));
+		bt_GetData.setOnTouchListener(new BO_TL(this));
+		bt_GetData.setOnClickListener(new BO_CL(this));
 
+		/******************************
+			'Save data'
+		 ******************************/
+		Button bt_SaveData = (Button) findViewById(R.id.actv_main_bt_save_data);
+		
+		bt_SaveData.setTag(Tags.ButtonTags.ACTVMAIN_BT_SAVEDATA);
+//		bt_SaveData.setTag(Tags.ButtonTags.actv_main_bt_go);
+		
+		bt_SaveData.setOnTouchListener(new BO_TL(this));
+		bt_SaveData.setOnClickListener(new BO_CL(this));
+		
+		/******************************
+			'Show map'
+		 ******************************/
+		Button bt_ShowMap = (Button) findViewById(R.id.actv_main_bt_show_map);
+		
+		bt_ShowMap.setTag(Tags.ButtonTags.ACTVMAIN_BT_SHOW_MAP);
+//		bt_ShowMap.setTag(Tags.ButtonTags.actv_main_bt_go);
+		
+		bt_ShowMap.setOnTouchListener(new BO_TL(this));
+		bt_ShowMap.setOnClickListener(new BO_CL(this));
+		
 	}//private void setListeners()
 
 	@Override

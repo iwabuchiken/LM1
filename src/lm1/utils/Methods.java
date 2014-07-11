@@ -10,11 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import lm1.listeners.dialog.DL;
+import lm1.main.R;
+
 import org.apache.commons.lang.StringUtils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Toast;
 
 public class Methods {
@@ -301,6 +306,31 @@ public class Methods {
 		return sdf1.format(new Date(millSec));
 		
 	}//public static String get_TimeLabel(long millSec)
+
+	public static void confirm_quit(Activity actv, int keyCode) {
+		
+		// TODO �����������ꂽ���\�b�h�E�X�^�u
+		if (keyCode==KeyEvent.KEYCODE_BACK) {
+			
+			AlertDialog.Builder dialog=new AlertDialog.Builder(actv);
+			
+	        dialog.setTitle(actv.getString(R.string.generic_tv_confirm));
+	        dialog.setMessage("Quit app?");
+	        
+	        dialog.setPositiveButton(
+	        				actv.getString(R.string.generic_bt_ok),
+	        				new DL(actv, dialog, 0));
+	        
+	        dialog.setNegativeButton(
+	        				actv.getString(R.string.generic_bt_cancel),
+	        				new DL(actv, dialog, 1));
+	        
+	        dialog.create();
+	        dialog.show();
+			
+		}//if (keyCode==KeyEvent.KEYCODE_BACK)
+		
+	}//public static void confirm_quit(Activity actv, int keyCode)
 
 }//public class Methods
 

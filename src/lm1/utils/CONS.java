@@ -41,6 +41,10 @@ public class CONS {
 
 		// LocationProvider
 		public static LocationProvider locationProvider_;
+		
+		public static boolean locationObtained = false; 
+
+		public static LocationManager mLocationManager;
 			
 		// Longitude
 		public static double longitude = CONS.Admin.INITIAL_LONGITUTDE_VALUE;
@@ -99,5 +103,15 @@ public class CONS {
 			
 		};
 
+	}
+
+	public static class Enums {
+		
+		public static enum ColorNames {
+			
+			RED,	GREY,	BROWN,	GREEN,
+			WHITE,	YELLOW,	BLACK,
+		}
+		
 	}
 }//public class CONS

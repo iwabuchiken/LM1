@@ -50,7 +50,8 @@ public class Tags {
 		// actv_main.xml
 		actv_main_bt_go,
 		
-		ACTVMAIN_BT_GETDATA,
+		ACTVMAIN_BT_GETDATA, ACTVMAIN_BT_SAVEDATA,
+		ACTVMAIN_BT_SHOW_MAP,
 		
 	}//public static enum ButtonTags
 	
