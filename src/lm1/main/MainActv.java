@@ -1,5 +1,7 @@
 package lm1.main;
 
+import java.text.NumberFormat;
+
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.buttons.BO_TL;
 import lm1.tasks.TaskAudioTrack;
@@ -220,6 +222,11 @@ public class MainActv extends Activity implements LocationListener {
 			
 			CONS.Main.locationObtained = true;
 			
+			////////////////////////////////
+
+			// UIs
+
+			////////////////////////////////
 			// Button "Get data" => bg --> blue
 			Button bt_GetData = (Button) findViewById(R.id.actv_main_bt_get_data);
 			
@@ -228,7 +235,17 @@ public class MainActv extends Activity implements LocationListener {
 //			this.getResources().getColor(R.color.blue1));
 			
 //			bt_GetData.setEnabled(true);
+			
+			//REF http://stackoverflow.com/questions/3465841/how-to-change-visibility-of-layout-programaticly answered Aug 12 '10 at 8:18
 			bt_GetData.setVisibility(View.VISIBLE);
+
+			// "Save data"
+			Button bt_SaveData = (Button) findViewById(R.id.actv_main_bt_save_data);
+			bt_SaveData.setVisibility(View.VISIBLE);
+			
+			// "Post data"
+			Button bt_PostData = (Button) findViewById(R.id.actv_main_bt_post_data);
+			bt_PostData.setVisibility(View.VISIBLE);
 			
 			////////////////////////////////
 
@@ -247,8 +264,41 @@ public class MainActv extends Activity implements LocationListener {
 //			String toa_msg = "Location obtained";
 //			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
 			
+		} else {
+			
+			TextView tv_Long =
+					(TextView) this.findViewById(R.id.actv_main_tv_longi_str);
+			TextView tv_Lat =
+					(TextView) this.findViewById(R.id.actv_main_tv_lat_str);
+			
+//			NumberFormat format = NumberFormat.getInstance();
+//			// Set the number of floating digits => 10
+//			format.setMaximumFractionDigits(CONS.Admin.MaximumFractionDigits);
+////			format.setMaximumFractionDigits(10);
+//			
+//			String val_Longi = String.valueOf(format.format(CONS.Main.longitude));
+//			String val_Lat = String.valueOf(format.format(CONS.Main.latitude));
+			String val_Longi = String.format("%3.9f", CONS.Main.longitude);
+			String val_Lat = String.format("%3.9f", CONS.Main.latitude);
+//			String val_Longi = String.format("%f", CONS.Main.longitude));
+//			String val_Lat = String.valueOf(format.format(CONS.Main.latitude));
+			
+//			// Log
+//			String log_msg = String.valueOf(CONS.LocData.LONGITUDE);
+//
+//			Log.d("["
+//					+ "BOCL.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+			
+			// Set: values
+			tv_Long.setText(val_Longi);
+			tv_Lat.setText(val_Lat);
+			
 		}
-
+		
 	}//onLocationChanged(Location loc)
 
 	@Override

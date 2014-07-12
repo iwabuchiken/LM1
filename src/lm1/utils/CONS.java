@@ -32,6 +32,8 @@ public class CONS {
 //		public static final String date_Format = "yyyy/MM/dd hh:mm:ss.SSS";
 		
 		public static final String format_Clock = "%02d:%02d";
+		
+		public static final int MaximumFractionDigits	= 9;
 
 	}
 	
