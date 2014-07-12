@@ -3,10 +3,11 @@ package lm1.listeners.buttons;
 import java.io.File;
 
 import lm1.utils.CONS;
+import lm1.utils.DBUtils;
 import lm1.utils.Methods;
 import lm1.utils.Methods_LM1;
+import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -91,10 +92,68 @@ public class BO_CL implements OnClickListener {
 		
 	}
 
-	private void case_ACTVMAIN_BT_SAVEDATA() {
+	private void 
+	case_ACTVMAIN_BT_SAVEDATA() {
 		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// validate
+
+		////////////////////////////////
+		if (CONS.Main.locationObtained == false
+				&& CONS.Main.longitude != null
+				&& CONS.Main.latitude != null) {
+			
+			String message = "Sorry. Can't get the location data";
+			Methods_dlg.dlg_ShowMessage_Duration(actv, message, 3000);
+			
+			return;
+			
+		}
 		
-	}
+		////////////////////////////////
+
+		// save: data
+
+		////////////////////////////////
+//		String message = "Saving the location data";
+//		Methods_dlg.dlg_ShowMessage_Duration(actv, message, 3000);
+		
+		boolean res = DBUtils.save_LocationData(
+						actv, 
+						CONS.DB.tname_Locations,
+						CONS.DB.col_names_Locations,
+						new String[]{
+							
+							String.format("%3.9f", CONS.Main.longitude.doubleValue()),
+							String.format("%3.9f", CONS.Main.latitude.doubleValue()),
+//							String.valueOf(CONS.Main.longitude.longValue()),
+//							String.valueOf(CONS.Main.latitude.longValue())
+						}
+		);
+		
+		////////////////////////////////
+
+		// report
+
+		////////////////////////////////
+		String message = null;
+		
+		if (res == true) {
+		
+			message = "Location => saved";
+			
+		} else {
+			
+			message = "Location => couldn't be saved";
+			
+		}
+		
+		Methods_dlg.dlg_ShowMessage(actv, message);
+		
+//		Methods.save_LocationData_Current(actv);
+		
+	}//case_ACTVMAIN_BT_SAVEDATA()
 
 	private void case_ACTVMAIN_BT_GETDATA() {
 		// TODO Auto-generated method stub

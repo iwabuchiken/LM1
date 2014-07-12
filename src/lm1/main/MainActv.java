@@ -278,6 +278,8 @@ public class MainActv extends Activity implements LocationListener {
 //			
 //			String val_Longi = String.valueOf(format.format(CONS.Main.longitude));
 //			String val_Lat = String.valueOf(format.format(CONS.Main.latitude));
+			
+			//REF http://alvinalexander.com/programming/printf-format-cheat-sheet
 			String val_Longi = String.format("%3.9f", CONS.Main.longitude);
 			String val_Lat = String.format("%3.9f", CONS.Main.latitude);
 //			String val_Longi = String.format("%f", CONS.Main.longitude));

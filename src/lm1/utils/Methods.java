@@ -405,5 +405,14 @@ public class Methods {
 		
 	}//public static void playSound(Activity actv, int bgmResourceId)
 
+	public static void 
+	save_LocationData_Current
+	(Activity actv) {
+		// TODO Auto-generated method stub
+		
+		
+		
+	}//save_LocationData_Current
+
 }//public class Methods
 

@@ -1,6 +1,7 @@
 package lm1.utils;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -286,6 +287,114 @@ public class DBUtils extends SQLiteOpenHelper{
 		}//try
 
 	}//public boolean dropTable(String tableName) 
+
+	/*********************************
+	 * @param columnNames Timestamps => auto-inserted<br>
+	 * 			'col_names' doesn't have to have the column
+	 * @return false => 1. table doesn't exist<br>
+	 * 					2. DB transaction exception
+	 *********************************/
+	public static boolean
+	save_LocationData
+	(Activity actv, String tableName, 
+		String[] col_names, String[] values) {
+
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+
+		/*------------------------------
+		 * The table exists?
+		 *------------------------------*/
+		// The table exists?
+		boolean tmp_b = DBUtils.tableExists(actv, tableName);
+		
+		if (tmp_b == true) {
+		
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists: " + tableName);
+
+		} else {//if (tempBool == true)
+			// Log
+			Log.e("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table doesn't exist: " + tableName);
+			
+			wdb.close();
+			
+			return false;
+			
+		}//if (tempBool == true)
+		
+		/*----------------------------
+		* 1. Insert data
+		----------------------------*/
+		try {
+			// Start transaction
+			wdb.beginTransaction();
+			
+			// ContentValues
+			ContentValues val = new ContentValues();
+			
+			// Put values
+			for (int i = 0; i < col_names.length; i++) {
+				val.put(col_names[i], values[i]);
+			}//for (int i = 0; i < col_names.length; i++)
+			
+			// timestamps
+			val.put(
+				CONS.DB.col_names_Locations_full[1],
+				Methods.get_TimeLabel(Methods.getMillSeconds_now()));
+			
+			val.put(
+					CONS.DB.col_names_Locations_full[2],
+					Methods.get_TimeLabel(Methods.getMillSeconds_now()));
+			
+			// Insert data
+			long res_i = wdb.insert(tableName, null, val);
+			
+			if(res_i != -1) {
+				
+				// Set as successful
+				wdb.setTransactionSuccessful();
+				
+				// Log
+				String msg_Log = "insertion => successful";
+				Log.d("DBUtils.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", msg_Log);
+				
+			} else {
+				
+				// Log
+				String msg_Log = "insertion => failed";
+				Log.d("DBUtils.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", msg_Log);
+				
+			}
+			
+			// End transaction
+			wdb.endTransaction();
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+			// Log
+			Log.e("DBUtils.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "Exception! => " + e.toString());
+			
+			return false;
+			
+		}//try
+		
+	}//public insertData(String tableName, String[] col_names, String[] values)
 
 }//public class DBUtils
 
