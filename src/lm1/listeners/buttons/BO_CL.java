@@ -154,6 +154,18 @@ public class BO_CL implements OnClickListener {
 		
 		Methods_dlg.dlg_ShowMessage(actv, message);
 		
+		////////////////////////////////
+
+		// update: list
+
+		////////////////////////////////
+		CONS.Main.loc_List.clear();
+		
+		CONS.Main.loc_List.addAll(DBUtils.get_LocList(actv));
+		
+		CONS.Main.adp_Loc.notifyDataSetChanged();
+		
+		
 //		Methods.save_LocationData_Current(actv);
 		
 	}//case_ACTVMAIN_BT_SAVEDATA()
