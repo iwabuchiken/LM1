@@ -90,12 +90,16 @@ public class CONS {
 		public static final String[] col_names_Locations = {
 			
 			"longitude", "latitude",	// 0, 1
+			"memo",						// 2
+			"uploaded_at"				// 3
 			
 		};
 		
 		public static final String[] col_types_Locations = {
 			
 			"TEXT", "TEXT",			// 0, 1
+			"TEXT",					// 2
+			"TEXT",					// 3
 			
 		};
 		
@@ -104,6 +108,8 @@ public class CONS {
 			android.provider.BaseColumns._ID,	// 0
 			"created_at", "modified_at",		// 1, 2
 			"longitude", "latitude",			// 3, 4
+			"memo",						// 5
+			"uploaded_at",						// 6
 			
 		};
 

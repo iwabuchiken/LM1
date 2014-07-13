@@ -119,8 +119,22 @@ public class MainActv extends Activity implements LocationListener {
 		 ***************************************/
 		prep_Data();
 		
+		////////////////////////////////
+
+		// Set: list
+
+		////////////////////////////////
+//		_Setup_Set_LocationList();
+		
 	}//protected void onStart()
 	
+
+//	private void _Setup_Set_LocationList() {
+//		// TODO Auto-generated method stub
+//		List<>
+//		
+//		
+//	}
 
 	private void prep_Data() {
 		// TODO Auto-generated method stub
