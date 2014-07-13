@@ -1,5 +1,9 @@
 package lm1.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import lm1.items.Loc;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -395,6 +399,82 @@ public class DBUtils extends SQLiteOpenHelper{
 		}//try
 		
 	}//public insertData(String tableName, String[] col_names, String[] values)
+
+
+	public static List<Loc>
+	get_LocList(Activity actv) {
+		// TODO Auto-generated method stub
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName);
+		
+		SQLiteDatabase rdb = dbu.getReadableDatabase();
+
+		////////////////////////////////
+
+		// query
+
+		////////////////////////////////
+		Cursor cursor = rdb.query(
+					CONS.DB.tname_Locations,
+			//		CONS.columns,
+					CONS.DB.col_names_Locations_full,
+			//		android.provider.BaseColumns._ID + "=",	// where
+					null, null,
+					null, null, null
+		);
+
+		/******************************
+			validate
+		 ******************************/
+		if(cursor == null || cursor.getCount() < 1) {
+			
+			// Log
+			String msg_Log = "cursor == null || cursor.getCount() < 1";
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			return null;
+			
+		}
+		
+		////////////////////////////////
+
+		// build: Loc list
+
+		////////////////////////////////
+		
+		cursor.moveToFirst();
+		
+		List<Loc> loc_List = new ArrayList<Loc>();
+		
+//		android.provider.BaseColumns._ID,	// 0
+//		"created_at", "modified_at",		// 1, 2
+//		"longitude", "latitude",			// 3, 4
+//		"memo",						// 5
+//		"uploaded_at",						// 6
+
+		for (int i = 0; i < cursor.getCount(); i++) {
+			
+			Loc loc = new Loc.Builder()
+					.setId(cursor.getLong(0))
+					.setCreated_at(cursor.getString(1))
+					.setModified_at(cursor.getString(2))
+					.setLongitude(cursor.getString(3))
+					.setLatitude(cursor.getString(4))
+					.setMemo(cursor.getString(5))
+					.setUploaded_at(cursor.getString(6))
+					
+					.build();
+			
+			loc_List.add(loc);
+			
+			cursor.moveToNext();
+			
+		}
+		
+		return loc_List;
+		
+	}//get_LocList(Activity actv)
 
 }//public class DBUtils
 

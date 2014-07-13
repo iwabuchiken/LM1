@@ -125,8 +125,11 @@ public class BO_CL implements OnClickListener {
 						CONS.DB.col_names_Locations,
 						new String[]{
 							
-							String.format("%3.9f", CONS.Main.longitude.doubleValue()),
-							String.format("%3.9f", CONS.Main.latitude.doubleValue()),
+							String.format(
+									"%3.9f", CONS.Main.longitude.doubleValue()),
+							String.format(
+									"%3.9f", CONS.Main.latitude.doubleValue()),
+							null, null
 //							String.valueOf(CONS.Main.longitude.longValue()),
 //							String.valueOf(CONS.Main.latitude.longValue())
 						}

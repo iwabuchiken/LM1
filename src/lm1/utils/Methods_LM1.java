@@ -1,10 +1,13 @@
 package lm1.utils;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.location.LocationManager;
 import android.widget.TextView;
 import android.widget.Toast;
+import lm1.items.Loc;
 import lm1.main.MainActv;
 import lm1.main.R;
 
@@ -36,6 +39,16 @@ public class Methods_LM1 {
 		tvLati.setText(String.valueOf(lati));
 		
 	}//showLongNLat(Activity actv, Double longi, Double lati)
+
+//	public static List<Loc>
+//	get_LocList(Activity actv) {
+//		// TODO Auto-generated method stub
+//		
+//		
+//		
+//		return null;
+//		
+//	}//get_LocList(Activity actv)
 
 
 }//public class Methods_LM1

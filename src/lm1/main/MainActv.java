@@ -1,12 +1,16 @@
 package lm1.main;
 
 import java.text.NumberFormat;
+import java.util.List;
 
+import lm1.items.Loc;
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.buttons.BO_TL;
 import lm1.tasks.TaskAudioTrack;
 import lm1.utils.CONS;
+import lm1.utils.DBUtils;
 import lm1.utils.Methods;
+import lm1.utils.Methods_LM1;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.location.Criteria;
@@ -124,17 +128,36 @@ public class MainActv extends Activity implements LocationListener {
 		// Set: list
 
 		////////////////////////////////
-//		_Setup_Set_LocationList();
+		_Setup_Set_LocationList();
 		
 	}//protected void onStart()
 	
 
-//	private void _Setup_Set_LocationList() {
-//		// TODO Auto-generated method stub
-//		List<>
-//		
-//		
-//	}
+	private void _Setup_Set_LocationList() {
+		// TODO Auto-generated method stub
+		List<Loc> loc_List = DBUtils.get_LocList(this);
+		
+		//debug
+		if (loc_List == null) {
+			
+			// Log
+			String msg_Log = "loc_List => null";
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+		} else {
+
+			// Log
+			String msg_Log = "loc_List.size() ~> " + loc_List.size();
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+		}
+		
+		
+	}
 
 	private void prep_Data() {
 		// TODO Auto-generated method stub
