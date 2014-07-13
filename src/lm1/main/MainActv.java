@@ -3,6 +3,7 @@ package lm1.main;
 import java.text.NumberFormat;
 import java.util.List;
 
+import lm1.adapters.Adp_Loc;
 import lm1.items.Loc;
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.buttons.BO_TL;
@@ -20,6 +21,7 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -29,10 +31,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActv extends Activity implements LocationListener {
+public class MainActv 
+extends ListActivity 
+implements LocationListener {
+//	public class MainActv extends Activity implements LocationListener {
 
 
 	// Preference instance
@@ -133,12 +139,13 @@ public class MainActv extends Activity implements LocationListener {
 	}//protected void onStart()
 	
 
-	private void _Setup_Set_LocationList() {
+	private void 
+	_Setup_Set_LocationList() {
 		// TODO Auto-generated method stub
-		List<Loc> loc_List = DBUtils.get_LocList(this);
+		CONS.Main.loc_List = DBUtils.get_LocList(this);
 		
 		//debug
-		if (loc_List == null) {
+		if (CONS.Main.loc_List == null) {
 			
 			// Log
 			String msg_Log = "loc_List => null";
@@ -146,18 +153,41 @@ public class MainActv extends Activity implements LocationListener {
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", msg_Log);
 			
+			return;
+			
 		} else {
 
 			// Log
-			String msg_Log = "loc_List.size() ~> " + loc_List.size();
+			String msg_Log = "loc_List.size() ~> " + CONS.Main.loc_List.size();
 			Log.d("MainActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", msg_Log);
 			
 		}
 		
+		////////////////////////////////
+
+		// adapter
+
+		////////////////////////////////
+		CONS.Main.adp_Loc = new Adp_Loc(
+//				Adp_Loc adp_LocList = new Adp_Loc(
+						this,
+						R.layout.list_row_loc_list,
+						CONS.Main.loc_List
+//						loc_List
+		);
 		
-	}
+		////////////////////////////////
+
+		// listview
+
+		////////////////////////////////
+		ListView lv = this.getListView();
+		
+		lv.setAdapter(CONS.Main.adp_Loc);
+		
+	}//_Setup_Set_LocationList()
 
 	private void prep_Data() {
 		// TODO Auto-generated method stub

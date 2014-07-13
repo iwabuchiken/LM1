@@ -138,7 +138,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/actv_main_lv"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="3dp" >

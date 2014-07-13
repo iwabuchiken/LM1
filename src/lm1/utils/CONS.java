@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import lm1.adapters.Adp_Loc;
+import lm1.items.Loc;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.location.LocationProvider;
@@ -56,6 +58,11 @@ public class CONS {
 		public static Double latitude;
 //		public static double latitude = CONS.Admin.INITIAL_LATITUDE_VALUE;
 
+		// Adapter
+		public static Adp_Loc adp_Loc;
+		
+		public static List<Loc> loc_List;
+		
 	}//public static class Main
 
 	public static class DB {
