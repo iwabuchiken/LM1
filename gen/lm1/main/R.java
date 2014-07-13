@@ -47,23 +47,34 @@ public final class R {
         public static final int actv_main_tv_longi_data=0x7f09000d;
         public static final int actv_main_tv_longi_lbl=0x7f090001;
         public static final int actv_main_tv_longi_str=0x7f090002;
-        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f090010;
-        public static final int dlg_tmpl_list_cancel_lv=0x7f09000f;
-        public static final int dlg_tmpl_okcancel_simple_btn_cancel=0x7f090014;
-        public static final int dlg_tmpl_okcancel_simple_btn_ok=0x7f090013;
-        public static final int dlg_tmpl_okcancel_simple_tv_message=0x7f090011;
-        public static final int dlg_tmpl_okcancel_simple_tv_text=0x7f090012;
-        public static final int dlg_tmpl_toast_duration_tv_message=0x7f090015;
-        public static final int dlg_tmpl_toast_ok_bt_cancel=0x7f090016;
+        public static final int dlg_edit_locs_btn_cancel=0x7f090019;
+        public static final int dlg_edit_locs_btn_ok=0x7f090018;
+        public static final int dlg_edit_locs_tl=0x7f09000f;
+        public static final int dlg_edit_locs_tv_date_label=0x7f090010;
+        public static final int dlg_edit_locs_tv_date_val=0x7f090011;
+        public static final int dlg_edit_locs_tv_lat_label=0x7f090014;
+        public static final int dlg_edit_locs_tv_lat_val=0x7f090015;
+        public static final int dlg_edit_locs_tv_longi_label=0x7f090012;
+        public static final int dlg_edit_locs_tv_longi_val=0x7f090013;
+        public static final int dlg_edit_locs_tv_memo_label=0x7f090016;
+        public static final int dlg_edit_locs_tv_memo_val=0x7f090017;
+        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f09001b;
+        public static final int dlg_tmpl_list_cancel_lv=0x7f09001a;
+        public static final int dlg_tmpl_okcancel_simple_btn_cancel=0x7f09001f;
+        public static final int dlg_tmpl_okcancel_simple_btn_ok=0x7f09001e;
+        public static final int dlg_tmpl_okcancel_simple_tv_message=0x7f09001c;
+        public static final int dlg_tmpl_okcancel_simple_tv_text=0x7f09001d;
+        public static final int dlg_tmpl_toast_duration_tv_message=0x7f090020;
+        public static final int dlg_tmpl_toast_ok_bt_cancel=0x7f090021;
         public static final int dlg_tmpl_toast_ok_tv_message=0x7f09000a;
-        public static final int list_row_slimple_1_tv=0x7f09001c;
-        public static final int listrow_loc_list_tv_date=0x7f090017;
-        public static final int listrow_loc_list_tv_lat=0x7f09001a;
-        public static final int listrow_loc_list_tv_longi=0x7f090019;
-        public static final int listrow_loc_list_tv_memo=0x7f09001b;
-        public static final int listrow_loc_list_tv_time=0x7f090018;
-        public static final int menu_actvmain_db=0x7f09001e;
-        public static final int menu_settings=0x7f09001d;
+        public static final int list_row_slimple_1_tv=0x7f090027;
+        public static final int listrow_loc_list_tv_date=0x7f090022;
+        public static final int listrow_loc_list_tv_lat=0x7f090025;
+        public static final int listrow_loc_list_tv_longi=0x7f090024;
+        public static final int listrow_loc_list_tv_memo=0x7f090026;
+        public static final int listrow_loc_list_tv_time=0x7f090023;
+        public static final int menu_actvmain_db=0x7f090029;
+        public static final int menu_settings=0x7f090028;
         public static final int tableRow1=0x7f090000;
         public static final int tableRow2=0x7f090003;
         public static final int textView3=0x7f09000c;
@@ -71,12 +82,13 @@ public final class R {
     public static final class layout {
         public static final int actv_main=0x7f030000;
         public static final int actv_main_orig=0x7f030001;
-        public static final int dlg_tmpl_list_cancel=0x7f030002;
-        public static final int dlg_tmpl_okcancel_simple=0x7f030003;
-        public static final int dlg_tmpl_toast_duration=0x7f030004;
-        public static final int dlg_tmpl_toast_ok=0x7f030005;
-        public static final int list_row_loc_list=0x7f030006;
-        public static final int list_row_simple_1=0x7f030007;
+        public static final int dlg_edit_locs=0x7f030002;
+        public static final int dlg_tmpl_list_cancel=0x7f030003;
+        public static final int dlg_tmpl_okcancel_simple=0x7f030004;
+        public static final int dlg_tmpl_toast_duration=0x7f030005;
+        public static final int dlg_tmpl_toast_ok=0x7f030006;
+        public static final int list_row_loc_list=0x7f030007;
+        public static final int list_row_simple_1=0x7f030008;
     }
     public static final class menu {
         public static final int actv_main=0x7f080000;
@@ -106,6 +118,11 @@ public final class R {
         /**  dlg_db_admin.xml 
          */
         public static final int dlg_db_admin_title=0x7f06000f;
+        public static final int dlg_edit_locs_date_title=0x7f060020;
+        public static final int dlg_edit_locs_memo_title=0x7f06001f;
+        /**  dlg_edit_locs.xml 
+         */
+        public static final int dlg_edit_locs_title=0x7f06001e;
         public static final int drop_table_locations=0x7f06001d;
         /**  drop table 
          */

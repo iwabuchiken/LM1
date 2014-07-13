@@ -476,5 +476,110 @@ public class DBUtils extends SQLiteOpenHelper{
 		
 	}//get_LocList(Activity actv)
 
+	/*********************************
+	 * updateData_SI_all_V2(ShoppingItem si)
+	 * @param actv 
+	 * 
+	 * @return true => update successful<br>
+	 * 	false =>
+	 * 	<pre>1. Transaction unsuccessful
+	 * 2. Exception</pre>
+	 *********************************/
+	public static boolean 
+	update_Loc_Memo
+	(Activity actv, Loc loc) {
+		// TODO Auto-generated method stub
+		/***************************************
+		 * Build value set
+		 ***************************************/
+		ContentValues cv = _update_Loc_Memo__BuildValues(loc);
+		
+		/***************************************
+		 * Setup db
+		 ***************************************/
+		DBUtils dbm = new DBUtils(actv, CONS.DB.dbName);
+		
+		SQLiteDatabase wdb = dbm.getWritableDatabase();
+		
+		try {
+			//
+			wdb.beginTransaction();
+			
+			long res = wdb.update(
+					CONS.DB.tname_Locations,
+					cv,
+					android.provider.BaseColumns._ID + " = ?",
+					new String[]{String.valueOf(loc.getId())});
+			
+			if (res < 1) {
+				
+				// Log
+				Log.d("DBUtils.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+							.getLineNumber()
+							+ ":"
+							+ Thread.currentThread().getStackTrace()[2]
+									.getMethodName() + "]",
+						"Update => Returned less than 1");
+				
+				wdb.close();
+				
+				return false;
+				
+			}	
+			
+			// Set as successful
+			wdb.setTransactionSuccessful();
+			
+			// End transaction
+			wdb.endTransaction();
+			
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ ":"
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", "Update => Successful");
+			
+			wdb.close();
+			
+			return true;
+			
+		} catch (Exception e) {
+			// Log
+			Log.e("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+			
+			wdb.close();
+			
+			return false;
+			
+		}//try
+		
+	}//public boolean updateData_SI_all_V2(ShoppingItem si)
+
+	private static ContentValues
+	_update_Loc_Memo__BuildValues(Loc loc) {
+		// TODO Auto-generated method stub
+		ContentValues cv = new ContentValues();
+		
+		/*
+			android.provider.BaseColumns._ID,	// 0
+			"created_at", "modified_at",		// 1, 2
+			"longitude", "latitude",			// 3, 4
+			"memo",						// 5
+			"uploaded_at",						// 6
+		*/
+		
+		cv.put(CONS.DB.col_names_Locations_full[5], loc.getMemo());
+		cv.put(CONS.DB.col_names_Locations_full[2], 
+				Methods.get_TimeLabel(Methods.getMillSeconds_now()));
+		
+		return cv;
+		
+	}//_update_Loc_Memo__BuildValues(Loc loc)
+
 }//public class DBUtils
 

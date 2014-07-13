@@ -46,4 +46,11 @@
 	<!-- drop table -->
 		<string name="drop_table_message">Drop table?</string>
 		<string name="drop_table_locations">locations</string>
+		
+	<!-- dlg_edit_locs.xml -->
+		<string name="dlg_edit_locs_title">Edit Location</string>
+		<string name="dlg_edit_locs_memo_title">Memo</string>
+		<string name="dlg_edit_locs_date_title">Date</string>
+		
+		
 </resources>

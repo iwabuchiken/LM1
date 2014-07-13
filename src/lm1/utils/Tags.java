@@ -12,6 +12,9 @@ public class Tags {
 		
 		// drop table
 		DLG_CONFIRM_DROP_TABLE_OK,
+		
+		// edit loc
+		DLG_EDIT_LOCS_BTN_OK,
 
 
 	}//public static enum DialogTags
@@ -92,7 +95,7 @@ public class Tags {
 
 	public static enum ListTags {
 		// MainActivity.java
-		actv_main_lv,
+		ACTV_MAIN_LV,
 		
 		// BMActv.java
 		actv_bm_lv,

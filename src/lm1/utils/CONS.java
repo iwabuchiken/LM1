@@ -12,6 +12,7 @@ import android.location.LocationProvider;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class CONS {
@@ -62,6 +63,9 @@ public class CONS {
 		public static Adp_Loc adp_Loc;
 		
 		public static List<Loc> loc_List;
+		
+		// views
+		public static ListView lv_Main;
 		
 	}//public static class Main
 

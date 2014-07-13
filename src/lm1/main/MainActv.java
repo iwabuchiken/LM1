@@ -7,6 +7,7 @@ import lm1.adapters.Adp_Loc;
 import lm1.items.Loc;
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.buttons.BO_TL;
+import lm1.listeners.list.List_ILCL;
 import lm1.tasks.TaskAudioTrack;
 import lm1.utils.CONS;
 import lm1.utils.DBUtils;
@@ -119,22 +120,23 @@ implements LocationListener {
 		// TODO Auto-generated method stub
 		super.onStart();
 		
-		/***************************************
-		 * Set: Listeners
-		 ***************************************/
-		set_Listeners();
-		
-		/***************************************
-		 * Prepare: data
-		 ***************************************/
-		prep_Data();
-		
 		////////////////////////////////
 
 		// Set: list
 
 		////////////////////////////////
 		_Setup_Set_LocationList();
+		
+		/***************************************
+		 * Set: Listeners
+		 ***************************************/
+		_Setup_Listeners();
+		
+		/***************************************
+		 * Prepare: data
+		 ***************************************/
+		prep_Data();
+		
 		
 	}//protected void onStart()
 	
@@ -183,9 +185,11 @@ implements LocationListener {
 		// listview
 
 		////////////////////////////////
-		ListView lv = this.getListView();
+		CONS.Main.lv_Main = this.getListView();
+//		ListView lv = this.getListView();
 		
-		lv.setAdapter(CONS.Main.adp_Loc);
+		CONS.Main.lv_Main.setAdapter(CONS.Main.adp_Loc);
+//		lv.setAdapter(CONS.Main.adp_Loc);
 		
 	}//_Setup_Set_LocationList()
 
@@ -221,7 +225,7 @@ implements LocationListener {
 //		
 //	}
 //
-	private void set_Listeners() {
+	private void _Setup_Listeners() {
 		// TODO Auto-generated method stub
 		/***************************************
 		 * Buttons
@@ -258,6 +262,19 @@ implements LocationListener {
 		
 		bt_ShowMap.setOnTouchListener(new BO_TL(this));
 		bt_ShowMap.setOnClickListener(new BO_CL(this));
+		
+		////////////////////////////////
+
+		// listview
+
+		////////////////////////////////
+		ListView lv = this.getListView();
+		
+//		lv.setTag(Tags.ListTags.actv_main_lv);
+		lv.setTag(Tags.ListTags.ACTV_MAIN_LV);
+		
+		lv.setOnItemLongClickListener(new List_ILCL(this));
+		
 		
 	}//private void setListeners()
 
