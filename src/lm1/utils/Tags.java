@@ -44,6 +44,9 @@ public class Tags {
 		// dlg_bmactv_list_long_click
 		dlg_bmactv_list_long_click,
 		
+		// dlg: MainActv list
+		DLG_MAINACTV_LIST,
+		
 		
 	}//public static enum DialogItemTags
 	

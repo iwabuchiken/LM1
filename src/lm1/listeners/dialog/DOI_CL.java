@@ -1,6 +1,7 @@
 package lm1.listeners.dialog;
 
 
+import lm1.items.Loc;
 import lm1.main.R;
 import lm1.utils.CONS;
 import lm1.utils.Methods;
@@ -13,6 +14,7 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 public class DOI_CL implements OnItemClickListener {
 
@@ -25,6 +27,12 @@ public class DOI_CL implements OnItemClickListener {
 	Vibrator vib;
 	
 	int aiList_Position;
+	
+	AdapterView<?> parent;
+
+	int position_InListView;
+
+	Loc loc;
 	
 	//
 //	Methods.DialogTags dlgTag = null;
@@ -49,6 +57,25 @@ public class DOI_CL implements OnItemClickListener {
 		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
 
 	}
+
+	public 
+	DOI_CL
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent,
+		int position_InListView, Dialog dlg1) {
+		// TODO Auto-generated constructor stub
+		
+		this.actv	= actv;
+		this.loc	= loc;
+		this.parent	= parent;
+		this.position_InListView	= position_InListView;
+		
+		this.dlg1	= dlg1;
+		
+		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
+		
+	}
+
 
 	//	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -76,6 +103,12 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;
 			
+		case DLG_MAINACTV_LIST:
+			
+			case_DLG_MAINACTV_LIST(item);
+			
+			break;
+			
 //		case dlg_db_admin_lv://----------------------------------------------
 //		case DLG_ALACTV_LIST_LONGCLICK://----------------------------------------------
 //			
@@ -91,6 +124,18 @@ public class DOI_CL implements OnItemClickListener {
 		}//switch (tag)
 		
 	}//public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+
+
+	private void 
+	case_DLG_MAINACTV_LIST(String item) {
+		// TODO Auto-generated method stub
+		
+		// debug
+		String msg_Toast = "item => " + item;
+		Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+		
+		
+	}//case_DLG_MAINACTV_LIST(String item)
 
 
 	private void 

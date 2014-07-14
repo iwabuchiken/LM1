@@ -92,7 +92,8 @@ implements OnItemLongClickListener {
 		
 		Loc loc = (Loc) parent.getItemAtPosition(position);
 		
-		Methods_dlg.dlg_EditLoc(actv, loc, parent, position);
+		Methods_dlg.dlg_MainActv_List(actv, loc, parent, position);
+//		Methods_dlg.dlg_EditLoc(actv, loc, parent, position);
 //		boolean res = Methods_dlg.dlg_EditLoc(actv, loc, parent, position);
 		
 //		// debug

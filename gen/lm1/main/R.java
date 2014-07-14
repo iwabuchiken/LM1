@@ -123,6 +123,9 @@ public final class R {
         /**  dlg_edit_locs.xml 
          */
         public static final int dlg_edit_locs_title=0x7f06001e;
+        /**  dlg: mainactv_list 
+         */
+        public static final int dlg_mainactv_list_title=0x7f060021;
         public static final int drop_table_locations=0x7f06001d;
         /**  drop table 
          */

@@ -51,6 +51,8 @@
 		<string name="dlg_edit_locs_title">Edit Location</string>
 		<string name="dlg_edit_locs_memo_title">Memo</string>
 		<string name="dlg_edit_locs_date_title">Date</string>
-		
+	
+	<!-- dlg: mainactv_list -->
+		<string name="dlg_mainactv_list_title">Actions</string>
 		
 </resources>

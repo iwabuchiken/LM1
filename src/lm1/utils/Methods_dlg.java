@@ -460,5 +460,80 @@ public class Methods_dlg {
 		return false;
 		
 	}//dlg_EditLoc
+	
+	public static boolean
+	dlg_MainActv_List
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent, int position_InListView) {
+		// TODO Auto-generated method stub
+		Dialog dlg1 = new Dialog(actv);
+		
+		//
+		dlg1.setContentView(R.layout.dlg_tmpl_list_cancel);
+		
+		// Title
+		dlg1.setTitle(actv.getString(R.string.dlg_mainactv_list_title));
+		
+		String[] choices = {
+				
+				actv.getString(R.string.dlg_edit_locs_title),
+				
+		};
+		
+		List<String> list = new ArrayList<String>();
+		
+		for (String item : choices) {
+			
+			list.add(item);
+			
+		}
+		
+		/*----------------------------
+		 * 3. Adapter
+			----------------------------*/
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				actv,
+//				R.layout.dlg_db_admin,
+				R.layout.list_row_simple_1,
+				list
+				);
+
+		/*----------------------------
+		 * 4. Set adapter
+			----------------------------*/
+		ListView lv = (ListView) dlg1.findViewById(R.id.dlg_tmpl_list_cancel_lv);
+		
+		lv.setAdapter(adapter);
+		
+		/*----------------------------
+		 * 5. Set listener to list
+			----------------------------*/
+		lv.setTag(Tags.DialogItemTags.DLG_MAINACTV_LIST);
+		
+		lv.setOnItemClickListener(new DOI_CL(
+					actv, loc, parent, position_InListView, dlg1));
+		
+		////////////////////////////////
+
+		// btn: cancel
+
+		////////////////////////////////
+		Button bt_Cancel = 
+				(Button) dlg1.findViewById(R.id.dlg_tmpl_list_cancel_bt_cancel);
+		
+		bt_Cancel.setTag(Tags.DialogTags.DLG_GENERIC_DISMISS);
+		
+		bt_Cancel.setOnTouchListener(new DB_OTL(actv));
+		bt_Cancel.setOnClickListener(new DB_OCL(actv, dlg1));
+		
+		/*********************************
+		 * Show
+		 *********************************/
+		dlg1.show();
+		
+		return false;
+		
+	}//dlg_MainActv_List
+
 
 }//public class Methods_dialog
