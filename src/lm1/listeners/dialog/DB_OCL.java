@@ -5,6 +5,7 @@ import lm1.main.R;
 import lm1.utils.CONS;
 import lm1.utils.DBUtils;
 import lm1.utils.Methods;
+import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.app.Activity;
 import android.app.Dialog;
@@ -32,6 +33,8 @@ public class DB_OCL implements OnClickListener {
 	AdapterView<?> parent;
 	int position;
 	String original_Memo;
+
+	Loc loc;
 	
 	//
 	Vibrator vib;
@@ -116,12 +119,37 @@ public class DB_OCL implements OnClickListener {
 		
 	}
 
+	public DB_OCL(Activity actv, Dialog dlg1, Dialog dlg2, Loc loc,
+			AdapterView<?> parent, int position, String original_Memo) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public DB_OCL
+	(Activity actv, Loc loc, AdapterView<?> parent,
+			int position_InListView, String original_Memo, 
+			Dialog dlg1, Dialog dlg2) {
+		// TODO Auto-generated constructor stub
+		
+		this.actv	= actv;
+		this.loc	= loc;
+		this.parent			= parent;
+		
+		this.position		= position_InListView;
+		this.original_Memo	= original_Memo;
+		
+		this.dlg1	= dlg1;
+		this.dlg2	= dlg2;
+		
+		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
+
+	}
+
 	public void onClick(View v) {
 		//
 		Tags.DialogTags tag_name = (Tags.DialogTags) v.getTag();
 
 		// Log
-		Log.d("DialogButtonOnClickListener.java" + "["
+		Log.d("DB_OCL.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "tag_name.name()=" + tag_name.name());
 		
@@ -192,13 +220,16 @@ public class DB_OCL implements OnClickListener {
 		 * Update: Location list
 		 *********************************/
 		// Compare the current and the new memo value
-		EditText et_Memo = (EditText) dlg1.findViewById(
+		EditText et_Memo = (EditText) dlg2.findViewById(
+//				EditText et_Memo = (EditText) dlg1.findViewById(
 								R.id.dlg_edit_locs_tv_memo_val);
 		
 		String new_Memo = et_Memo.getText().toString();
 		
 
 		// If any change, then replace the current value with the new
+		boolean res = false;	// flag for DB update
+		
 		if (original_Memo != null &&
 				new_Memo != null &&
 				original_Memo.equals(new_Memo)) {
@@ -243,16 +274,34 @@ public class DB_OCL implements OnClickListener {
 					+ "]", log_msg);
 
 			
-			_case_Dlg_EditLocs_Btn_Ok_UpdateMemo(new_Memo);
+			res = _case_Dlg_EditLocs_Btn_Ok_UpdateMemo(new_Memo);
 			
 		}//if (original_Memo.equals(new_Memo))
 		
+		////////////////////////////////
+
+		// report
+
+		////////////////////////////////
 		// Close dialog
-		dlg1.dismiss();
+		if (res == true) {
+			
+			String message = "Update => done";
+			Methods_dlg.dlg_ShowMessage(actv, message);
+			
+			dlg2.dismiss();
+			dlg1.dismiss();
+			
+		} else {
+			
+			String message = "Update => failed";
+			Methods_dlg.dlg_ShowMessage(actv, message);
+
+		}
 		
 	}//private void case_Dlg_EditLocs_Btn_Ok()
 
-	private void
+	private boolean
 	_case_Dlg_EditLocs_Btn_Ok_UpdateMemo(String new_Memo) {
 		// TODO Auto-generated method stub
 		/*********************************
@@ -335,10 +384,17 @@ public class DB_OCL implements OnClickListener {
 			String toa_msg = "DB upate => Failed";
 			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
 			
-			return;
+//			return;
 			
 		}//if (res == false)
 
+		////////////////////////////////
+
+		// return
+
+		////////////////////////////////
+		return res;
+		
 //		/*********************************
 //		 * Post to remote for update
 //		 *********************************/

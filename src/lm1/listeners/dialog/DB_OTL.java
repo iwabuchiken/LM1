@@ -15,12 +15,14 @@ public class DB_OTL implements OnTouchListener {
 		----------------------------*/
 	//
 	Activity actv;
-	Dialog dlg;
+	Dialog dlg1;
+	
+	Dialog dlg2;
 	
 	public DB_OTL(Activity actv, Dialog dlg) {
 		//
 		this.actv = actv;
-		this.dlg = dlg;
+		this.dlg1 = dlg;
 	}
 	
 	public DB_OTL(Activity actv) {
@@ -28,7 +30,14 @@ public class DB_OTL implements OnTouchListener {
 		this.actv = actv;
 	}
 
-//	@Override
+	public DB_OTL(Activity actv, Dialog dlg1, Dialog dlg2) {
+		// TODO Auto-generated constructor stub
+		this.actv = actv;
+		this.dlg1 = dlg1;
+		this.dlg2 = dlg2;
+	}
+
+	//	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		
 		Tags.DialogTags tag_name = (Tags.DialogTags) v.getTag();

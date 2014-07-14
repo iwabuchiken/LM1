@@ -130,9 +130,19 @@ public class DOI_CL implements OnItemClickListener {
 	case_DLG_MAINACTV_LIST(String item) {
 		// TODO Auto-generated method stub
 		
-		// debug
-		String msg_Toast = "item => " + item;
-		Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
+		if (item.equals(actv.getString(
+				R.string.dlg_edit_locs_title))) {
+
+			Methods_dlg.dlg_EditLoc(
+					actv, loc, parent, position_InListView, dlg1);
+			
+		} else {
+			
+		}
+			
+//		// debug
+//		String msg_Toast = "item => " + item;
+//		Toast.makeText(actv, msg_Toast, Toast.LENGTH_SHORT).show();
 		
 		
 	}//case_DLG_MAINACTV_LIST(String item)

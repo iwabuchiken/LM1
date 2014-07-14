@@ -462,6 +462,138 @@ public class Methods_dlg {
 	}//dlg_EditLoc
 	
 	public static boolean
+	dlg_EditLoc
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent, int position_InListView,
+		Dialog dlg1) {
+		// TODO Auto-generated method stub
+		Dialog dlg2 = new Dialog(actv);
+		
+		//
+		dlg2.setContentView(R.layout.dlg_edit_locs);
+		
+		// Title
+		dlg2.setTitle(actv.getString(R.string.dlg_edit_locs_title));
+		
+		/*********************************
+		 * Set: values
+		 *********************************/
+		/******************************
+			date
+		 ******************************/
+		// Date
+		TextView tv_Date = (TextView) dlg2.findViewById(
+				R.id.dlg_edit_locs_tv_date_val);
+		
+		//REF return http://stackoverflow.com/questions/16601585/add-new-line-character-in-string answered May 17 '13 at 4:53
+		String date = StringUtils.join(loc.getCreated_at().split("_"), "\n");
+		
+		if (loc.getCreated_at() != null) {
+			
+			tv_Date.setText(date);
+//			tv_Date.setText(loc.getCreated_at());
+			
+		}
+		
+		/******************************
+			longitude
+		 ******************************/
+		TextView tv_Longi = (TextView) dlg2.findViewById(
+				R.id.dlg_edit_locs_tv_longi_val);
+		
+		String longi = loc.getLongitude();
+		
+		if (longi == null) {
+			
+			longi = "";
+			
+		}
+//		} else if (longi.length() > CONS.Others.Default_LocStringLength) {
+//			
+//			longi = longi.substring(0, CONS.Others.Default_LocStringLength);
+//			
+//		}
+		
+		tv_Longi.setText(longi);
+		
+		/******************************
+			latitude
+		 ******************************/
+		TextView tv_Lat = (TextView) dlg2.findViewById(
+				R.id.dlg_edit_locs_tv_lat_val);
+		
+		String lat = loc.getLatitude();
+		
+		if (lat == null) {
+			
+			lat = "";
+			
+		}
+//		} else if (lat.length() > CONS.Others.Default_LocStringLength) {
+//			
+//			lat = lat.substring(0, CONS.Others.Default_LocStringLength);
+//			
+//		}
+		
+		tv_Lat.setText(lat);
+		
+		/******************************
+			memo
+		 ******************************/
+		EditText et_Memo = 
+				(EditText) dlg2.findViewById(R.id.dlg_edit_locs_tv_memo_val);
+		
+		String original_Memo = loc.getMemo();
+		
+		et_Memo.setText(original_Memo);
+		
+		/*********************************
+		 * Set: Listeners
+		 *********************************/
+		/******************************
+			btn: Cancel
+		 ******************************/
+		Button btn_cancel = (Button) dlg2.findViewById(R.id.dlg_edit_locs_btn_cancel);
+		
+		//
+		btn_cancel.setTag(Tags.DialogTags.DLG_GENERIC_DISMISS_SECOND_DIALOG);
+//		btn_cancel.setTag(Tags.DialogTags.DLG_GENERIC_DISMISS);
+//		btn_cancel.setTag(Tags.DialogTags.dlg_generic_dismiss);
+		
+		//
+		btn_cancel.setOnTouchListener(new DB_OTL(actv, dlg1, dlg2));
+		//
+		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg1, dlg2));
+		
+		/******************************
+			btn: Cancel
+		 ******************************/
+		Button btn_Ok = (Button) dlg2.findViewById(R.id.dlg_edit_locs_btn_ok);
+		
+		//
+		btn_Ok.setTag(Tags.DialogTags.DLG_EDIT_LOCS_BTN_OK);
+		
+		//
+		btn_Ok.setOnTouchListener(new DB_OTL(actv, dlg1, dlg2));
+		
+		// Get the current memo value
+		
+		// Pass the value to OnClickListener
+		btn_Ok.setOnClickListener(new DB_OCL(
+				actv, loc, parent, 
+				position_InListView, original_Memo, 
+				dlg1, dlg2));
+		
+		/*********************************
+		 * Show
+		 *********************************/
+		dlg2.show();
+		
+		return false;
+		
+	}//dlg_EditLoc
+	
+	public static boolean
 	dlg_MainActv_List
 	(Activity actv, 
 		Loc loc, AdapterView<?> parent, int position_InListView) {
