@@ -135,4 +135,30 @@ public class CONS {
 		}
 		
 	}
+	
+	public static class Pref {
+		
+		////////////////////////////////
+		
+		// Commons
+		
+		////////////////////////////////
+		public static long dflt_LongExtra_value = -1;
+		
+		public static int dflt_IntExtra_value = -1;
+		
+		////////////////////////////////
+
+		// Mainactv
+
+		////////////////////////////////
+		public static SharedPreferences prefs_MainActv;
+		
+		public static final String pname_MainActv = "pname_MainActv";
+		
+		public static final String pkey_MainActv_CurrentBase = 
+											"pkey_MainActv_CurrentBase";
+		
+	}
+
 }//public class CONS

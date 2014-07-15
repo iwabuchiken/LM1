@@ -3,8 +3,10 @@ package lm1.utils;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.location.LocationManager;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 import lm1.items.Loc;
@@ -39,6 +41,62 @@ public class Methods_LM1 {
 		tvLati.setText(String.valueOf(lati));
 		
 	}//showLongNLat(Activity actv, Double longi, Double lati)
+
+	public static void 
+	set_Base
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent,
+		int position_InListView, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		
+		////////////////////////////////
+
+		// set: pref
+
+		////////////////////////////////
+		boolean res = Methods.set_Pref_Long(
+							actv, 
+							CONS.Pref.pname_MainActv, 
+							CONS.Pref.pkey_MainActv_CurrentBase, 
+							loc.getId());
+		
+		/******************************
+			validate
+		 ******************************/
+		if (res == false) {
+			
+			String msg = "Can't set preference";
+			
+			Methods_dlg.dlg_ShowMessage(actv, msg);
+			
+			return;
+			
+		}
+		
+		////////////////////////////////
+
+		// notify: adapter
+
+		////////////////////////////////
+		CONS.Main.adp_Loc.notifyDataSetChanged();
+		
+		////////////////////////////////
+
+		// close: dlg
+
+		////////////////////////////////
+		dlg1.dismiss();
+		
+		////////////////////////////////
+
+		// report
+
+		////////////////////////////////
+		String message = "Base => set to: " + loc.getLongitude();
+		
+		Methods_dlg.dlg_ShowMessage(actv, message);
+		
+	}//set_Base
 
 //	public static List<Loc>
 //	get_LocList(Activity actv) {

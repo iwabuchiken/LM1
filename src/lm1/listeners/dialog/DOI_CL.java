@@ -5,6 +5,7 @@ import lm1.items.Loc;
 import lm1.main.R;
 import lm1.utils.CONS;
 import lm1.utils.Methods;
+import lm1.utils.Methods_LM1;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.app.Activity;
@@ -135,6 +136,17 @@ public class DOI_CL implements OnItemClickListener {
 
 			Methods_dlg.dlg_EditLoc(
 					actv, loc, parent, position_InListView, dlg1);
+			
+		} else if (item.equals(actv.getString(
+				R.string.dlg_mainactv_list_opt_set_base))) {
+			
+			Methods_LM1.set_Base(actv, loc, parent, position_InListView, dlg1);
+			
+		} else if (item.equals(actv.getString(
+				R.string.dlg_mainactv_list_opt_show_distance))) {
+			
+		} else if (item.equals(actv.getString(
+				R.string.dlg_mainactv_list_opt_delete))) {
 			
 		} else {
 			

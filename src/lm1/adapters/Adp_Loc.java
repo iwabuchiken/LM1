@@ -5,6 +5,7 @@ import java.util.List;
 import lm1.items.Loc;
 import lm1.main.R;
 import lm1.utils.CONS;
+import lm1.utils.Methods;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -62,9 +63,64 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 
         _getView_SetTexts(v, loc, position);
 
+        ////////////////////////////////
+
+		// background
+
+		////////////////////////////////
+        _getView_Background(v, loc, position);
+        
 		return v;
 //		return super.getView(position, convertView, parent);
 	}//public View getView(int position, View convertView, ViewGroup parent)
+
+	private void 
+	_getView_Background
+	(View v, Loc loc, int position) {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// vies
+
+		////////////////////////////////
+		TextView tv_Longi = (TextView) v.findViewById(R.id.listrow_loc_list_tv_longi);
+		TextView tv_Lat = (TextView) v.findViewById(R.id.listrow_loc_list_tv_lat);
+
+		////////////////////////////////
+
+		// pref position
+
+		////////////////////////////////
+		long current_Base = Methods.get_Pref_Long(
+								(Activity) con, 
+								CONS.Pref.pname_MainActv, 
+								CONS.Pref.pkey_MainActv_CurrentBase, 
+								CONS.Pref.dflt_LongExtra_value);
+		
+		////////////////////////////////
+
+		// set: bg
+
+		////////////////////////////////
+		if (current_Base != CONS.Pref.dflt_LongExtra_value
+				&& current_Base == loc.getId()) {
+			
+			tv_Longi.setTextColor(
+					((Activity)con).getResources().getColor(R.color.yello));
+			tv_Lat.setTextColor(
+					((Activity)con).getResources().getColor(R.color.yello));
+			
+		} else {
+			
+			tv_Longi.setTextColor(
+					((Activity)con).getResources().getColor(R.color.white));
+			tv_Lat.setTextColor(
+					((Activity)con).getResources().getColor(R.color.white));
+
+		}
+		
+		
+	}//_getView_Background
 
 	private void
 	_getView_SetTexts(View v, Loc loc, int position) {

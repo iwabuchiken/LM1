@@ -19,6 +19,8 @@ import org.apache.commons.lang.StringUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -413,6 +415,109 @@ public class Methods {
 		
 		
 	}//save_LocationData_Current
+
+	public static boolean
+	setPref_String
+	(Activity actv, String pName, String pKey, String value) {
+		
+		SharedPreferences prefs = 
+				actv.getSharedPreferences(pName, Context.MODE_PRIVATE);
+		
+		/****************************
+		 * 2. Get editor
+		 ****************************/
+		SharedPreferences.Editor editor = prefs.edit();
+		
+		/****************************
+		 * 3. Set value
+		 ****************************/
+		editor.putString(pKey, value);
+		
+		try {
+			
+			editor.commit();
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+			// Log
+			Log.e("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Excption: " + e.toString());
+			
+			return false;
+			
+		}
+		
+	}//public static boolean setPref_long(Activity actv, String pref_name, String pref_key, long value)
+
+	public static String 
+	get_Pref_String
+	(Activity actv, String pref_name,
+			String pref_key, String defValue) {
+		
+		SharedPreferences prefs = 
+				actv.getSharedPreferences(
+						pref_name, Context.MODE_PRIVATE);
+
+		/****************************
+		 * Return
+			****************************/
+		return prefs.getString(pref_key, defValue);
+
+	}//public static String get_Pref_String
+
+	public static boolean
+	set_Pref_Long
+	(Activity actv, String pName, String pKey, long value) {
+		
+		SharedPreferences prefs = 
+				actv.getSharedPreferences(pName, Context.MODE_PRIVATE);
+
+		/****************************
+		 * 2. Get editor
+			****************************/
+		SharedPreferences.Editor editor = prefs.edit();
+
+		/****************************
+		 * 3. Set value
+			****************************/
+		editor.putLong(pKey, value);
+		
+		try {
+			
+			editor.commit();
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+			// Log
+			Log.e("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Excption: " + e.toString());
+			
+			return false;
+			
+		}
+
+	}//public static boolean setPref_long(Activity actv, String pref_name, String pref_key, long value)
+
+	public static long 
+	get_Pref_Long
+	(Activity actv, String pref_name, 
+			String pref_key, long dflt_Value) {
+		
+		SharedPreferences prefs = 
+				actv.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
+
+		/****************************
+		 * Return
+			****************************/
+		return prefs.getLong(pref_key, dflt_Value);
+
+	}//public static boolean set_pref(String pref_name, String value)
 
 }//public class Methods
 

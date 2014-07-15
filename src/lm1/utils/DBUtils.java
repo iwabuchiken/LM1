@@ -472,6 +472,8 @@ public class DBUtils extends SQLiteOpenHelper{
 			
 		}
 		
+		rdb.close();
+		
 		return loc_List;
 		
 	}//get_LocList(Activity actv)

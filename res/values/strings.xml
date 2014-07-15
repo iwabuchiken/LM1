@@ -54,5 +54,11 @@
 	
 	<!-- dlg: mainactv_list -->
 		<string name="dlg_mainactv_list_title">Actions</string>
+		<string name="dlg_mainactv_list_opt_set_base">
+		    							Set as base</string>
+		<string name="dlg_mainactv_list_opt_show_distance">
+		    							Show distance from base</string>
+		<string name="dlg_mainactv_list_opt_delete">
+		    							Delete</string>
 		
 </resources>

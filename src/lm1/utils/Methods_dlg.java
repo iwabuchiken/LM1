@@ -601,14 +601,47 @@ public class Methods_dlg {
 		Dialog dlg1 = new Dialog(actv);
 		
 		//
-		dlg1.setContentView(R.layout.dlg_tmpl_list_cancel);
+		dlg1.setContentView(R.layout.dlg_tmpl_list_cancel_with_message);
+//		dlg1.setContentView(R.layout.dlg_tmpl_list_cancel);
+
+		////////////////////////////////
+
+		// message
+
+		////////////////////////////////
+		StringBuilder sb = new StringBuilder();
+//		sb.append(actv.getString(R.string.dlg_mainactv_list_title));
+//		sb.append(actv.getString(R.string.dlg_));
+//		sb.append("(");
+		sb.append(loc.getLongitude());
+		sb.append("/");
+		sb.append(loc.getLatitude());
+//		sb.append(")");
+
+		TextView tv = (TextView) dlg1.findViewById(
+							R.id.dlg_tmpl_list_cancel_with_message_tv);
 		
+		tv.setText(sb.toString());
+		
+		////////////////////////////////
+
 		// Title
+
+		////////////////////////////////
+//		dlg1.setTitle(sb.toString());
 		dlg1.setTitle(actv.getString(R.string.dlg_mainactv_list_title));
 		
+		////////////////////////////////
+
+		// choices
+
+		////////////////////////////////
 		String[] choices = {
 				
 				actv.getString(R.string.dlg_edit_locs_title),
+				actv.getString(R.string.dlg_mainactv_list_opt_set_base),
+				actv.getString(R.string.dlg_mainactv_list_opt_show_distance),
+				actv.getString(R.string.dlg_mainactv_list_opt_delete),
 				
 		};
 		
@@ -633,7 +666,10 @@ public class Methods_dlg {
 		/*----------------------------
 		 * 4. Set adapter
 			----------------------------*/
-		ListView lv = (ListView) dlg1.findViewById(R.id.dlg_tmpl_list_cancel_lv);
+//		ListView lv = (ListView) dlg1.findViewById(R.id.dlg_tmpl_list_cancel_lv);
+		ListView lv = 
+				(ListView) dlg1.findViewById(
+						R.id.dlg_tmpl_list_cancel_with_message_lv);
 		
 		lv.setAdapter(adapter);
 		
@@ -651,7 +687,9 @@ public class Methods_dlg {
 
 		////////////////////////////////
 		Button bt_Cancel = 
-				(Button) dlg1.findViewById(R.id.dlg_tmpl_list_cancel_bt_cancel);
+				(Button) dlg1.findViewById(
+//						R.id.dlg_tmpl_list_cancel_bt_cancel);
+						R.id.dlg_tmpl_list_cancel_with_message_bt_cancel);
 		
 		bt_Cancel.setTag(Tags.DialogTags.DLG_GENERIC_DISMISS);
 		
