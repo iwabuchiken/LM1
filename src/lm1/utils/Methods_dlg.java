@@ -764,8 +764,26 @@ public class Methods_dlg {
 		// data
 
 		////////////////////////////////
-		double diff = Double.parseDouble(loc.getLongitude())
-					- Double.parseDouble(loc_Base.getLongitude());
+//		double diff = Double.parseDouble(loc.getLongitude())
+//					- Double.parseDouble(loc_Base.getLongitude());
+		
+//		double diff = Methods.distance(
+//					Double.parseDouble(loc.getLatitude()), 
+//					Double.parseDouble(loc.getLongitude()), 
+//					
+//					Double.parseDouble(loc_Base.getLatitude()), 
+//					Double.parseDouble(loc_Base.getLongitude()), 
+//					
+//					'K'
+//					);
+		
+		double diff = Methods.distance_2(
+					Double.parseDouble(loc.getLatitude()), 
+					Double.parseDouble(loc.getLongitude()), 
+					
+					Double.parseDouble(loc_Base.getLatitude()), 
+					Double.parseDouble(loc_Base.getLongitude()) 
+					);
 		
 		////////////////////////////////
 

@@ -519,5 +519,73 @@ public class Methods {
 
 	}//public static boolean set_pref(String pref_name, String value)
 
+	//REF http://www.geodatasource.com/developers/java
+	public static double
+	distance
+	(double lat1, double lon1, 
+		double lat2, double lon2, char unit) {
+
+		double theta = lon1 - lon2;
+
+		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) 
+						+ Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) 
+							* Math.cos(deg2rad(theta));
+
+		dist = Math.acos(dist);
+
+		dist = rad2deg(dist);
+
+		dist = dist * 60 * 1.1515;
+
+		if (unit == 'K') {
+
+			dist = dist * 1.609344;
+
+		} else if (unit == 'N') {
+
+			dist = dist * 0.8684;
+
+		}
+
+		return (dist);
+
+	}
+
+	private static double 
+	deg2rad(double deg) {
+		
+		return (deg * Math.PI / 180.0);
+		
+	}
+		 
+	private static double 
+	rad2deg(double rad) {
+		
+		return (rad * 180 / Math.PI);
+		
+	}
+
+	public static double
+	distance_2
+	(double lat1, double lon1, 
+			double lat2, double lon2) {
+		
+		double R = 6378.137; // Radius of earth in KM
+	    double dLat = (lat2 - lat1) * Math.PI / 180;
+	    double dLon = (lon2 - lon1) * Math.PI / 180;
+	    
+	    double a = Math.sin(dLat/2) * Math.sin(dLat/2) 
+	    		+ Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180)
+	    		* Math.sin(dLon/2) * Math.sin(dLon/2);
+	    
+	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	    double d = R * c;
+	    
+	    return d * 1000; // meters
+		
+//		return 0;
+		
+	}//distance_2
+	
 }//public class Methods
 
