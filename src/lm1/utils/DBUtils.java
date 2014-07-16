@@ -583,5 +583,78 @@ public class DBUtils extends SQLiteOpenHelper{
 		
 	}//_update_Loc_Memo__BuildValues(Loc loc)
 
+
+	/******************************
+		@return null => Can't build loc
+	 ******************************/
+	public static Loc 
+	get_Loc_FromId
+	(Activity actv, long base_LocId) {
+		// TODO Auto-generated method stub
+		
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName);
+		
+		SQLiteDatabase rdb = dbu.getReadableDatabase();
+
+		String where = android.provider.BaseColumns._ID + " = ?";
+		
+		String[] args = new String[]{
+				
+				String.valueOf(base_LocId)
+				
+		};
+		
+		Cursor cursor = rdb.query(
+				CONS.DB.tname_Locations,
+		//		CONS.columns,
+				CONS.DB.col_names_Locations_full,
+		//		android.provider.BaseColumns._ID + "=",	// where
+				where, args,
+				null, null, null
+				);
+				
+		/******************************
+			validate: any result?
+		 ******************************/
+		if (cursor == null || cursor.getCount() < 1) {
+			
+			// Log
+			String msg_Log = "result => "
+					+ "(cursor == null || cursor.getCount() < 1)";
+			
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			rdb.close();
+			
+			return null;
+			
+		}
+
+		////////////////////////////////
+
+		// build: loc
+
+		////////////////////////////////
+		cursor.moveToFirst();
+		
+		Loc loc = new Loc.Builder()
+					.setId(cursor.getLong(0))
+					.setCreated_at(cursor.getString(1))
+					.setModified_at(cursor.getString(2))
+					.setLongitude(cursor.getString(3))
+					.setLatitude(cursor.getString(4))
+					.setMemo(cursor.getString(5))
+					.setUploaded_at(cursor.getString(6))
+					
+					.build();
+
+		rdb.close();
+		
+		return loc;
+		
+	}//get_Loc_FromId
+
 }//public class DBUtils
 

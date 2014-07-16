@@ -566,7 +566,7 @@ public class Methods_dlg {
 		btn_cancel.setOnClickListener(new DB_OCL(actv, dlg1, dlg2));
 		
 		/******************************
-			btn: Cancel
+			btn: Ok
 		 ******************************/
 		Button btn_Ok = (Button) dlg2.findViewById(R.id.dlg_edit_locs_btn_ok);
 		
@@ -705,5 +705,100 @@ public class Methods_dlg {
 		
 	}//dlg_MainActv_List
 
+	public static void 
+	show_Distance
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent, 
+		int position_InListView, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// get: base location
+
+		////////////////////////////////
+		long base_LocId = Methods.get_Pref_Long(
+							actv, 
+							CONS.Pref.pname_MainActv, 
+							CONS.Pref.pkey_MainActv_CurrentBase, 
+							CONS.Pref.dflt_LongExtra_value);
+
+		if (base_LocId == CONS.Pref.dflt_LongExtra_value) {
+			
+			String message = "No base loc data";
+			Methods_dlg.dlg_ShowMessage(actv, message);
+			
+			return;
+			
+		}
+
+		////////////////////////////////
+
+		// get: loc
+
+		////////////////////////////////
+		Loc loc_Base = DBUtils.get_Loc_FromId(actv, base_LocId);
+		
+		////////////////////////////////
+
+		// dialog
+
+		////////////////////////////////
+		Dialog dlg2 = new Dialog(actv);
+		
+		//
+		dlg2.setContentView(R.layout.dlg_tmpl_toast_ok);
+		
+		// Title
+		dlg2.setTitle(loc.getLongitude());
+		
+		////////////////////////////////
+
+		// view
+
+		////////////////////////////////
+		TextView tv_Message = (TextView) dlg2.findViewById(
+								R.id.dlg_tmpl_toast_ok_tv_message);
+
+		////////////////////////////////
+
+		// data
+
+		////////////////////////////////
+		double diff = Double.parseDouble(loc.getLongitude())
+					- Double.parseDouble(loc_Base.getLongitude());
+		
+		////////////////////////////////
+
+		// set: data to textview
+
+		////////////////////////////////
+		String message = String.format("diff => %f", diff);
+		
+		tv_Message.setText(message);
+		
+		/******************************
+			btn: Ok
+		 ******************************/
+		Button btn_Ok = 
+				(Button) dlg2.findViewById(R.id.dlg_tmpl_toast_ok_bt_cancel);
+		
+		//
+		btn_Ok.setTag(Tags.DialogTags.DLG_GENERIC_DISMISS_SECOND_DIALOG);
+		
+		//
+		btn_Ok.setOnTouchListener(new DB_OTL(actv, dlg1, dlg2));
+		
+		// Get the current memo value
+		
+		// Pass the value to OnClickListener
+		btn_Ok.setOnClickListener(new DB_OCL(
+						actv, dlg1, dlg2));
+		
+		/*********************************
+		 * Show
+		 *********************************/
+		dlg2.show();
+		
+	}
 
 }//public class Methods_dialog

@@ -145,6 +145,9 @@ public class DOI_CL implements OnItemClickListener {
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_show_distance))) {
 			
+			Methods_dlg.show_Distance(
+							actv, loc, parent, position_InListView, dlg1);
+			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_delete))) {
 			

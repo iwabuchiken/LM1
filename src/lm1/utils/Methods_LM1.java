@@ -98,6 +98,17 @@ public class Methods_LM1 {
 		
 	}//set_Base
 
+	public static void 
+	show_Distance
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent, 
+		int position_InListView, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		
+		
+		
+	}
+
 //	public static List<Loc>
 //	get_LocList(Activity actv) {
 //		// TODO Auto-generated method stub
