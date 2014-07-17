@@ -6,9 +6,11 @@ import java.util.List;
 
 import lm1.adapters.Adp_Loc;
 import lm1.items.Loc;
+import lm1.tasks.TaskAudioTrack;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.media.AudioTrack;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
@@ -81,6 +83,11 @@ public class CONS {
 		
 		public static Loc loc_Current;
 		
+		public static TaskAudioTrack task_Audio;
+		
+		public static AudioTrack audioTrack;
+		
+		public static int distance_BufferRange	= 10;	// unit => meter
 		
 		////////////////////////////////
 

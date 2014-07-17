@@ -412,8 +412,24 @@ implements LocationListener {
 
 				////////////////////////////////
 				
-				if (CONS.Main.distance_Diff > 5
+//				if (CONS.Main.distance_Diff < 5
+				if (CONS.Main.distance_Diff > CONS.Main.distance_BufferRange
 						&& (CONS.Main.msg_OutOfRange == false)) {
+					
+					////////////////////////////////
+
+					// stop: player
+
+					////////////////////////////////
+//					if(CONS.Main.audioTrack.getState())
+//					// Log
+//					msg_Log = "CONS.Main.audioTrack.getState() => "
+//								+ CONS.Main.audioTrack.getState();
+//					Log.d("MainActv.java"
+//							+ "["
+//							+ Thread.currentThread().getStackTrace()[2]
+//									.getLineNumber() + "]", msg_Log);
+					
 					
 					////////////////////////////////
 
@@ -422,11 +438,36 @@ implements LocationListener {
 					////////////////////////////////
 					int bgmResourceId = R.raw.audio_water;
 					
-					TaskAudioTrack task = new TaskAudioTrack(this);
+					CONS.Main.task_Audio = new TaskAudioTrack(this);
+//					TaskAudioTrack task = new TaskAudioTrack(this);
 					
 //					task.execute("Start");
-					task.execute(bgmResourceId);
-
+					CONS.Main.task_Audio.execute(bgmResourceId);
+					
+//					msg_Log = "Audio task started; "
+//							+ "CONS.Main.audioTrack.getState() => "
+//							+ CONS.Main.audioTrack.getState();
+//					Log.d("MainActv.java"
+//							+ "["
+//							+ Thread.currentThread().getStackTrace()[2]
+//									.getLineNumber() + "]", msg_Log);
+//					
+//					// Log
+//					msg_Log = "CONS.Main.audioTrack.getPlayState() => " 
+//							+ CONS.Main.audioTrack.getPlayState();
+//					Log.d("MainActv.java"
+//							+ "["
+//							+ Thread.currentThread().getStackTrace()[2]
+//									.getLineNumber() + "]", msg_Log);
+//					
+//					// Log
+//					msg_Log = "CONS.Main.audioTrack.getPlayState() => " 
+//							+ CONS.Main.audioTrack.getPlayState();
+//					Log.d("MainActv.java"
+//							+ "["
+//							+ Thread.currentThread().getStackTrace()[2]
+//									.getLineNumber() + "]", msg_Log);
+	
 					////////////////////////////////
 
 					// setup
@@ -434,7 +475,10 @@ implements LocationListener {
 					////////////////////////////////
 					CONS.Main.msg_OutOfRange = true;
 					
-					Methods_dlg.dlg_ShowMessage(this, "Out of range: " + 5);
+					Methods_dlg.dlg_ShowMessage(
+							this, 
+							"Out of range: " + 5, 
+							Tags.DialogTags.DLG_MONITOR_OUTOFRANGE_OK);
 					
 				}
 				

@@ -345,7 +345,8 @@ public class Methods {
 				AudioFormat.CHANNEL_CONFIGURATION_MONO, 
 				AudioFormat.ENCODING_PCM_16BIT);
 
-		AudioTrack audioTrack = new AudioTrack(
+		CONS.Main.audioTrack = new AudioTrack(
+//				AudioTrack audioTrack = new AudioTrack(
 			AudioManager.STREAM_MUSIC, 44100,
 			AudioFormat.CHANNEL_CONFIGURATION_MONO, 
 			AudioFormat.ENCODING_PCM_16BIT,
@@ -354,9 +355,9 @@ public class Methods {
 		
 		float vol = 0.3f;
 		
-		audioTrack.setStereoVolume(vol, vol);
+		CONS.Main.audioTrack.setStereoVolume(vol, vol);
 		
-		audioTrack.play();
+		CONS.Main.audioTrack.play();
 		
 		int i = 0;
 		int bufferSize = 512;
@@ -370,7 +371,7 @@ public class Methods {
 		try {
 			
 			while((i = inputStream.read(buffer)) != -1)
-			audioTrack.write(buffer, 0, i);
+				CONS.Main.audioTrack.write(buffer, 0, i);
 			
 		} catch (IOException e) {
 			
@@ -396,7 +397,7 @@ public class Methods {
 			
 		}
 
-		audioTrack.stop();
+		CONS.Main.audioTrack.stop();
 		
 		// Log
 		Log.d("Methods_sl.java" + "["

@@ -10,6 +10,7 @@ import lm1.utils.Tags;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.media.AudioTrack;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
@@ -210,6 +211,34 @@ public class DB_OCL implements OnClickListener {
 	private void case_DLG_MONITOR_OUTOFRANGE_OK() {
 		// TODO Auto-generated method stub
 		dlg1.dismiss();
+		
+		////////////////////////////////
+
+		// sound
+
+		////////////////////////////////
+		CONS.Main.task_Audio.cancel(true);
+		
+//		if(CONS.Main.audioTrack.getPlayState() 
+//				== AudioTrack.PLAYSTATE_PLAYING) {
+//			
+//			CONS.Main.audioTrack.stop();
+//			
+//			// Log
+//			String msg_Log = "track => stopped";
+//			Log.d("DB_OCL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+//			
+//		} else {
+//			
+//			// Log
+//			String msg_Log = "track => not playing";
+//			Log.d("DB_OCL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+//			
+//		}
 		
 	}
 
