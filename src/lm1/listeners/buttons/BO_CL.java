@@ -2,6 +2,7 @@ package lm1.listeners.buttons;
 
 import java.io.File;
 
+import lm1.main.R;
 import lm1.utils.CONS;
 import lm1.utils.DBUtils;
 import lm1.utils.Methods;
@@ -18,6 +19,7 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -31,6 +33,8 @@ public class BO_CL implements OnClickListener {
 	//
 	Activity actv;
 
+	Button bt_Monitor;	// ACTVMAIN_BT_MONITOR
+	
 	//
 	Vibrator vib;
 	
@@ -41,6 +45,16 @@ public class BO_CL implements OnClickListener {
 		
 		//
 		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
+	}
+
+	public BO_CL(Activity actv, Button bt_Monitor) {
+		// TODO Auto-generated constructor stub
+		this.actv = actv;
+		this.bt_Monitor	= bt_Monitor;
+		
+		//
+		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
+
 	}
 
 	public void onClick(View v) {
@@ -81,14 +95,90 @@ public class BO_CL implements OnClickListener {
 			
 			break;
 			
+		case ACTVMAIN_BT_MONITOR://------------------------------------
+			
+			case_ACTVMAIN_BT_MONITOR();
+			
+			break;
+			
+		case ACTVMAIN_BT_STOP_MONITOR://------------------------------------
+			
+			case_ACTVMAIN_BT_STOP_MONITOR();
+			
+			break;
+			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onClick(View v)
 
+	private void 
+	case_ACTVMAIN_BT_STOP_MONITOR() {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// view
+
+		////////////////////////////////
+		bt_Monitor.setTag(Tags.ButtonTags.ACTVMAIN_BT_MONITOR);
+		
+		bt_Monitor.setText(actv.getString(R.string.actv_main_tv_monitor));
+
+		////////////////////////////////
+
+		// stop
+
+		////////////////////////////////
+		Methods_LM1.stop_Monitor(actv);
+		
+	}
+
+	private void 
+	case_ACTVMAIN_BT_MONITOR() {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// validate: pref set?
+
+		////////////////////////////////
+		long base_LocID = Methods.get_Pref_Long(
+						actv, 
+						CONS.Pref.pname_MainActv, 
+						CONS.Pref.pkey_MainActv_CurrentBase, 
+						CONS.Pref.dflt_LongExtra_value);
+		
+		if (base_LocID == CONS.Pref.dflt_LongExtra_value) {
+			
+			String message = "Base loc => not set";
+			Methods_dlg.dlg_ShowMessage(actv, message);
+			
+			return;
+			
+		}
+		
+		
+		////////////////////////////////
+
+		// view
+
+		////////////////////////////////
+		bt_Monitor.setTag(Tags.ButtonTags.ACTVMAIN_BT_STOP_MONITOR);
+		
+		bt_Monitor.setText(actv.getString(R.string.actv_main_tv_stop_monitor));
+
+		////////////////////////////////
+
+		// setup
+
+		////////////////////////////////
+		Methods_LM1.start_Monitor(actv);
+	}
+
 	private void case_ACTVMAIN_BT_SHOW_MAP() {
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 

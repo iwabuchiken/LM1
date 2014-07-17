@@ -218,6 +218,26 @@ public class Methods_dlg {
 	}
 	
 	public static void
+	dlg_ShowMessage
+	(Activity actv, String message, Tags.DialogTags tag) {
+		
+		Dialog dlg = Methods_dlg.dlg_Template_Cancel(
+				actv, R.layout.dlg_tmpl_toast_ok, 
+				R.string.generic_tv_confirm, 
+				R.id.dlg_tmpl_toast_ok_bt_cancel, 
+//				R.id.dlg_db_admin_bt_cancel, 
+				tag);
+		
+		TextView tv_Message = 
+				(TextView) dlg.findViewById(R.id.dlg_tmpl_toast_ok_tv_message);
+		
+		tv_Message.setText(message);
+		
+		dlg.show();
+		
+	}//dlg_ShowMessage
+	
+	public static void
 	dlg_ShowMessage_Duration
 	(Activity actv, String message, int duration) {
 		

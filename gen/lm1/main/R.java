@@ -38,7 +38,7 @@ public final class R {
     public static final class id {
         public static final int actv_main_bt_get_data=0x7f090006;
         public static final int actv_main_bt_go=0x7f09000e;
-        public static final int actv_main_bt_post_data=0x7f090008;
+        public static final int actv_main_bt_monitor=0x7f090008;
         public static final int actv_main_bt_save_data=0x7f090007;
         public static final int actv_main_bt_show_map=0x7f090009;
         public static final int actv_main_tv_lat_data=0x7f09000b;
@@ -101,7 +101,8 @@ public final class R {
         public static final int audio_nature=0x7f040000;
         public static final int audio_nature_mp3=0x7f040001;
         public static final int audio_nature_mp3_=0x7f040002;
-        public static final int raw_list=0x7f040003;
+        public static final int audio_water=0x7f040003;
+        public static final int raw_list=0x7f040004;
     }
     public static final class string {
         /**  actv_main.xml 
@@ -109,9 +110,11 @@ public final class R {
         public static final int actv_main_latitude=0x7f060016;
         public static final int actv_main_longitude=0x7f060017;
         public static final int actv_main_tv_get_data=0x7f060018;
+        public static final int actv_main_tv_monitor=0x7f06001c;
         public static final int actv_main_tv_post_data=0x7f06001a;
         public static final int actv_main_tv_save_data=0x7f060019;
         public static final int actv_main_tv_show_map=0x7f06001b;
+        public static final int actv_main_tv_stop_monitor=0x7f06001d;
         public static final int app_name=0x7f060001;
         public static final int dlg_db_admin_item_backup_db=0x7f060010;
         public static final int dlg_db_admin_item_create_table_locations=0x7f060014;
@@ -122,21 +125,21 @@ public final class R {
         /**  dlg_db_admin.xml 
          */
         public static final int dlg_db_admin_title=0x7f06000f;
-        public static final int dlg_edit_locs_date_title=0x7f060020;
-        public static final int dlg_edit_locs_memo_title=0x7f06001f;
+        public static final int dlg_edit_locs_date_title=0x7f060022;
+        public static final int dlg_edit_locs_memo_title=0x7f060021;
         /**  dlg_edit_locs.xml 
          */
-        public static final int dlg_edit_locs_title=0x7f06001e;
-        public static final int dlg_mainactv_list_opt_delete=0x7f060024;
-        public static final int dlg_mainactv_list_opt_set_base=0x7f060022;
-        public static final int dlg_mainactv_list_opt_show_distance=0x7f060023;
+        public static final int dlg_edit_locs_title=0x7f060020;
+        public static final int dlg_mainactv_list_opt_delete=0x7f060026;
+        public static final int dlg_mainactv_list_opt_set_base=0x7f060024;
+        public static final int dlg_mainactv_list_opt_show_distance=0x7f060025;
         /**  dlg: mainactv_list 
          */
-        public static final int dlg_mainactv_list_title=0x7f060021;
-        public static final int drop_table_locations=0x7f06001d;
+        public static final int dlg_mainactv_list_title=0x7f060023;
+        public static final int drop_table_locations=0x7f06001f;
         /**  drop table 
          */
-        public static final int drop_table_message=0x7f06001c;
+        public static final int drop_table_message=0x7f06001e;
         public static final int generic_bt_back=0x7f060005;
         public static final int generic_bt_cancel=0x7f060004;
         /**  Generic items 

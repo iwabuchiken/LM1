@@ -42,6 +42,8 @@
 		<string name="actv_main_tv_save_data">Save data</string>
 		<string name="actv_main_tv_post_data">Post data</string>
 		<string name="actv_main_tv_show_map">Show map</string>	   	
+		<string name="actv_main_tv_monitor">Monitor</string>	   	
+		<string name="actv_main_tv_stop_monitor">Stop</string>	   	
 		
 	<!-- drop table -->
 		<string name="drop_table_message">Drop table?</string>

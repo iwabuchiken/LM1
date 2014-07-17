@@ -15,6 +15,9 @@ public class Tags {
 		
 		// edit loc
 		DLG_EDIT_LOCS_BTN_OK,
+		
+		// monitor: out of range
+		DLG_MONITOR_OUTOFRANGE_OK,
 
 
 	}//public static enum DialogTags
@@ -56,8 +59,9 @@ public class Tags {
 		// actv_main.xml
 		actv_main_bt_go,
 		
-		ACTVMAIN_BT_GETDATA, ACTVMAIN_BT_SAVEDATA,
-		ACTVMAIN_BT_SHOW_MAP,
+		ACTVMAIN_BT_GETDATA,	ACTVMAIN_BT_SAVEDATA,
+		ACTVMAIN_BT_SHOW_MAP,	ACTVMAIN_BT_MONITOR,
+		ACTVMAIN_BT_STOP_MONITOR,
 		
 	}//public static enum ButtonTags
 	

@@ -263,6 +263,17 @@ implements LocationListener {
 		bt_ShowMap.setOnTouchListener(new BO_TL(this));
 		bt_ShowMap.setOnClickListener(new BO_CL(this));
 		
+		/******************************
+			'Monitor'
+		 ******************************/
+		Button bt_Monitor = (Button) findViewById(R.id.actv_main_bt_monitor);
+		
+		bt_Monitor.setTag(Tags.ButtonTags.ACTVMAIN_BT_MONITOR);
+//		bt_Monitor.setTag(Tags.ButtonTags.actv_main_bt_go);
+		
+		bt_Monitor.setOnTouchListener(new BO_TL(this));
+		bt_Monitor.setOnClickListener(new BO_CL(this, bt_Monitor));
+		
 		////////////////////////////////
 
 		// listview
@@ -328,7 +339,7 @@ implements LocationListener {
 			bt_SaveData.setVisibility(View.VISIBLE);
 			
 			// "Post data"
-			Button bt_PostData = (Button) findViewById(R.id.actv_main_bt_post_data);
+			Button bt_PostData = (Button) findViewById(R.id.actv_main_bt_monitor);
 			bt_PostData.setVisibility(View.VISIBLE);
 			
 			////////////////////////////////
@@ -355,33 +366,79 @@ implements LocationListener {
 			TextView tv_Lat =
 					(TextView) this.findViewById(R.id.actv_main_tv_lat_str);
 			
-//			NumberFormat format = NumberFormat.getInstance();
-//			// Set the number of floating digits => 10
-//			format.setMaximumFractionDigits(CONS.Admin.MaximumFractionDigits);
-////			format.setMaximumFractionDigits(10);
-//			
-//			String val_Longi = String.valueOf(format.format(CONS.Main.longitude));
-//			String val_Lat = String.valueOf(format.format(CONS.Main.latitude));
-			
 			//REF http://alvinalexander.com/programming/printf-format-cheat-sheet
 			String val_Longi = String.format("%3.9f", CONS.Main.longitude);
 			String val_Lat = String.format("%3.9f", CONS.Main.latitude);
-//			String val_Longi = String.format("%f", CONS.Main.longitude));
-//			String val_Lat = String.valueOf(format.format(CONS.Main.latitude));
-			
-//			// Log
-//			String log_msg = String.valueOf(CONS.LocData.LONGITUDE);
-//
-//			Log.d("["
-//					+ "BOCL.java : "
-//					+ +Thread.currentThread().getStackTrace()[2]
-//							.getLineNumber() + " : "
-//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-//					+ "]", log_msg);
 			
 			// Set: values
 			tv_Long.setText(val_Longi);
 			tv_Lat.setText(val_Lat);
+			
+			////////////////////////////////
+
+			// monitor distance
+
+			////////////////////////////////
+			//test
+			String val = tv_Lat.getText().toString();
+			
+			if (CONS.Main.monitor == true) {
+				
+				CONS.Main.distance_Current = 
+						Methods.distance_2(
+							CONS.Main.latitude, 
+							CONS.Main.longitude, 
+							Double.parseDouble(CONS.Main.loc_Base.getLatitude()), 
+							Double.parseDouble(CONS.Main.loc_Base.getLongitude()));
+
+				CONS.Main.distance_Diff = 
+						CONS.Main.distance_Current - CONS.Main.distance_Base;
+				
+				// Log
+				String msg_Log = "CONS.Main.distance_Diff => "
+									+ CONS.Main.distance_Diff;
+				Log.d("MainActv.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", msg_Log);
+				
+
+				tv_Lat.setText(
+						val + "/" + String.format("%.3f", CONS.Main.distance_Diff));
+				
+				////////////////////////////////
+
+				// out of range?
+
+				////////////////////////////////
+				
+				if (CONS.Main.distance_Diff > 5
+						&& (CONS.Main.msg_OutOfRange == false)) {
+					
+					////////////////////////////////
+
+					// sound
+
+					////////////////////////////////
+					int bgmResourceId = R.raw.audio_water;
+					
+					TaskAudioTrack task = new TaskAudioTrack(this);
+					
+//					task.execute("Start");
+					task.execute(bgmResourceId);
+
+					////////////////////////////////
+
+					// setup
+
+					////////////////////////////////
+					CONS.Main.msg_OutOfRange = true;
+					
+					Methods_dlg.dlg_ShowMessage(this, "Out of range: " + 5);
+					
+				}
+				
+			}
 			
 		}
 		

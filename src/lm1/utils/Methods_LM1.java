@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.location.LocationManager;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -105,6 +106,76 @@ public class Methods_LM1 {
 		int position_InListView, Dialog dlg1) {
 		// TODO Auto-generated method stub
 		
+		
+		
+	}
+
+	public static void 
+	start_Monitor(Activity actv) {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// boolean
+
+		////////////////////////////////
+		CONS.Main.monitor = true;
+		
+		////////////////////////////////
+
+		// setup: locs
+
+		////////////////////////////////
+		long base_LocID = Methods.get_Pref_Long(
+				actv, 
+				CONS.Pref.pname_MainActv, 
+				CONS.Pref.pkey_MainActv_CurrentBase, 
+				CONS.Pref.dflt_LongExtra_value);
+
+		CONS.Main.loc_Base = DBUtils.get_Loc_FromId(actv, base_LocID);
+		
+		CONS.Main.distance_Base = 
+					Methods.distance_2(
+							CONS.Main.latitude, 
+							CONS.Main.longitude, 
+							Double.parseDouble(CONS.Main.loc_Base.getLatitude()), 
+							Double.parseDouble(CONS.Main.loc_Base.getLongitude()));
+
+		// Log
+		String msg_Log = "monitor => started";
+		Log.d("Methods_LM1.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		
+	}//start_Monitor(Activity actv)
+
+	
+	public static void 
+	stop_Monitor(Activity actv) {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// boolean
+
+		////////////////////////////////
+		CONS.Main.monitor = false;
+		
+		CONS.Main.msg_OutOfRange = false;
+		
+		////////////////////////////////
+
+		// setup: locs
+
+		////////////////////////////////
+		CONS.Main.loc_Base = null;
+		
+		CONS.Main.distance_Base = 0;
+
+		// Log
+		String msg_Log = "monitor => stopped";
+		Log.d("Methods_LM1.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
 		
 		
 	}

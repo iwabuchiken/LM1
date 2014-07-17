@@ -42,6 +42,11 @@ public class CONS {
 	
 	public static class Main {
 
+		////////////////////////////////
+
+		// Location
+
+		////////////////////////////////
 		public static LocationManager locationManager_;
 
 		// LocationProvider
@@ -59,6 +64,29 @@ public class CONS {
 		public static Double latitude;
 //		public static double latitude = CONS.Admin.INITIAL_LATITUDE_VALUE;
 
+		// monitor
+		public static boolean monitor	= false;
+		
+		public static boolean msg_OutOfRange	= false;
+		
+		public static double distance_Base;
+		
+		public static double distance_Current;
+		
+		public static double distance_Diff;
+		
+		public static Loc loc_Base;
+		
+		public static Loc loc_Ref;
+		
+		public static Loc loc_Current;
+		
+		
+		////////////////////////////////
+
+		// List
+
+		////////////////////////////////
 		// Adapter
 		public static Adp_Loc adp_Loc;
 		
@@ -66,6 +94,8 @@ public class CONS {
 		
 		// views
 		public static ListView lv_Main;
+		
+		
 		
 	}//public static class Main
 

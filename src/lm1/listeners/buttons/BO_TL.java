@@ -52,6 +52,8 @@ public class BO_TL implements OnTouchListener {
 			case ACTVMAIN_BT_GETDATA://------------------------------------
 			case ACTVMAIN_BT_SAVEDATA://------------------------------------
 			case ACTVMAIN_BT_SHOW_MAP://------------------------------------
+			case ACTVMAIN_BT_MONITOR://------------------------------------
+			case ACTVMAIN_BT_STOP_MONITOR://------------------------------------
 				
 				_Set_Color(v,
 						Color.WHITE, 
@@ -89,7 +91,8 @@ public class BO_TL implements OnTouchListener {
 			case ACTVMAIN_BT_SAVEDATA://------------------------------------				
 				
 				_Set_Color(v,
-						Color.GREEN, 
+						actv.getResources().getColor(R.color.darkgreen), 
+//						Color.GREEN, 
 //						R.color.gray1, 
 						Color.WHITE);
 //				Color.WHITE);
@@ -98,9 +101,19 @@ public class BO_TL implements OnTouchListener {
 
 			case ACTVMAIN_BT_SHOW_MAP://------------------------------------
 				_Set_Color(v,
-						Color.YELLOW, 
+						actv.getResources().getColor(R.color.gold2),
 //						R.color.gray1, 
 						Color.BLUE);
+//				Color.WHITE);
+				
+				break;// case actv_main_bt_go
+				
+			case ACTVMAIN_BT_MONITOR://------------------------------------
+			case ACTVMAIN_BT_STOP_MONITOR://------------------------------------
+				_Set_Color(v,
+						actv.getResources().getColor(R.color.brown), 
+//						R.color.gray1, 
+						Color.WHITE);
 //				Color.WHITE);
 				
 				break;// case actv_main_bt_go

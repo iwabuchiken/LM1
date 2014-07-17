@@ -191,6 +191,12 @@ public class DB_OCL implements OnClickListener {
 			
 			break;
 			
+		case DLG_MONITOR_OUTOFRANGE_OK://------------------------------------------------
+			
+			case_DLG_MONITOR_OUTOFRANGE_OK();
+			
+			break;
+			
 		default: // ----------------------------------------------------
 			break;
 		}//switch (tag_name)
@@ -200,6 +206,12 @@ public class DB_OCL implements OnClickListener {
 //		// TODO Auto-generated method stub
 //		
 //	}
+
+	private void case_DLG_MONITOR_OUTOFRANGE_OK() {
+		// TODO Auto-generated method stub
+		dlg1.dismiss();
+		
+	}
 
 	private void 
 	case_DLG_CONFIRM_DROP_TABLE_OK() {
