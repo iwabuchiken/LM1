@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import lm1.listeners.dialog.DL;
+import lm1.main.PrefActv;
 import lm1.main.R;
 
 import org.apache.commons.lang.StringUtils;
@@ -20,6 +21,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioFormat;
 import android.media.AudioManager;
@@ -519,6 +521,28 @@ public class Methods {
 		return prefs.getLong(pref_key, dflt_Value);
 
 	}//public static boolean set_pref(String pref_name, String value)
+	
+	public static int 
+	get_Pref_Int
+	(Activity actv, String pref_name, 
+			String pref_key, int dflt_Value) {
+		
+		// Log
+		String msg_Log = "pref_key => " + pref_key;
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		
+		SharedPreferences prefs = 
+				actv.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
+		
+		/****************************
+		 * Return
+		 ****************************/
+		return prefs.getInt(pref_key, dflt_Value);
+		
+	}//public static boolean set_pref(String pref_name, String value)
 
 	//REF http://www.geodatasource.com/developers/java
 	public static double
@@ -587,6 +611,21 @@ public class Methods {
 //		return 0;
 		
 	}//distance_2
+
+	public static void start_Activity_Pref(Activity actv) {
+		// TODO Auto-generated method stub
+		
+		Intent i = new Intent();
+		
+		i.setClass(actv, PrefActv.class);
+		
+//		i.putExtra(CONS.Intent.iKey_CurrentPath_MainActv, currentPath);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+
+	}
 	
 }//public class Methods
 

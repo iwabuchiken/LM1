@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    
+    <CheckBoxPreference
+        android:title="@string/prefs_title_bgm"
+        android:summary="BGM"
+        android:key="@string/prefs_key_bgm"
+        android:defaultValue="false"
+        
+        />
+    
+    <EditTextPreference
+        android:title="@string/prefs_title_distbuff"
+        android:key="@string/prefs_key_distbuff"
+        android:summary="Distance buffer"
+        
+    >
+        
+    </EditTextPreference>
+</PreferenceScreen>

@@ -2,7 +2,8 @@
 
     <item
         android:id="@+id/menu_settings"
-        android:title="@string/app_name"/>
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="@string/menu_actvmain_settings"/>
 
     <item
         android:id="@+id/menu_actvmain_db"

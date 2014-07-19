@@ -21,6 +21,7 @@
     
 	<!-- menu: actv_main -->
 		<string name="menu_actvmain_db">DB</string>
+		<string name="menu_actvmain_settings">Settings</string>
 		
 	<!-- dlg_db_admin.xml -->
 	   	<string name="dlg_db_admin_title">DB Admin</string>
@@ -62,5 +63,12 @@
 		    							Show distance from base</string>
 		<string name="dlg_mainactv_list_opt_delete">
 		    							Delete</string>
+		
+	<!-- preferences.xml -->
+		<string name="prefs_title_bgm">Use BGM</string>
+		<string name="prefs_key_bgm">prefs_key_bgm</string>
+		<string name="prefs_title_distbuff">Distance buffer (m)</string>
+		<string name="prefs_key_distbuff">prefs_key_distbuff</string>
+		
 		
 </resources>

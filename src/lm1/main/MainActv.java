@@ -98,6 +98,15 @@ implements LocationListener {
 			
 			break;// case R.id.main_opt_menu_backup_db
 
+		case R.id.menu_settings://---------------
+			
+//			this._test();	// ClassCastException
+			
+			Methods.start_Activity_Pref(this);
+//			Methods.db_backup(this);
+			
+			break;// case R.id.main_opt_menu_backup_db
+			
 		}
 		
 		return super.onOptionsItemSelected(item);
@@ -137,9 +146,66 @@ implements LocationListener {
 		 ***************************************/
 		prep_Data();
 		
+		////////////////////////////////
+
+		// init: general
+
+		////////////////////////////////
+		String pref_DistBuffer = Methods.get_Pref_String(
+							this, 
+							CONS.Pref.pname_MainActv, 
+							this.getString(R.string.prefs_key_distbuff), 
+							null);
 		
+		if (pref_DistBuffer == null) {
+			
+			CONS.Main.distance_BufferRange = CONS.Pref.dflt_distance_buffer;
+					
+		} else {
+
+			CONS.Main.distance_BufferRange = Integer.parseInt(pref_DistBuffer);
+			
+		}
+		
+		//test
+//		_test();
+
 	}//protected void onStart()
 	
+
+	private void _test() {
+		
+		SharedPreferences prefs = 
+				this.getSharedPreferences(
+						CONS.Pref.pname_MainActv, 
+						Context.MODE_PRIVATE);
+		
+//		int distBuf = prefs.getInt(
+//				this.getString(R.string.prefs_key_distbuff), -1);
+		
+		String distBuf = prefs.getString(
+							CONS.Pref.pkey_MainActv_CurrentBase, null);
+		
+		// Log
+		String msg_Log = "buf => " + distBuf;
+		Log.d("MainActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		// TODO Auto-generated method stub
+//		int distBuffer = Methods.get_Pref_Int(
+//				this, 
+//				CONS.Pref.pname_MainActv, 
+//				this.getString(R.string.prefs_key_distbuff), 
+//				CONS.Pref.dflt_IntExtra_value);
+//		
+//		// Log
+//		String msg_Log = "distBuffer => " + distBuffer;
+//		Log.d("MainActv.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+
+	}
 
 	private void 
 	_Setup_Set_LocationList() {
@@ -359,7 +425,7 @@ implements LocationListener {
 //			String toa_msg = "Location obtained";
 //			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
 			
-		} else {
+		} else {//if (CONS.Main.locationObtained == false
 			
 			TextView tv_Long =
 					(TextView) this.findViewById(R.id.actv_main_tv_longi_str);
@@ -480,11 +546,11 @@ implements LocationListener {
 							"Out of range: " + 5, 
 							Tags.DialogTags.DLG_MONITOR_OUTOFRANGE_OK);
 					
-				}
+				}//if (CONS.Main.distance_Diff > CONS.Main.distance_BufferRange
 				
-			}
+			}//if (CONS.Main.monitor == true)
 			
-		}
+		}//if (CONS.Main.locationObtained == false
 		
 	}//onLocationChanged(Location loc)
 
