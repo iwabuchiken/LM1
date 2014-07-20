@@ -14,6 +14,7 @@ import java.util.Date;
 import lm1.listeners.dialog.DL;
 import lm1.main.PrefActv;
 import lm1.main.R;
+import lm1.main.ShowListActv;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -618,6 +619,21 @@ public class Methods {
 		Intent i = new Intent();
 		
 		i.setClass(actv, PrefActv.class);
+		
+//		i.putExtra(CONS.Intent.iKey_CurrentPath_MainActv, currentPath);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+
+	}
+
+	public static void start_Activity_ShowList(Activity actv) {
+		// TODO Auto-generated method stub
+
+		Intent i = new Intent();
+		
+		i.setClass(actv, ShowListActv.class);
 		
 //		i.putExtra(CONS.Intent.iKey_CurrentPath_MainActv, currentPath);
 		

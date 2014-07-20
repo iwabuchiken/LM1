@@ -385,6 +385,8 @@ public class DBUtils extends SQLiteOpenHelper{
 			// End transaction
 			wdb.endTransaction();
 			
+			wdb.close();
+			
 			return true;
 			
 		} catch (Exception e) {

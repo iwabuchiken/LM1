@@ -28,11 +28,17 @@
             </intent-filter>
         </activity>
         
+        <!-- REF http://stackoverflow.com/questions/3551169/change-background-color-of-preference answered May 11 '11 at 14:05 -->
         <activity 
             android:name=".PrefActv" 
             android:screenOrientation="portrait"
             android:theme="@style/PrefTheme"
             >
+        </activity>
+        <activity 
+            android:name=".ShowListActv" 
+            android:screenOrientation="portrait">
+            
         </activity>
         
     </application>

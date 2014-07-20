@@ -5,6 +5,7 @@ import java.util.List;
 
 import lm1.adapters.Adp_Loc;
 import lm1.items.Loc;
+import lm1.listeners.STL;
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.buttons.BO_TL;
 import lm1.listeners.list.List_ILCL;
@@ -32,13 +33,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActv 
-extends ListActivity 
-implements LocationListener {
+					extends ListActivity 
+					implements LocationListener {
 //	public class MainActv extends Activity implements LocationListener {
 
 
@@ -352,6 +355,20 @@ implements LocationListener {
 		
 		lv.setOnItemLongClickListener(new List_ILCL(this));
 		
+		// Swipe
+		lv.setOnTouchListener(new STL(this));
+		
+		////////////////////////////////
+
+		// swipe
+
+		////////////////////////////////
+		LinearLayout ll = (LinearLayout) this.findViewById(R.id.actv_main_main_ll);
+		
+		ll.setOnTouchListener(new STL(this));
+//		TableLayout tl = (TableLayout) this.findViewById(R.id.actv_main_tl);
+//		
+//		tl.setOnTouchListener(new STL(this));
 		
 	}//private void setListeners()
 
@@ -606,5 +623,17 @@ implements LocationListener {
 		return criteria;
 		
 	}//private void _setup_SetCriteria()
+
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		
+		// debug
+		String msg_Toast = "list item";
+		Toast.makeText(this, msg_Toast, Toast.LENGTH_SHORT).show();
+		
+		
+		super.onListItemClick(l, v, position, id);
+	}
 
 }//public class ActvMain extends Activity implements LocationListener
