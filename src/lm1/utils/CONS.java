@@ -200,4 +200,16 @@ public class CONS {
 		
 	}
 
+	public static class ShowList {
+		
+		// Adapter
+		public static Adp_Loc adp_Loc;
+		
+		public static List<Loc> loc_List;
+		
+		// views
+		public static ListView lv_ShowList;
+		
+		
+	}
 }//public class CONS

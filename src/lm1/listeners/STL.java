@@ -1,6 +1,7 @@
 package lm1.listeners;
 
 import lm1.utils.Methods;
+import lm1.utils.Tags;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -17,6 +18,8 @@ import android.view.View.OnTouchListener;
 public class STL implements OnTouchListener {
 
 	Activity actv;
+	
+	Tags.SwipeTags tag;
 
 	private final GestureDetector gestureDetector;
 
@@ -94,18 +97,48 @@ public class STL implements OnTouchListener {
 		
 	}//GestureListener
 
-	public void onSwipeRight() {
+	public void 
+	onSwipeRight() {
 		
 		// Log
 		String msg_Log = "Swipe right";
 		Log.d("STL.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
+
+		switch(this.tag) {
 		
+		case SWIPE_ACTV_SHOWLIST:
 		
+			case_Right_SWIPE_ACTV_SHOWLIST();
+			
+			break;
+			
+		default:
+			
+			// Log
+			msg_Log = "unknown tag => " + this.tag.toString();
+			Log.d("STL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			break;
+			
+		}//switch(this.tag)
+
+	}//onSwipeRight()
+
+	private void 
+	case_Right_SWIPE_ACTV_SHOWLIST() {
+		// TODO Auto-generated method stub
+		actv.finish();
+		
+		actv.overridePendingTransition(0, 0);
+
 	}
 
-	public void onSwipeLeft() {
+	public void 
+	onSwipeLeft() {
 		
 		// Log
 		String msg_Log = "Swipe left";
@@ -113,9 +146,28 @@ public class STL implements OnTouchListener {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
-		Methods.start_Activity_ShowList(actv);
+		switch(this.tag) {
 		
-	}
+		case SWIPE_ACTV_MAIN:
+			
+			Methods.start_Activity_ShowList(actv);
+			
+			break;
+			
+		default:
+			
+			// Log
+			msg_Log = "unknown tag => " + this.tag.toString();
+			Log.d("STL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			break;
+			
+		}//switch(this.tag)
+		
+		
+	}//onSwipeLeft()
 
 	public void onSwipeTop() {
 	}
@@ -125,6 +177,33 @@ public class STL implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
+
+		Tags.SwipeTags tag = (Tags.SwipeTags) v.getTag();
+		
+		switch (event.getActionMasked()) {
+		case MotionEvent.ACTION_DOWN:
+			
+			// Log
+			String msg_Log = "tag => " + tag.toString();
+			Log.d("STL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			this.tag = tag;
+			
+			break;
+			
+		default:
+			
+//			// Log
+//			msg_Log = "(default) tag => " + tag.toString();
+//			Log.d("STL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+			break;
+			
+		}
+		
 		
 		//REF http://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures answered Oct 21 '13 at 22:33
 		return gestureDetector.onTouchEvent(event);

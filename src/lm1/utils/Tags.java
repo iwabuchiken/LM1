@@ -63,6 +63,9 @@ public class Tags {
 		ACTVMAIN_BT_SHOW_MAP,	ACTVMAIN_BT_MONITOR,
 		ACTVMAIN_BT_STOP_MONITOR,
 		
+		// actv_showlist
+		ACTV_SHOWLIST_IB_BACK,
+		
 	}//public static enum ButtonTags
 	
 	public static enum ItemTags {
@@ -109,5 +112,12 @@ public class Tags {
 		
 	}//public static enum ListTags
 
+	public static enum SwipeTags {
+		
+		SWIPE_ACTV_MAIN,
+		
+		SWIPE_ACTV_SHOWLIST,
+		
+	}
 
 }//public class Tags

@@ -356,7 +356,7 @@ public class MainActv
 		lv.setOnItemLongClickListener(new List_ILCL(this));
 		
 		// Swipe
-		lv.setOnTouchListener(new STL(this));
+//		lv.setOnTouchListener(new STL(this));
 		
 		////////////////////////////////
 
@@ -364,6 +364,8 @@ public class MainActv
 
 		////////////////////////////////
 		LinearLayout ll = (LinearLayout) this.findViewById(R.id.actv_main_main_ll);
+
+		ll.setTag(Tags.SwipeTags.SWIPE_ACTV_MAIN);
 		
 		ll.setOnTouchListener(new STL(this));
 //		TableLayout tl = (TableLayout) this.findViewById(R.id.actv_main_tl);
