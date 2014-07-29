@@ -1,10 +1,12 @@
 @ECHO OFF
 
-pushd C:\WORKS\shortcuts\and_lm1
+start C:\WORKS\Programs\SqliteBrowser3\bin\sqlitebrowser.exe
 
-start_sql_browser.bat
+REM pushd C:\WORKS\shortcuts\and_lm1
 
-popd
+REM start_sql_browser.bat
+
+REM popd
 
 :end
 rem exit 0

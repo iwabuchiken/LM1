@@ -189,11 +189,29 @@ public class DOI_CL implements OnItemClickListener {
 //			Methods.drop_Table(actv, CONS.DB.tname_Locations, dlg1);
 			Methods_dlg.drop_Table_Confirm(actv, CONS.DB.tname_Locations, dlg1);
 			
-		}
+		} else if (item.equals(actv.getString(
+				R.string.dlg_db_admin_item_restore_db))) {
+
+			boolean res = Methods.restore_DB(actv);
+			
+			if (res == true) {
+				
+				String msg = "DB => restored";
+				Methods_dlg.dlg_ShowMessage(actv, msg);
+				
+				dlg1.dismiss();
+				
+			} else {
+
+				String msg = "DB => not restored";
+				Methods_dlg.dlg_ShowMessage(actv, msg);
+				
+			}
+			
+		}//if (item.equals(actv.getString(
 	
 		
 //		dlg1.dismiss();
-		
 		
 	}//case_DLG_DB_ADMIN_LV
 

@@ -65,8 +65,12 @@ public class Methods_dlg {
 //				actv.getString(R.string.dlg_db_admin_item_exec_sql),
 				
 				actv.getString(R.string.dlg_db_admin_item_backup_db),
-				actv.getString(R.string.dlg_db_admin_item_create_table_locations),
-				actv.getString(R.string.dlg_db_admin_item_drop_table_locations),
+				actv.getString(
+						R.string.dlg_db_admin_item_create_table_locations),
+				actv.getString(
+						R.string.dlg_db_admin_item_drop_table_locations),
+				actv.getString(
+						R.string.dlg_db_admin_item_restore_db),
 //				actv.getString(R.string.dlg_db_admin_item_refresh_db),
 				
 		};

@@ -272,7 +272,7 @@ public class DBUtils extends SQLiteOpenHelper{
 //			return true;
 			
 		} catch (SQLException e) {
-			// TODO ?��?��?��?��?��?��?��?��?��?��?��ꂽ catch ?��u?��?��?��b?��N
+			// TODO ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ黷ｽ catch ?�ｿｽ�ｿｽu?�ｿｽ�ｿｽ?�ｿｽ�ｿｽ?�ｿｽ�ｿｽb?�ｿｽ�ｿｽN
 			// Log
 			Log.e("DBUtils.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
@@ -406,6 +406,20 @@ public class DBUtils extends SQLiteOpenHelper{
 	public static List<Loc>
 	get_LocList(Activity actv) {
 		// TODO Auto-generated method stub
+		/******************************
+			validate: table exists?
+		 ******************************/
+		boolean res = DBUtils.tableExists(actv, CONS.DB.tname_Locations);
+		
+		if (res == false) {
+			
+			String msg = "No such table => " + CONS.DB.tname_Locations;
+			Methods_dlg.dlg_ShowMessage(actv, msg);
+			
+			return null;
+			
+		}
+		
 		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName);
 		
 		SQLiteDatabase rdb = dbu.getReadableDatabase();
