@@ -300,7 +300,7 @@ public class DB_OCL implements OnClickListener {
 		} else {//if (original_Memo.equals(new_Memo))
 			
 			//debug
-			Loc loc = CONS.Main.loc_List.get(position);
+			Loc loc = CONS.ShowList.loc_List.get(position);
 			
 			// Log
 			String log_msg = "position="
@@ -348,7 +348,7 @@ public class DB_OCL implements OnClickListener {
 		/*********************************
 		 * Update: Location data
 		 *********************************/
-		Loc loc2 = CONS.Main.loc_List.get(position);
+		Loc loc2 = CONS.ShowList.loc_List.get(position);
 		
 		// Log
 		String log_msg = "loc2::position="
@@ -356,7 +356,8 @@ public class DB_OCL implements OnClickListener {
 						+ "/"
 						+ "loc2.time=" + loc2.getCreated_at();
 		
-		Loc loc = (Loc)CONS.Main.lv_Main.getItemAtPosition(position);
+		Loc loc = (Loc)CONS.ShowList.lv_ShowList.getItemAtPosition(position);
+//		Loc loc = (Loc)CONS.Main.lv_Main.getItemAtPosition(position);
 		
 		log_msg = "loc::"
 				+ "position="
@@ -380,7 +381,7 @@ public class DB_OCL implements OnClickListener {
 //						CONS.Others.TimeLabelTypes.Serial));
 		
 		// Notify the adapter
-		CONS.Main.adp_Loc.notifyDataSetChanged();
+		CONS.ShowList.adp_Loc.notifyDataSetChanged();
 		
 		// Log
 		log_msg = "CONS.Adapters.adp_LocList => notified";

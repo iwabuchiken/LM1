@@ -183,16 +183,25 @@ public class DBUtils extends SQLiteOpenHelper{
 		actv.startManagingCursor(cursor);
 //		actv.startManagingCursor(cursor);
 		
-		// Judge
-		if (cursor.getCount() > 0) {
-			
-			return true;
-			
-		} else {//if (cursor.getCount() > 0)
-			
-			return false;
-			
-		}//if (cursor.getCount() > 0)
+		boolean res = (cursor.getCount() > 0) ? true : false;
+		
+//		// Judge
+//		if (cursor.getCount() > 0) {
+//			
+//			rdb.close();
+//			
+//			return true;
+//			
+//		} else {//if (cursor.getCount() > 0)
+//			
+//			rdb.close();
+//			return false;
+//			
+//		}//if (cursor.getCount() > 0)
+		
+		rdb.close();
+		
+		return res;
 		
 	}//tableExists
 

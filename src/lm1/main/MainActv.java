@@ -40,7 +40,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActv 
-					extends ListActivity 
+					extends Activity 
+//					extends ListActivity 
 					implements LocationListener {
 //	public class MainActv extends Activity implements LocationListener {
 
@@ -212,53 +213,53 @@ public class MainActv
 
 	private void 
 	_Setup_Set_LocationList() {
-		// TODO Auto-generated method stub
-		CONS.Main.loc_List = DBUtils.get_LocList(this);
-		
-		//debug
-		if (CONS.Main.loc_List == null) {
-			
-			// Log
-			String msg_Log = "loc_List => null";
-			Log.d("MainActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", msg_Log);
-			
-			return;
-			
-		} else {
-
-			// Log
-			String msg_Log = "loc_List.size() ~> " + CONS.Main.loc_List.size();
-			Log.d("MainActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", msg_Log);
-			
-		}
-		
-		////////////////////////////////
-
-		// adapter
-
-		////////////////////////////////
-		CONS.Main.adp_Loc = new Adp_Loc(
-//				Adp_Loc adp_LocList = new Adp_Loc(
-						this,
-						R.layout.list_row_loc_list,
-						CONS.Main.loc_List
-//						loc_List
-		);
-		
-		////////////////////////////////
-
-		// listview
-
-		////////////////////////////////
-		CONS.Main.lv_Main = this.getListView();
-//		ListView lv = this.getListView();
-		
-		CONS.Main.lv_Main.setAdapter(CONS.Main.adp_Loc);
-//		lv.setAdapter(CONS.Main.adp_Loc);
+//		// TODO Auto-generated method stub
+//		CONS.Main.loc_List = DBUtils.get_LocList(this);
+//		
+//		//debug
+//		if (CONS.Main.loc_List == null) {
+//			
+//			// Log
+//			String msg_Log = "loc_List => null";
+//			Log.d("MainActv.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+//			
+//			return;
+//			
+//		} else {
+//
+//			// Log
+//			String msg_Log = "loc_List.size() ~> " + CONS.Main.loc_List.size();
+//			Log.d("MainActv.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+//			
+//		}
+//		
+//		////////////////////////////////
+//
+//		// adapter
+//
+//		////////////////////////////////
+//		CONS.Main.adp_Loc = new Adp_Loc(
+////				Adp_Loc adp_LocList = new Adp_Loc(
+//						this,
+//						R.layout.list_row_loc_list,
+//						CONS.Main.loc_List
+////						loc_List
+//		);
+//		
+//		////////////////////////////////
+//
+//		// listview
+//
+//		////////////////////////////////
+//		CONS.Main.lv_Main = this.getListView();
+////		ListView lv = this.getListView();
+//		
+//		CONS.Main.lv_Main.setAdapter(CONS.Main.adp_Loc);
+////		lv.setAdapter(CONS.Main.adp_Loc);
 		
 	}//_Setup_Set_LocationList()
 
@@ -343,20 +344,17 @@ public class MainActv
 		bt_Monitor.setOnTouchListener(new BO_TL(this));
 		bt_Monitor.setOnClickListener(new BO_CL(this, bt_Monitor));
 		
-		////////////////////////////////
-
-		// listview
-
-		////////////////////////////////
-		ListView lv = this.getListView();
-		
-//		lv.setTag(Tags.ListTags.actv_main_lv);
-		lv.setTag(Tags.ListTags.ACTV_MAIN_LV);
-		
-		lv.setOnItemLongClickListener(new List_ILCL(this));
-		
-		// Swipe
-//		lv.setOnTouchListener(new STL(this));
+//		////////////////////////////////
+//
+//		// listview
+//
+//		////////////////////////////////
+//		ListView lv = this.getListView();
+//		
+////		lv.setTag(Tags.ListTags.actv_main_lv);
+//		lv.setTag(Tags.ListTags.ACTV_MAIN_LV);
+//		
+//		lv.setOnItemLongClickListener(new List_ILCL(this));
 		
 		////////////////////////////////
 
@@ -603,39 +601,39 @@ public class MainActv
 		// TODO Auto-generated method stub
 		Criteria criteria = new Criteria();
 
-		//Accuracyを指定
+		//Accuracy繧呈欠螳�
 		criteria.setAccuracy(Criteria.ACCURACY_FINE);
 //		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
 		
-		//PowerRequirementを指定
+		//PowerRequirement繧呈欠螳�
 		criteria.setPowerRequirement(Criteria.POWER_LOW);
 		
-		//SpeedRequiredを指定
+		//SpeedRequired繧呈欠螳�
 		criteria.setSpeedRequired(false);
 		
-		//AltitudeRequiredを指定
+		//AltitudeRequired繧呈欠螳�
 		criteria.setAltitudeRequired(false);
 		
-		//BearingRequiredを指定
+		//BearingRequired繧呈欠螳�
 		criteria.setBearingRequired(false);
 		
-		//CostAllowedを指定
+		//CostAllowed繧呈欠螳�
 		criteria.setCostAllowed(false);
 
 		return criteria;
 		
 	}//private void _setup_SetCriteria()
 
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
-		
-		// debug
-		String msg_Toast = "list item";
-		Toast.makeText(this, msg_Toast, Toast.LENGTH_SHORT).show();
-		
-		
-		super.onListItemClick(l, v, position, id);
-	}
+//	@Override
+//	protected void onListItemClick(ListView l, View v, int position, long id) {
+//		// TODO Auto-generated method stub
+//		
+//		// debug
+//		String msg_Toast = "list item";
+//		Toast.makeText(this, msg_Toast, Toast.LENGTH_SHORT).show();
+//		
+//		
+//		super.onListItemClick(l, v, position, id);
+//	}
 
 }//public class ActvMain extends Activity implements LocationListener

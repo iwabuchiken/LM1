@@ -179,20 +179,47 @@ public class ShowListActv extends ListActivity {
 		// loc list
 
 		////////////////////////////////
-		//debug
-		if (CONS.Main.loc_List == null) {
 		
-			CONS.Main.loc_List = DBUtils.get_LocList(this);
+		// Log
+		String msg_Log = "_Setup_Set_LocationList()";
+		Log.d("ShowListActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		CONS.ShowList.loc_List = DBUtils.get_LocList(this);
+
+		if (CONS.ShowList.loc_List != null) {
 			
-//			// Log
-//			String msg_Log = "loc_List => null";
-//			Log.d("MainActv.java" + "["
-//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-//					+ "]", msg_Log);
-//			
-//			return;
+			// Log
+			msg_Log = "size() => " + CONS.ShowList.loc_List.size();
+			Log.d("ShowListActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
 			
+		} else {
+			
+			// Log
+			msg_Log = "CONS.ShowList.loc_List => null";
+			Log.d("ShowListActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+
 		}
+		
+//		//debug
+//		if (CONS.Main.loc_List == null) {
+//		
+//			CONS.Main.loc_List = DBUtils.get_LocList(this);
+//			
+////			// Log
+////			String msg_Log = "loc_List => null";
+////			Log.d("MainActv.java" + "["
+////					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+////					+ "]", msg_Log);
+////			
+////			return;
+//			
+//		}
 
 		////////////////////////////////
 
@@ -203,7 +230,8 @@ public class ShowListActv extends ListActivity {
 //				Adp_Loc adp_LocList = new Adp_Loc(
 						this,
 						R.layout.list_row_loc_list,
-						CONS.Main.loc_List
+						CONS.ShowList.loc_List
+//						CONS.Main.loc_List
 //						loc_List
 		);
 
@@ -215,7 +243,8 @@ public class ShowListActv extends ListActivity {
 		CONS.ShowList.lv_ShowList = this.getListView();
 //		ListView lv = this.getListView();
 		
-		CONS.ShowList.lv_ShowList.setAdapter(CONS.Main.adp_Loc);
+		CONS.ShowList.lv_ShowList.setAdapter(CONS.ShowList.adp_Loc);
+//		CONS.ShowList.lv_ShowList.setAdapter(CONS.Main.adp_Loc);
 
 
 	}//_Setup_Set_LocationList()
