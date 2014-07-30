@@ -79,7 +79,8 @@ public class Methods_LM1 {
 		// notify: adapter
 
 		////////////////////////////////
-		CONS.Main.adp_Loc.notifyDataSetChanged();
+		CONS.ShowList.adp_Loc.notifyDataSetChanged();
+//		CONS.Main.adp_Loc.notifyDataSetChanged();
 		
 		////////////////////////////////
 

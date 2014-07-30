@@ -46,6 +46,9 @@
 		<string name="actv_main_tv_monitor">Monitor</string>	   	
 		<string name="actv_main_tv_stop_monitor">Stop</string>	   	
 		
+		<string name="actv_main_tv_base">Base</string>	   	
+		<string name="actv_main_tv_ref">Ref</string>	   	
+		
 	<!-- drop table -->
 		<string name="drop_table_message">Drop table?</string>
 		<string name="drop_table_locations">locations</string>

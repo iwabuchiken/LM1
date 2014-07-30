@@ -36,4 +36,32 @@
 		
 	</style><!-- <style name="v1_ib"> -->
     
+    <style name="tv_basic">
+        
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textSize">25sp</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:padding">3dp</item>
+    </style>
+    
+    <style name="tv_basic_bg_white">
+        
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textSize">25sp</item>
+	    <item name="android:textColor">@color/black</item>
+	    <item name="android:background">@color/white</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:padding">3dp</item>
+    </style>
+    
+    <style name="bt_basic">
+        
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textSize">25sp</item>
+	    <item name="android:layout_margin">3dp</item>
+    </style>
+    
 </resources>

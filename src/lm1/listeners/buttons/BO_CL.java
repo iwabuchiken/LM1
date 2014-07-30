@@ -263,12 +263,22 @@ public class BO_CL implements OnClickListener {
 		// update: list
 
 		////////////////////////////////
-		CONS.Main.loc_List.clear();
+		if (CONS.ShowList.loc_List != null) {
+			
+			CONS.ShowList.loc_List.clear();
+			
+			CONS.ShowList.loc_List.addAll(DBUtils.get_LocList(actv));
+			
+			CONS.ShowList.adp_Loc.notifyDataSetChanged();
+			
+		}
 		
-		CONS.Main.loc_List.addAll(DBUtils.get_LocList(actv));
-		
-		CONS.Main.adp_Loc.notifyDataSetChanged();
-		
+//		CONS.Main.loc_List.clear();
+//		
+//		CONS.Main.loc_List.addAll(DBUtils.get_LocList(actv));
+//		
+//		CONS.Main.adp_Loc.notifyDataSetChanged();
+//		
 		
 //		Methods.save_LocationData_Current(actv);
 		

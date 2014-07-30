@@ -155,27 +155,122 @@ public class MainActv
 		// init: general
 
 		////////////////////////////////
-		String pref_DistBuffer = Methods.get_Pref_String(
-							this, 
-							CONS.Pref.pname_MainActv, 
-							this.getString(R.string.prefs_key_distbuff), 
-							null);
-		
-		if (pref_DistBuffer == null) {
-			
-			CONS.Main.distance_BufferRange = CONS.Pref.dflt_distance_buffer;
-					
-		} else {
-
-			CONS.Main.distance_BufferRange = Integer.parseInt(pref_DistBuffer);
-			
-		}
+		_Setup_InitGeneral();
+//		String pref_DistBuffer = Methods.get_Pref_String(
+//							this, 
+//							CONS.Pref.pname_MainActv, 
+//							this.getString(R.string.prefs_key_distbuff), 
+//							null);
+//		
+//		if (pref_DistBuffer == null) {
+//			
+//			CONS.Main.distance_BufferRange = CONS.Pref.dflt_distance_buffer;
+//					
+//		} else {
+//
+//			CONS.Main.distance_BufferRange = Integer.parseInt(pref_DistBuffer);
+//			
+//		}
 		
 		//test
 //		_test();
 
+		_Setup_UI_BaseRef();
+		
 	}//protected void onStart()
 	
+
+	private void 
+	_Setup_UI_BaseRef() {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// Loc: base
+
+		////////////////////////////////
+		long current_Base = Methods.get_Pref_Long(
+						this, 
+						CONS.Pref.pname_MainActv, 
+						CONS.Pref.pkey_MainActv_CurrentBase, 
+						CONS.Pref.dflt_LongExtra_value);
+		
+		/******************************
+			validate: any pref?
+		 ******************************/
+		if (current_Base == CONS.Pref.dflt_LongExtra_value) {
+			
+			String msg = "No base set yet";
+			Methods_dlg.dlg_ShowMessage(this, msg);
+			
+			return;
+			
+		}
+		
+		Loc loc_Base = DBUtils.get_Loc_FromId(this, current_Base);
+				
+		/******************************
+			validate: null?
+		 ******************************/
+		if (loc_Base == null) {
+			
+			String msg = "No loc for the id: " + current_Base;
+			Methods_dlg.dlg_ShowMessage(this, msg);
+			
+			return;
+			
+		}
+		
+		////////////////////////////////
+
+		// set: values
+
+		////////////////////////////////
+		////////////////////////////////
+
+		// UI: base, ref
+
+		////////////////////////////////
+		TextView tv_Base_Longi = 
+				(TextView) findViewById(R.id.actv_main_tv_base_longi);
+		
+		TextView tv_Base_Lat = 
+				(TextView) findViewById(R.id.actv_main_tv_base_lat);
+		
+		TextView tv_Base_Memo = 
+				(TextView) findViewById(R.id.actv_main_tv_base_memo);
+
+		tv_Base_Longi.setText(loc_Base.getLongitude());
+		tv_Base_Lat.setText(loc_Base.getLatitude());
+		tv_Base_Memo.setText(loc_Base.getMemo());
+		
+	}//_Setup_UI_BaseRef()
+	
+
+	private void 
+	_Setup_InitGeneral() {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// Buffer range
+
+		////////////////////////////////
+		String pref_DistBuffer = Methods.get_Pref_String(
+				this, 
+				CONS.Pref.pname_MainActv, 
+				this.getString(R.string.prefs_key_distbuff), 
+				null);
+
+		if (pref_DistBuffer == null) {
+		
+		CONS.Main.distance_BufferRange = CONS.Pref.dflt_distance_buffer;
+				
+		} else {
+		
+		CONS.Main.distance_BufferRange = Integer.parseInt(pref_DistBuffer);
+		
+		}
+
+	}//_Setup_InitGeneral()
 
 	private void _test() {
 		
