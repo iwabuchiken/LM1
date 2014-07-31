@@ -156,6 +156,9 @@ public class DOI_CL implements OnItemClickListener {
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_delete))) {
 			
+			Methods_dlg.conf_DeleteLoc(
+					actv, loc, dlg1, parent, position_InListView);
+			
 		} else {
 			
 		}

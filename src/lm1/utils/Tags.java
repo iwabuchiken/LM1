@@ -18,6 +18,9 @@ public class Tags {
 		
 		// monitor: out of range
 		DLG_MONITOR_OUTOFRANGE_OK,
+		
+		// dlg: delete loc
+		DLG_DELETE_LOC_OK,
 
 
 	}//public static enum DialogTags

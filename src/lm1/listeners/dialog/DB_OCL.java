@@ -33,6 +33,7 @@ public class DB_OCL implements OnClickListener {
 	// edit loc
 	AdapterView<?> parent;
 	int position;
+	int position_InListView;
 	String original_Memo;
 
 	Loc loc;
@@ -145,6 +146,34 @@ public class DB_OCL implements OnClickListener {
 
 	}
 
+	public DB_OCL
+	(Activity actv, Dialog dlg1, Dialog dlg2, Loc loc) {
+		// TODO Auto-generated constructor stub
+
+		this.actv	= actv;
+		this.dlg1	= dlg1;
+		this.dlg2	= dlg2;
+		this.loc	= loc;
+		
+		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
+
+	}
+
+	public DB_OCL
+	(Activity actv, Dialog dlg1, Dialog dlg2, Loc loc,
+			AdapterView<?> parent, int position_InListView) {
+		
+		this.actv	= actv;
+		this.dlg1	= dlg1;
+		this.dlg2	= dlg2;
+		this.loc	= loc;
+		this.parent	= parent;
+		this.position_InListView	= position_InListView;
+		
+		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
+
+	}
+
 	public void onClick(View v) {
 		//
 		Tags.DialogTags tag_name = (Tags.DialogTags) v.getTag();
@@ -198,6 +227,12 @@ public class DB_OCL implements OnClickListener {
 			
 			break;
 			
+		case DLG_DELETE_LOC_OK://------------------------------------------------
+			
+			case_DLG_DELETE_LOC_OK();
+			
+			break;
+			
 		default: // ----------------------------------------------------
 			break;
 		}//switch (tag_name)
@@ -207,6 +242,45 @@ public class DB_OCL implements OnClickListener {
 //		// TODO Auto-generated method stub
 //		
 //	}
+
+	private void 
+	case_DLG_DELETE_LOC_OK() {
+		// TODO Auto-generated method stub
+		
+		boolean res = DBUtils.delete_Loc(actv, loc.getId());
+		
+		if (res == true) {
+			
+			dlg1.dismiss();
+			dlg2.dismiss();
+			
+			String msg = "Location => deleted: " + loc.getLongitude();
+			Methods_dlg.dlg_ShowMessage(actv, msg);
+			
+			////////////////////////////////
+
+			// delete: from listview
+
+			////////////////////////////////
+			CONS.ShowList.loc_List.remove(loc);
+			
+			CONS.ShowList.adp_Loc.notifyDataSetChanged();
+			
+			// Log
+			String msg_Log = "adapter => notified";
+			Log.d("DB_OCL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+		} else {
+			
+			String msg = "Location => Can't be deleted: "
+						+ loc.getLongitude();
+			Methods_dlg.dlg_ShowMessage(actv, msg);
+
+		}
+		
+	}//case_DLG_DELETE_LOC_OK
 
 	private void case_DLG_MONITOR_OUTOFRANGE_OK() {
 		// TODO Auto-generated method stub

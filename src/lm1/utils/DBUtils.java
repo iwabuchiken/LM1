@@ -681,5 +681,32 @@ public class DBUtils extends SQLiteOpenHelper{
 		
 	}//get_Loc_FromId
 
+
+	public static boolean 
+	delete_Loc
+	(Activity actv, long id) {
+		// TODO Auto-generated method stub
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		String where = CONS.DB.col_names_Locations_full[0]
+						+ " = ?";
+		
+		String[] args = new String[]{
+				
+				String.valueOf(id)
+				
+		};
+		
+		int res = wdb.delete(CONS.DB.tname_Locations, where, args);
+		
+		wdb.close();
+		
+		return (res >= 1) ? true : false;
+		
+//		return false;
+	}//delete_Loc
+
 }//public class DBUtils
 

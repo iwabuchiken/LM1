@@ -75,4 +75,8 @@
 		<string name="prefs_title_distbuff">Distance buffer (m)</string>
 		<string name="prefs_key_distbuff">prefs_key_distbuff</string>
 		
+	<!-- dlg: delete loc -->
+		<string name="dlg_conf_del_loc_message">
+		    						Delete loc?</string>	
+	
 </resources>
