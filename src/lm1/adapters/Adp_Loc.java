@@ -28,7 +28,7 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 	public Adp_Loc
 	(Context context, int textViewResourceId, List<Loc> list) {
 		super(context, textViewResourceId, list);
-		// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+		// TODO �ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ黷ｽ�ｿｽR�ｿｽ�ｿｽ�ｿｽX�ｿｽg�ｿｽ�ｿｽ�ｿｽN�ｿｽ^�ｿｽ[�ｿｽE�ｿｽX�ｿｽ^�ｿｽu
 		this.con		= context;
 		
 		this.resourceId = textViewResourceId;
@@ -48,7 +48,7 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 		 * 5. Set background
 			----------------------------*/
 		
-		// TODO �����������ꂽ���\�b�h�E�X�^�u
+		// TODO �ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ黷ｽ�ｿｽ�ｿｽ�ｿｽ\�ｿｽb�ｿｽh�ｿｽE�ｿｽX�ｿｽ^�ｿｽu
 		
         if (v == null) {
         	
@@ -83,8 +83,12 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 		// vies
 
 		////////////////////////////////
-		TextView tv_Longi = (TextView) v.findViewById(R.id.listrow_loc_list_tv_longi);
-		TextView tv_Lat = (TextView) v.findViewById(R.id.listrow_loc_list_tv_lat);
+//		TextView tv_Longi = (TextView) v.findViewById(R.id.listrow_loc_list_tv_longi);
+//		TextView tv_Lat = (TextView) v.findViewById(R.id.listrow_loc_list_tv_lat);
+		
+		TextView tv_Memo = 
+				(TextView) v.findViewById(R.id.listrow_loc_list_tv_memo);
+		
 
 		////////////////////////////////
 
@@ -97,6 +101,12 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 								CONS.Pref.pkey_MainActv_CurrentBase, 
 								CONS.Pref.dflt_LongExtra_value);
 		
+		long current_Ref = Methods.get_Pref_Long(
+				(Activity) con, 
+				CONS.Pref.pname_MainActv, 
+				CONS.Pref.pkey_MainActv_CurrentRef, 
+				CONS.Pref.dflt_LongExtra_value);
+		
 		////////////////////////////////
 
 		// set: bg
@@ -105,17 +115,42 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 		if (current_Base != CONS.Pref.dflt_LongExtra_value
 				&& current_Base == loc.getId()) {
 			
-			tv_Longi.setTextColor(
-					((Activity)con).getResources().getColor(R.color.yello));
-			tv_Lat.setTextColor(
+			tv_Memo.setTextColor(
+					((Activity)con).getResources().getColor(R.color.white));
+			
+			tv_Memo.setBackgroundColor(
+					((Activity)con).getResources().getColor(R.color.blue1));
+			
+//			tv_Longi.setTextColor(
+//					((Activity)con).getResources().getColor(R.color.yello));
+//			tv_Lat.setTextColor(
+//					((Activity)con).getResources().getColor(R.color.yello));
+			
+		} else if (current_Ref != CONS.Pref.dflt_LongExtra_value
+				&& current_Ref == loc.getId()) {
+			
+			tv_Memo.setTextColor(
+					((Activity)con).getResources().getColor(R.color.black));
+			
+			tv_Memo.setBackgroundColor(
 					((Activity)con).getResources().getColor(R.color.yello));
 			
+//			tv_Longi.setTextColor(
+//					((Activity)con).getResources().getColor(R.color.yello));
+//			tv_Lat.setTextColor(
+//					((Activity)con).getResources().getColor(R.color.yello));
 		} else {
 			
-			tv_Longi.setTextColor(
+			tv_Memo.setTextColor(
+					((Activity)con).getResources().getColor(R.color.black));
+			
+			tv_Memo.setBackgroundColor(
 					((Activity)con).getResources().getColor(R.color.white));
-			tv_Lat.setTextColor(
-					((Activity)con).getResources().getColor(R.color.white));
+			
+//			tv_Longi.setTextColor(
+//					((Activity)con).getResources().getColor(R.color.white));
+//			tv_Lat.setTextColor(
+//					((Activity)con).getResources().getColor(R.color.white));
 
 		}
 		

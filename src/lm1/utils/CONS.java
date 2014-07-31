@@ -196,6 +196,9 @@ public class CONS {
 		public static final String pkey_MainActv_CurrentBase = 
 											"pkey_MainActv_CurrentBase";
 		
+		public static final String pkey_MainActv_CurrentRef = 
+				"pkey_MainActv_CurrentRef";
+		
 		public static final int dflt_distance_buffer	= 10;
 		
 	}

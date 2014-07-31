@@ -99,6 +99,64 @@ public class Methods_LM1 {
 		Methods_dlg.dlg_ShowMessage(actv, message);
 		
 	}//set_Base
+	
+	public static void 
+	set_Ref
+	(Activity actv, 
+		Loc loc, AdapterView<?> parent,
+		int position_InListView, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		
+		////////////////////////////////
+		
+		// set: pref
+		
+		////////////////////////////////
+		boolean res = Methods.set_Pref_Long(
+				actv, 
+				CONS.Pref.pname_MainActv, 
+				CONS.Pref.pkey_MainActv_CurrentRef, 
+//				CONS.Pref.pkey_MainActv_CurrentBase, 
+				loc.getId());
+		
+		/******************************
+			validate
+		 ******************************/
+		if (res == false) {
+			
+			String msg = "Can't set ref";
+			
+			Methods_dlg.dlg_ShowMessage(actv, msg);
+			
+			return;
+			
+		}
+		
+		////////////////////////////////
+		
+		// notify: adapter
+		
+		////////////////////////////////
+		CONS.ShowList.adp_Loc.notifyDataSetChanged();
+//		CONS.Main.adp_Loc.notifyDataSetChanged();
+		
+		////////////////////////////////
+		
+		// close: dlg
+		
+		////////////////////////////////
+		dlg1.dismiss();
+		
+		////////////////////////////////
+		
+		// report
+		
+		////////////////////////////////
+		String message = "Ref => set to: " + loc.getLongitude();
+		
+		Methods_dlg.dlg_ShowMessage(actv, message);
+		
+	}//set_Ref
 
 	public static void 
 	show_Distance

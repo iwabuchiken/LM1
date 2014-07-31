@@ -162,6 +162,7 @@ public final class R {
         public static final int dlg_edit_locs_title=0x7f070023;
         public static final int dlg_mainactv_list_opt_delete=0x7f070029;
         public static final int dlg_mainactv_list_opt_set_base=0x7f070027;
+        public static final int dlg_mainactv_list_opt_set_ref=0x7f07002a;
         public static final int dlg_mainactv_list_opt_show_distance=0x7f070028;
         /**  dlg: mainactv_list 
          */
@@ -188,12 +189,12 @@ public final class R {
          */
         public static final int menu_actvmain_db=0x7f07000e;
         public static final int menu_actvmain_settings=0x7f07000f;
-        public static final int prefs_key_bgm=0x7f07002b;
-        public static final int prefs_key_distbuff=0x7f07002d;
+        public static final int prefs_key_bgm=0x7f07002c;
+        public static final int prefs_key_distbuff=0x7f07002e;
         /**  preferences.xml 
          */
-        public static final int prefs_title_bgm=0x7f07002a;
-        public static final int prefs_title_distbuff=0x7f07002c;
+        public static final int prefs_title_bgm=0x7f07002b;
+        public static final int prefs_title_distbuff=0x7f07002d;
         public static final int v1_tv_dir_path=0x7f070002;
     }
     public static final class style {

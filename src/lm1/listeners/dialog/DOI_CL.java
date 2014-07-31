@@ -143,6 +143,11 @@ public class DOI_CL implements OnItemClickListener {
 			Methods_LM1.set_Base(actv, loc, parent, position_InListView, dlg1);
 			
 		} else if (item.equals(actv.getString(
+				R.string.dlg_mainactv_list_opt_set_ref))) {
+			
+			Methods_LM1.set_Ref(actv, loc, parent, position_InListView, dlg1);
+			
+		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_show_distance))) {
 			
 			Methods_dlg.show_Distance(

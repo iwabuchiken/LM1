@@ -664,8 +664,10 @@ public class Methods_dlg {
 				
 				actv.getString(R.string.dlg_edit_locs_title),
 				actv.getString(R.string.dlg_mainactv_list_opt_set_base),
+				actv.getString(R.string.dlg_mainactv_list_opt_set_ref),
 				actv.getString(R.string.dlg_mainactv_list_opt_show_distance),
 				actv.getString(R.string.dlg_mainactv_list_opt_delete),
+				actv.getString(R.string.dlg_mainactv_list_opt_set_ref),
 				
 		};
 		

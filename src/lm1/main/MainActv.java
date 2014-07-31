@@ -175,13 +175,15 @@ public class MainActv
 		//test
 //		_test();
 
-		_Setup_UI_BaseRef();
+		_Setup_UI_Base();
+		
+		_Setup_UI_Ref();
 		
 	}//protected void onStart()
 	
 
 	private void 
-	_Setup_UI_BaseRef() {
+	_Setup_UI_Base() {
 		// TODO Auto-generated method stub
 		////////////////////////////////
 
@@ -244,6 +246,71 @@ public class MainActv
 		tv_Base_Memo.setText(loc_Base.getMemo());
 		
 	}//_Setup_UI_BaseRef()
+	
+	private void 
+	_Setup_UI_Ref() {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+		
+		// Loc: base
+		
+		////////////////////////////////
+		long current_Ref = Methods.get_Pref_Long(
+				this, 
+				CONS.Pref.pname_MainActv, 
+				CONS.Pref.pkey_MainActv_CurrentRef, 
+				CONS.Pref.dflt_LongExtra_value);
+		
+		/******************************
+			validate: any pref?
+		 ******************************/
+		if (current_Ref == CONS.Pref.dflt_LongExtra_value) {
+			
+			String msg = "No ref set yet";
+			Methods_dlg.dlg_ShowMessage(this, msg);
+			
+			return;
+			
+		}
+		
+		Loc loc_Ref = DBUtils.get_Loc_FromId(this, current_Ref);
+		
+		/******************************
+			validate: null?
+		 ******************************/
+		if (loc_Ref == null) {
+			
+			String msg = "No loc for the id: " + current_Ref;
+			Methods_dlg.dlg_ShowMessage(this, msg);
+			
+			return;
+			
+		}
+		
+		////////////////////////////////
+		
+		// set: values
+		
+		////////////////////////////////
+		////////////////////////////////
+		
+		// UI: base, ref
+		
+		////////////////////////////////
+		TextView tv_Ref_Longi = 
+				(TextView) findViewById(R.id.actv_main_tv_ref_longi);
+		
+		TextView tv_Ref_Lat = 
+				(TextView) findViewById(R.id.actv_main_tv_ref_lat);
+		
+		TextView tv_Ref_Memo = 
+				(TextView) findViewById(R.id.actv_main_tv_ref_memo);
+		
+		tv_Ref_Longi.setText(loc_Ref.getLongitude());
+		tv_Ref_Lat.setText(loc_Ref.getLatitude());
+		tv_Ref_Memo.setText(loc_Ref.getMemo());
+		
+	}//_Setup_UI_Ref()
 	
 
 	private void 
