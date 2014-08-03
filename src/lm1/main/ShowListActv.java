@@ -203,6 +203,11 @@ public class ShowListActv extends ListActivity {
 			Log.d("ShowListActv.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", msg_Log);
+			
+			String msg = "No location data";
+			Methods_dlg.dlg_ShowMessage(this, msg);
+			
+			return;
 
 		}
 		
