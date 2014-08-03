@@ -138,7 +138,7 @@ public class MainActv
 		// Set: list
 
 		////////////////////////////////
-		_Setup_Set_LocationList();
+//		_Setup_Set_LocationList();
 		
 		/***************************************
 		 * Set: Listeners
@@ -201,8 +201,8 @@ public class MainActv
 		 ******************************/
 		if (current_Base == CONS.Pref.dflt_LongExtra_value) {
 			
-			String msg = "No base set yet";
-			Methods_dlg.dlg_ShowMessage(this, msg);
+//			String msg = "No base set yet";
+//			Methods_dlg.dlg_ShowMessage(this, msg);
 			
 			return;
 			
@@ -266,8 +266,8 @@ public class MainActv
 		 ******************************/
 		if (current_Ref == CONS.Pref.dflt_LongExtra_value) {
 			
-			String msg = "No ref set yet";
-			Methods_dlg.dlg_ShowMessage(this, msg);
+//			String msg = "No ref set yet";
+//			Methods_dlg.dlg_ShowMessage(this, msg);
 			
 			return;
 			
@@ -375,53 +375,6 @@ public class MainActv
 
 	private void 
 	_Setup_Set_LocationList() {
-//		// TODO Auto-generated method stub
-//		CONS.Main.loc_List = DBUtils.get_LocList(this);
-//		
-//		//debug
-//		if (CONS.Main.loc_List == null) {
-//			
-//			// Log
-//			String msg_Log = "loc_List => null";
-//			Log.d("MainActv.java" + "["
-//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-//					+ "]", msg_Log);
-//			
-//			return;
-//			
-//		} else {
-//
-//			// Log
-//			String msg_Log = "loc_List.size() ~> " + CONS.Main.loc_List.size();
-//			Log.d("MainActv.java" + "["
-//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-//					+ "]", msg_Log);
-//			
-//		}
-//		
-//		////////////////////////////////
-//
-//		// adapter
-//
-//		////////////////////////////////
-//		CONS.Main.adp_Loc = new Adp_Loc(
-////				Adp_Loc adp_LocList = new Adp_Loc(
-//						this,
-//						R.layout.list_row_loc_list,
-//						CONS.Main.loc_List
-////						loc_List
-//		);
-//		
-//		////////////////////////////////
-//
-//		// listview
-//
-//		////////////////////////////////
-//		CONS.Main.lv_Main = this.getListView();
-////		ListView lv = this.getListView();
-//		
-//		CONS.Main.lv_Main.setAdapter(CONS.Main.adp_Loc);
-////		lv.setAdapter(CONS.Main.adp_Loc);
 		
 	}//_Setup_Set_LocationList()
 

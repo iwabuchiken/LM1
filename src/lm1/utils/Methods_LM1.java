@@ -192,15 +192,53 @@ public class Methods_LM1 {
 
 		CONS.Main.loc_Base = DBUtils.get_Loc_FromId(actv, base_LocID);
 		
+		////////////////////////////////
+
+		// calc: distance Base
+
+		////////////////////////////////
+		long id_LocRef = Methods.get_Pref_Long(
+				actv, 
+				CONS.Pref.pname_MainActv, 
+				CONS.Pref.pkey_MainActv_CurrentRef, 
+//				CONS.Pref.pkey_MainActv_CurrentBase, 
+				CONS.Pref.dflt_LongExtra_value);
+		
+		double lat = 0;
+		double longi = 0;
+		
+		// Log
+		String msg_Log = "id_LocRef => " + id_LocRef;
+		Log.d("Methods_LM1.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		if (id_LocRef == CONS.Pref.dflt_LongExtra_value) {
+			
+			lat = CONS.Main.latitude;
+			longi = CONS.Main.longitude;
+			
+		} else {
+			
+			Loc loc_Ref = DBUtils.get_Loc_FromId(actv, id_LocRef);
+
+			lat = Double.parseDouble(loc_Ref.getLatitude());
+			longi = Double.parseDouble(loc_Ref.getLongitude());
+//			longi = CONS.Main.longitude;
+			
+		}
+		
 		CONS.Main.distance_Base = 
 					Methods.distance_2(
-							CONS.Main.latitude, 
-							CONS.Main.longitude, 
+							lat, 
+							longi, 
+//							CONS.Main.latitude, 
+//							CONS.Main.longitude, 
 							Double.parseDouble(CONS.Main.loc_Base.getLatitude()), 
 							Double.parseDouble(CONS.Main.loc_Base.getLongitude()));
 
 		// Log
-		String msg_Log = "monitor => started";
+		msg_Log = "monitor => started";
 		Log.d("Methods_LM1.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);

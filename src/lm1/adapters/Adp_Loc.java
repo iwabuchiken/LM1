@@ -130,10 +130,10 @@ public class Adp_Loc extends ArrayAdapter<Loc> {
 				&& current_Ref == loc.getId()) {
 			
 			tv_Memo.setTextColor(
-					((Activity)con).getResources().getColor(R.color.black));
+					((Activity)con).getResources().getColor(R.color.white));
 			
 			tv_Memo.setBackgroundColor(
-					((Activity)con).getResources().getColor(R.color.yello));
+					((Activity)con).getResources().getColor(R.color.green4));
 			
 //			tv_Longi.setTextColor(
 //					((Activity)con).getResources().getColor(R.color.yello));
