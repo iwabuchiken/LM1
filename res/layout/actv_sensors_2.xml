@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView05"
+            style="@style/tv_basic_label"
+            android:text="@string/actv_sensors_photo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/actv_sensors_2_tv_photo_val"
+                style="@style/tv_basic_values"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/actv_sensors_2_tv_photo_color"
+                style="@style/tv_basic_values"
+                android:layout_weight="1"
+                android:text="XXX" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView03"
+            style="@style/tv_basic_label"
+            android:text="@string/actv_sensors_magnetic" />
+
+        <TextView
+            android:id="@+id/actv_sensors_2_tv_magnetic_val"
+            style="@style/tv_basic_values"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            style="@style/tv_basic_label"
+            android:text="@string/actv_sensors_temp" />
+
+        <TextView
+            android:id="@+id/actv_sensors_2_tv_temp_val"
+            style="@style/tv_basic_values"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/actv_sensors_LL_swipe_area"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/brown"
+        android:orientation="horizontal" >
+
+    </LinearLayout>
+
+</LinearLayout>

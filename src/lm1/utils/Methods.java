@@ -509,6 +509,48 @@ public class Methods {
 		}
 
 	}//public static boolean setPref_long(Activity actv, String pref_name, String pref_key, long value)
+	
+	public static boolean
+	set_Pref_Int
+	(Activity actv, String pName, String pKey, int value) {
+		
+		SharedPreferences prefs = 
+				actv.getSharedPreferences(pName, Context.MODE_PRIVATE);
+		
+		/****************************
+		 * 2. Get editor
+		 ****************************/
+		SharedPreferences.Editor editor = prefs.edit();
+		
+		/****************************
+		 * 3. Set value
+		 ****************************/
+		editor.putInt(pKey, value);
+		
+		try {
+			
+			editor.commit();
+			
+			// Log
+			String msg_Log = "Pref set => " + value;
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+			// Log
+			Log.e("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Excption: " + e.toString());
+			
+			return false;
+			
+		}
+		
+	}//set_Pref_Int
 
 	public static long 
 	get_Pref_Long

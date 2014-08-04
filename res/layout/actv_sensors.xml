@@ -28,7 +28,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/actv_sensors_2_tv_temp_val"
             style="@style/tv_basic_bg_white"
             android:layout_width="fill_parent"
             android:layout_height="100dp"
