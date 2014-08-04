@@ -1,12 +1,15 @@
 package lm1.listeners;
 
+import lm1.main.R;
 import lm1.utils.CONS;
 import android.app.Activity;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
+import android.widget.TextView;
 
 // SEL=SensorEventListener
 public class SEL implements SensorEventListener {
@@ -14,7 +17,8 @@ public class SEL implements SensorEventListener {
 	Activity actv;
 	
 	boolean bl_Tmp = false;
-	
+
+	int val_Blue;		// photo sensor
 	
     // ローパスフィルタ用変数
     private float lowX;
@@ -178,26 +182,129 @@ public class SEL implements SensorEventListener {
 
 	private void case_TYPE_LIGHT(SensorEvent event) {
 		// TODO Auto-generated method stub
-		
-    	// Log
-		String msg_Log = "Type: Light => values.length = " + event.values.length;
-		Log.d("SEL.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ "]", msg_Log);
-		
-		for (int i = 0; i < event.values.length; i++) {
-			
-			// Log
-			msg_Log = String.format(
-					"values: %f, %f, %f", 
-					event.values[0], event.values[1], event.values[2]);
-			
-			Log.d("SEL.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", msg_Log);
-		}
+		////////////////////////////////
+
+		// text
+
+		////////////////////////////////
+    	TextView tv_Photo = (TextView) actv.findViewById(R.id.actv_sensors_2_tv_photo_val);
+    	
+    	tv_Photo.setText(String.format("%05.1f", event.values[0]));
+
+    	////////////////////////////////
+
+		// color
+
+		////////////////////////////////
+    	val_Blue = _conv_RawValue_To_RGB(event);
+    	
+    	
+//    	val_Blue = (int) Math.floor(255 * (event.values[0] / 28000));
+//    	
+//    	val_Blue += 50;
+//    	
+//    	if (val_Blue > 255) {
+//			
+//    		val_Blue = 255;
+//    		
+//		}
+    	
+//    	// Log
+//    	String msg_Log = "val_Blue => " + val_Blue;
+//    	Log.d("SEL.java" + "["
+//    			+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//    			+ "]", msg_Log);
+//    	
+//    	float gamma = 0.5f;
+//    	
+//    	val_Blue = (int) Math.pow(val_Blue, (1 / gamma));
+//    	
+//    	// Log
+//		msg_Log = "val_Blue(processed) => " + val_Blue;
+//		Log.d("SEL.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+    	
+    	TextView tv_Color = 
+    				(TextView) actv.findViewById(R.id.actv_sensors_2_tv_photo_color);
+    	
+    	tv_Color.setBackgroundColor(Color.rgb(0, 0, val_Blue));
+//    	tv_Color.setTextColor(Color.rgb(0, 0, val_Blue));
+    	
+//    	tv_Photo.setText(String.format("%5.1f", event.values[0]));
+//    	tv_Photo.setText(String.valueOf(event.values[0]));
+    	
+//    	// Log
+//		String msg_Log = "Type: Light => values.length = " + event.values.length;
+//		Log.d("SEL.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+//		
+//		for (int i = 0; i < event.values.length; i++) {
+//			
+//			//REF http://developer.android.com/reference/android/hardware/SensorEvent.html#values
+//			// Log
+//			msg_Log = String.format(
+//					"values: %f, %f, %f", 
+//					event.values[0], event.values[1], event.values[2]);
+//			
+//			Log.d("SEL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+//		}
     	
 	}
+
+	private int 
+	_conv_RawValue_To_RGB(SensorEvent event) {
+		// TODO Auto-generated method stub
+		
+		// Prepare values used in the powering
+		float powered = event.values[0] / CONS.Sensors.PhotoSensor_MaxVal;
+		float powerer = (1 / (float)CONS.Sensors.gammaVal);
+//		float powerer = (1 / CONS.Sensors.gammaVal);
+
+		
+		// Gamma-adjust the raw data
+		int gammaAdjusted = (int) (
+					CONS.Sensors.PhotoSensor_MaxVal * 
+					Math.pow(
+							powered, 
+//							event.values[0] / CONS.Sensors.PhotoSensor_MaxVal, 
+//							(1 / CONS.Sensors.gammaVal)
+							powerer
+							)
+					);
+		
+		// Convert the raw data to RGB value
+		float temp = CONS.Sensors.RGB_MaxVal *
+				((float)gammaAdjusted / CONS.Sensors.PhotoSensor_MaxVal);
+		
+		// Return the floor
+		return (int) Math.floor(temp);
+//		int rgbVal = (int) Math.floor(temp);
+		
+//		int rgbVal = CONS.Sensors.RGB_MaxVal *
+//				(gammaAdjusted / CONS.Sensors.PhotoSensor_MaxVal);
+		
+//		// Log
+//		String msg_Log = 
+//						"powerer = " + powerer
+//						+ " / "
+//						+ "powered = " + powered
+//						+ " / "
+//						+ "original = " + event.values[0]
+//						+ " / "
+//						+ "gammaAdjusted = " + gammaAdjusted
+//						+ " / "
+//						+ "rgbVal = " + rgbVal;
+//		Log.d("SEL.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+		
+//		return rgbVal;
+		
+	}//_conv_RawValue_To_RGB(SensorEvent event)
 
 	private float getLowPassFilterValue(float eventValue, float lowValue) {
         return eventValue * FILTERING_VALUE + lowValue

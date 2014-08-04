@@ -204,6 +204,16 @@ public class CONS {
 		
 		public static final int dflt_distance_buffer	= 10;
 		
+		////////////////////////////////
+
+		// SensorsActv
+
+		////////////////////////////////
+		public static final String pname_SensorsActv = "pname_SensorsActv";
+		
+		public static final String pkey_SensorsActv_GammaVal = 
+											"pkey_SensorsActv_GammaVal";
+		
 	}
 
 	public static class ShowList {
@@ -235,6 +245,13 @@ public class CONS {
 		
 		public static SensorEventListener sensorEventListener;
 
+		public static int gammaVal;
+
+		public static final int GammaVal_Dflt		= 5;
+		
+		public static final int PhotoSensor_MaxVal	= 28500;
+		
+		public static final int RGB_MaxVal	= 255;
 		
 	}
 	

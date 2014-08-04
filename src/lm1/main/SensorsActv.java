@@ -13,7 +13,9 @@ import lm1.utils.DBUtils;
 import lm1.utils.Methods;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
+import android.app.Activity;
 import android.app.ListActivity;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -26,14 +28,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class SensorsActv extends ListActivity {
+public class SensorsActv extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.actv_sensors);
+		setContentView(R.layout.actv_sensors_2);
 //		setContentView(R.layout.actv_main_orig);
 		
 		this.setTitle(this.getClass().getName());
@@ -150,10 +153,39 @@ public class SensorsActv extends ListActivity {
 		
 		_Setup_Sensors();
 		
+		_Setup_Prefs();
+		
 		super.onStart();
 		
 
 	}//protected void onStart()
+
+	private void _Setup_Prefs() {
+		// TODO Auto-generated method stub
+		
+		int pref_GammaVal = Methods.get_Pref_Int(
+					this, 
+					CONS.Pref.pname_SensorsActv, 
+					CONS.Pref.pkey_SensorsActv_GammaVal, 
+					CONS.Pref.dflt_IntExtra_value);
+		
+		if (pref_GammaVal == CONS.Pref.dflt_IntExtra_value) {
+			
+			CONS.Sensors.gammaVal = CONS.Sensors.GammaVal_Dflt;
+			
+		} else {
+
+			CONS.Sensors.gammaVal = pref_GammaVal;
+			
+		}
+		
+		// Log
+		String msg_Log = "Pref: GammaVal set => " + CONS.Sensors.gammaVal;
+		Log.d("SensorsActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+	}//private void _Setup_Prefs()
 
 	private void 
 	_Setup_Sensors() {
@@ -390,39 +422,52 @@ public class SensorsActv extends ListActivity {
 	_Setup_SetList() {
 		// TODO Auto-generated method stub
 		
-		String[] choices = {
-//				actv.getString(R.string.dlg_db_admin_item_exec_sql),
-				
-				this.getString(R.string.actv_sensors_photo),
-				this.getString(R.string.actv_sensors_magnetic),
-				this.getString(R.string.actv_sensors_temp),
-				
-		};
-		
-		List<String> list = new ArrayList<String>();
-		
-		for (String item : choices) {
-			
-			list.add(item);
-			
-		}
-		
 		////////////////////////////////
 
-		// adapter
+		// photo
 
 		////////////////////////////////
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				this,
-//				R.layout.dlg_db_admin,
-//				android.R.layout.simple_list_item_1,
-				R.layout.list_row_simple_1,
-				list
-				);
-
-		ListView lv = this.getListView();
+		TextView tv_Color = 
+				(TextView) this.findViewById(R.id.actv_sensors_2_tv_photo_color);
 		
-		lv.setAdapter(adapter);
+		tv_Color.setBackgroundColor(Color.rgb(0, 0, 255));
+		
+//		TextView tv_Photo = (TextView) findViewById(R.id.actv_sensors_2_tv_photo_val);
+		
+		
+//		String[] choices = {
+////				actv.getString(R.string.dlg_db_admin_item_exec_sql),
+//				
+//				this.getString(R.string.actv_sensors_photo),
+//				this.getString(R.string.actv_sensors_magnetic),
+//				this.getString(R.string.actv_sensors_temp),
+//				
+//		};
+//		
+//		List<String> list = new ArrayList<String>();
+//		
+//		for (String item : choices) {
+//			
+//			list.add(item);
+//			
+//		}
+//		
+//		////////////////////////////////
+//
+//		// adapter
+//
+//		////////////////////////////////
+//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+//				this,
+////				R.layout.dlg_db_admin,
+////				android.R.layout.simple_list_item_1,
+//				R.layout.list_row_simple_1,
+//				list
+//				);
+//
+//		ListView lv = this.getListView();
+//		
+//		lv.setAdapter(adapter);
 		
 	}//_Setup_SetList()
 
@@ -455,30 +500,6 @@ public class SensorsActv extends ListActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.actv_main, menu);
 		return true;
-	}
-
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
-
-		String item_Name = (String) l.getItemAtPosition(position);
-		
-		if (item_Name.equals(this.getString(
-				R.string.actv_sensors_photo))) {
-			
-//			Methods.exec_Sql(actv);
-			
-		} else if (item_Name.equals(this.getString(
-				R.string.actv_sensors_magnetic))) {
-			
-			
-		} else {
-			
-		}
-		
-		
-		
-		super.onListItemClick(l, v, position, id);
 	}
 
 
