@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lm1.adapters.Adp_Loc;
+import lm1.listeners.SEL;
 import lm1.listeners.STL;
 import lm1.listeners.buttons.BO_CL;
 import lm1.listeners.list.List_ILCL;
@@ -13,6 +14,8 @@ import lm1.utils.Methods;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
 import android.app.ListActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -59,12 +62,42 @@ public class SensorsActv extends ListActivity {
 
 	@Override
 	public void onBackPressed() {
-		/****************************
-		 * memo
-			****************************/
+		////////////////////////////////
+
+		// Sensor: Unregister
+
+		////////////////////////////////
+//		if (CONS.Sensors.sensorManager != null) {
+//			
+//			CONS.Sensors.sensorManager
+//				.unregisterListener(CONS.Sensors.sensorEventListener);
+//		
+//			// Log
+//			String log_msg = "CONS.Sensors.sensorManager => Unregistered";
+//			
+//			Log.d("[" + "PMActv.java : "
+//					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//		}
+		
+		////////////////////////////////
+
+		// Finish actv
+
+		////////////////////////////////
 		this.finish();
 		
 		overridePendingTransition(0, 0);
+
+		////////////////////////////////
+
+		// onStop
+
+		////////////////////////////////
+		super.onStop();
 		
 	}//public void onBackPressed()
 
@@ -115,11 +148,107 @@ public class SensorsActv extends ListActivity {
 		
 		_Setup_SetListeners();
 		
+		_Setup_Sensors();
 		
 		super.onStart();
 		
 
 	}//protected void onStart()
+
+	private void 
+	_Setup_Sensors() {
+		// TODO Auto-generated method stub
+		
+    	CONS.Sensors.sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
+    	
+//    	CONS.Sensors.accelerometerSensors =
+    	CONS.Sensors.sensor_Accelerometer =
+    			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+    	
+    	CONS.Sensors.sensor_Light =
+    			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_LIGHT);
+    	
+    	// Listener
+    	CONS.Sensors.sensorEventListener = new SEL(this);
+    	
+    	////////////////////////////////
+
+		// Sensor: accelero
+
+		////////////////////////////////
+        // 加速度センサーオブジェクトが取得できた場合
+        if (CONS.Sensors.sensor_Accelerometer.size() > 0) {
+            // SensorManagerインスタンスにセンサーイベントリスナーを設定
+//        	CONS.Sensors.sensorManager.registerListener(sensorEventListener,
+			CONS.Sensors.sensorManager.registerListener(
+							CONS.Sensors.sensorEventListener,
+							CONS.Sensors.sensor_Accelerometer.get(0),
+							SensorManager.SENSOR_DELAY_GAME);
+			
+			// Log
+			String log_msg = "Listener set => Accelero";
+
+			Log.d("["
+					+ "SensorsActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+        } else {
+        	
+        	// Log
+			String log_msg = "Listener not set => Accelero";
+
+			Log.d("["
+					+ "SensorsActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+        				
+        }
+        
+        ////////////////////////////////
+        
+        // Sensor: light
+        
+        ////////////////////////////////
+        // 加速度センサーオブジェクトが取得できた場合
+        if (CONS.Sensors.sensor_Light.size() > 0) {
+        	// SensorManagerインスタンスにセンサーイベントリスナーを設定
+//        	CONS.Sensors.sensorManager.registerListener(sensorEventListener,
+        	CONS.Sensors.sensorManager.registerListener(
+        			CONS.Sensors.sensorEventListener,
+        			CONS.Sensors.sensor_Light.get(0),
+//        			CONS.Sensors.sensor_Accelerometer.get(0),
+        			SensorManager.SENSOR_DELAY_GAME);
+        	
+        	// Log
+        	String log_msg = "Listener set => Light";
+        	
+        	Log.d("["
+        			+ "SensorsActv.java : "
+        			+ +Thread.currentThread().getStackTrace()[2]
+        					.getLineNumber() + " : "
+        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+        					+ "]", log_msg);
+        	
+        } else {
+        	
+        	// Log
+			String log_msg = "Listener not set => Light";
+
+			Log.d("["
+					+ "SensorsActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+
+        }
+        
+	}//_Setup_Sensors()
 
 	private void _Setup_SetListeners() {
 		// TODO Auto-generated method stub
@@ -175,7 +304,25 @@ public class SensorsActv extends ListActivity {
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
+		
+		if (CONS.Sensors.sensorManager != null) {
+			
+			CONS.Sensors.sensorManager
+				.unregisterListener(CONS.Sensors.sensorEventListener);
+		
+			// Log
+			String log_msg = "CONS.Sensors.sensorManager => Unregistered";
+			
+			Log.d("[" + "PMActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		}
+		
 		super.onStop();
+		
 	}
 
 	@Override
@@ -188,10 +335,22 @@ public class SensorsActv extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
+
+		String item_Name = (String) l.getItemAtPosition(position);
 		
-		// debug
-		String msg_Toast = "list item";
-		Toast.makeText(this, msg_Toast, Toast.LENGTH_SHORT).show();
+		if (item_Name.equals(this.getString(
+				R.string.actv_sensors_photo))) {
+			
+//			Methods.exec_Sql(actv);
+			
+		} else if (item_Name.equals(this.getString(
+				R.string.actv_sensors_magnetic))) {
+			
+			
+		} else {
+			
+		}
+		
 		
 		
 		super.onListItemClick(l, v, position, id);

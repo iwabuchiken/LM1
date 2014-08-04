@@ -35,6 +35,12 @@ public class SEL implements SensorEventListener {
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
 		
+		// Log
+		String msg_Log = "onAccuracyChanged()";
+		Log.d("SEL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
 	}
 
 	@Override
@@ -67,6 +73,17 @@ public class SEL implements SensorEventListener {
 //            drawableView.invalidate();
             break;
 
+        case Sensor.TYPE_LIGHT:
+        	
+        	case_TYPE_LIGHT(event);
+//        	// Log
+//			String msg_Log = "Type => Light";
+//			Log.d("SEL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+        	
+        	break;
+        	
         // 加速度センサー以外は無視
         default:
             break;
@@ -90,7 +107,30 @@ public class SEL implements SensorEventListener {
 		
 	}//public void onSensorChanged(SensorEvent event)
 
-    private float getLowPassFilterValue(float eventValue, float lowValue) {
+    private void case_TYPE_LIGHT(SensorEvent event) {
+		// TODO Auto-generated method stub
+		
+    	// Log
+		String msg_Log = "Type: Light => values.length = " + event.values.length;
+		Log.d("SEL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		for (int i = 0; i < event.values.length; i++) {
+			
+			// Log
+			msg_Log = String.format(
+					"values: %f, %f, %f", 
+					event.values[0], event.values[1], event.values[2]);
+			
+			Log.d("SEL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+		}
+    	
+	}
+
+	private float getLowPassFilterValue(float eventValue, float lowValue) {
         return eventValue * FILTERING_VALUE + lowValue
             * (1.0f - FILTERING_VALUE);
     }

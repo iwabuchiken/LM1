@@ -8,6 +8,9 @@ import lm1.adapters.Adp_Loc;
 import lm1.items.Loc;
 import lm1.tasks.TaskAudioTrack;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.media.AudioTrack;
@@ -218,6 +221,14 @@ public class CONS {
 	
 	public static class Sensors {
 		
+		public static SensorManager sensorManager;
+		
+		public static List<Sensor> sensor_Accelerometer;
+		
+		public static List<Sensor> sensor_Light;
+		
+		public static SensorEventListener sensorEventListener;
+
 		
 	}
 	
