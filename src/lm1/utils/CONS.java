@@ -227,6 +227,12 @@ public class CONS {
 		
 		public static List<Sensor> sensor_Light;
 		
+		public static List<Sensor> sensor_Magnetic;
+		
+		public static List<Sensor> sensor_Temp;
+		
+		public static List<Sensor> sensor_Gyro;
+		
 		public static SensorEventListener sensorEventListener;
 
 		

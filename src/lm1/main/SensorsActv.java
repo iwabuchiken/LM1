@@ -157,16 +157,28 @@ public class SensorsActv extends ListActivity {
 
 	private void 
 	_Setup_Sensors() {
-		// TODO Auto-generated method stub
-		
+
     	CONS.Sensors.sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
     	
-//    	CONS.Sensors.accelerometerSensors =
+    	// Sensor: Accelerometer
     	CONS.Sensors.sensor_Accelerometer =
     			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
     	
+    	// Sensor: Light
     	CONS.Sensors.sensor_Light =
     			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_LIGHT);
+    	
+    	// Sensor: Magnetic
+    	CONS.Sensors.sensor_Magnetic =
+    			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
+    	
+    	// Sensor: Gyroscope
+    	CONS.Sensors.sensor_Gyro =
+    			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
+    	
+//    	// Sensor: Light
+//    	CONS.Sensors.sensor_Temp =
+//    			CONS.Sensors.sensorManager.getSensorList(Sensor.TYPE_TEMPERATURE);
     	
     	// Listener
     	CONS.Sensors.sensorEventListener = new SEL(this);
@@ -214,7 +226,6 @@ public class SensorsActv extends ListActivity {
         // Sensor: light
         
         ////////////////////////////////
-        // 加速度センサーオブジェクトが取得できた場合
         if (CONS.Sensors.sensor_Light.size() > 0) {
         	// SensorManagerインスタンスにセンサーイベントリスナーを設定
 //        	CONS.Sensors.sensorManager.registerListener(sensorEventListener,
@@ -247,6 +258,120 @@ public class SensorsActv extends ListActivity {
 					+ "]", log_msg);
 
         }
+        
+        ////////////////////////////////
+        
+        // Sensor: light
+        
+        ////////////////////////////////
+        if (CONS.Sensors.sensor_Gyro.size() > 0) {
+        	// SensorManagerインスタンスにセンサーイベントリスナーを設定
+//        	CONS.Sensors.sensorManager.registerListener(sensorEventListener,
+        	CONS.Sensors.sensorManager.registerListener(
+        			CONS.Sensors.sensorEventListener,
+        			CONS.Sensors.sensor_Gyro.get(0),
+//        			CONS.Sensors.sensor_Accelerometer.get(0),
+        			SensorManager.SENSOR_DELAY_GAME);
+        	
+        	// Log
+        	String log_msg = "Listener set => Gyro";
+        	
+        	Log.d("["
+        			+ "SensorsActv.java : "
+        			+ +Thread.currentThread().getStackTrace()[2]
+        					.getLineNumber() + " : "
+        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+        					+ "]", log_msg);
+        	
+        } else {
+        	
+        	// Log
+        	String log_msg = "Listener not set => Gyro";
+        	
+        	Log.d("["
+        			+ "SensorsActv.java : "
+        			+ +Thread.currentThread().getStackTrace()[2]
+        					.getLineNumber() + " : "
+        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+        					+ "]", log_msg);
+        	
+        }
+        
+        ////////////////////////////////
+        
+        // Sensor: magnetic
+        
+        ////////////////////////////////
+        if (CONS.Sensors.sensor_Magnetic.size() > 0) {
+        	// SensorManagerインスタンスにセンサーイベントリスナーを設定
+//        	CONS.Sensors.sensorManager.registerListener(sensorEventListener,
+        	CONS.Sensors.sensorManager.registerListener(
+        			CONS.Sensors.sensorEventListener,
+        			CONS.Sensors.sensor_Magnetic.get(0),
+//        			CONS.Sensors.sensor_Accelerometer.get(0),
+        			SensorManager.SENSOR_DELAY_GAME);
+        	
+        	// Log
+        	String log_msg = "Listener set => Magnetic";
+        	
+        	Log.d("["
+        			+ "SensorsActv.java : "
+        			+ +Thread.currentThread().getStackTrace()[2]
+        					.getLineNumber() + " : "
+        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+        					+ "]", log_msg);
+        	
+        } else {
+        	
+        	// Log
+        	String log_msg = "Listener not set => Magnetic";
+        	
+        	Log.d("["
+        			+ "SensorsActv.java : "
+        			+ +Thread.currentThread().getStackTrace()[2]
+        					.getLineNumber() + " : "
+        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+        					+ "]", log_msg);
+        	
+        }
+        
+//        ////////////////////////////////
+//        
+//        // Sensor: temperature
+//        
+//        ////////////////////////////////
+//        if (CONS.Sensors.sensor_Temp.size() > 0) {
+//        	// SensorManagerインスタンスにセンサーイベントリスナーを設定
+////        	CONS.Sensors.sensorManager.registerListener(sensorEventListener,
+//        	CONS.Sensors.sensorManager.registerListener(
+//        			CONS.Sensors.sensorEventListener,
+//        			CONS.Sensors.sensor_Temp.get(0),
+////        			CONS.Sensors.sensor_Accelerometer.get(0),
+//        			SensorManager.SENSOR_DELAY_GAME);
+//        	
+//        	// Log
+//        	String log_msg = "Listener set => Temperature";
+//        	
+//        	Log.d("["
+//        			+ "SensorsActv.java : "
+//        			+ +Thread.currentThread().getStackTrace()[2]
+//        					.getLineNumber() + " : "
+//        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//        					+ "]", log_msg);
+//        	
+//        } else {
+//        	
+//        	// Log
+//        	String log_msg = "Listener not set => Temperature";
+//        	
+//        	Log.d("["
+//        			+ "SensorsActv.java : "
+//        			+ +Thread.currentThread().getStackTrace()[2]
+//        					.getLineNumber() + " : "
+//        					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//        					+ "]", log_msg);
+//        	
+//        }
         
 	}//_Setup_Sensors()
 

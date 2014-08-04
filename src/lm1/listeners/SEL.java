@@ -47,15 +47,15 @@ public class SEL implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		// TODO Auto-generated method stub
 
-        // センサーが検知した値を取得
-        float x = event.values[SensorManager.DATA_X];
-        float y = event.values[SensorManager.DATA_Y];
-        float z = event.values[SensorManager.DATA_Z];
-
-        // ローパスフィルタ処理(高周波振動(手の震えや微妙な振動の影響)を除去)
-        lowX = getLowPassFilterValue(x, lowX);
-        lowY = getLowPassFilterValue(y, lowY);
-        lowZ = getLowPassFilterValue(z, lowZ);
+//        // センサーが検知した値を取得
+//        float x = event.values[SensorManager.DATA_X];
+//        float y = event.values[SensorManager.DATA_Y];
+//        float z = event.values[SensorManager.DATA_Z];
+//
+//        // ローパスフィルタ処理(高周波振動(手の震えや微妙な振動の影響)を除去)
+//        lowX = getLowPassFilterValue(x, lowX);
+//        lowY = getLowPassFilterValue(y, lowY);
+//        lowZ = getLowPassFilterValue(z, lowZ);
 
         switch (event.sensor.getType()) {
 
@@ -84,6 +84,39 @@ public class SEL implements SensorEventListener {
         	
         	break;
         	
+        case Sensor.TYPE_MAGNETIC_FIELD:
+        	
+        	case_TYPE_MAGNETIC_FIELD(event);
+//        	// Log
+//			String msg_Log = "Type => Light";
+//			Log.d("SEL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+        	
+        	break;
+        	
+        case Sensor.TYPE_GYROSCOPE:
+        	
+        	case_TYPE_GYROSCOPE(event);
+//        	// Log
+//			String msg_Log = "Type => Light";
+//			Log.d("SEL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+        	
+        	break;
+        	
+//        case Sensor.TYPE_TEMPERATURE:
+//        	
+//        	case_TYPE_TEMPERATURE(event);
+////        	// Log
+////			String msg_Log = "Type => Light";
+////			Log.d("SEL.java" + "["
+////					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+////					+ "]", msg_Log);
+//        	
+//        	break;
+        	
         // 加速度センサー以外は無視
         default:
             break;
@@ -107,7 +140,43 @@ public class SEL implements SensorEventListener {
 		
 	}//public void onSensorChanged(SensorEvent event)
 
-    private void case_TYPE_LIGHT(SensorEvent event) {
+//    private void 
+//    case_TYPE_TEMPERATURE(SensorEvent event) {
+//		// TODO Auto-generated method stub
+//		
+//    	// Log
+//		String msg_Log = "Temperature => event.values.lengthevent = "
+//						+ event.values.length;
+//		Log.d("SEL.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+//    	
+//	}
+
+	private void case_TYPE_GYROSCOPE(SensorEvent event) {
+		// TODO Auto-generated method stub
+    	// Log
+		String msg_Log = "magnetic => event.values.lengthevent = "
+						+ event.values.length;
+		Log.d("SEL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+	}
+
+	private void case_TYPE_MAGNETIC_FIELD(SensorEvent event) {
+		// TODO Auto-generated method stub
+
+//    	// Log
+//		String msg_Log = "magnetic => event.values.lengthevent = "
+//						+ event.values.length;
+//		Log.d("SEL.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+
+	}
+
+	private void case_TYPE_LIGHT(SensorEvent event) {
 		// TODO Auto-generated method stub
 		
     	// Log
