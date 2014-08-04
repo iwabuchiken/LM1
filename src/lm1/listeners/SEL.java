@@ -171,6 +171,18 @@ public class SEL implements SensorEventListener {
 	private void case_TYPE_MAGNETIC_FIELD(SensorEvent event) {
 		// TODO Auto-generated method stub
 
+		TextView tv_Magnetic = 
+				(TextView) actv.findViewById(
+							R.id.actv_sensors_2_tv_magnetic_val);
+		
+		float[] values = event.values;
+		
+		String values_str = String.format(
+								"%f/%f/%f", 
+								values[0], values[1], values[2]);
+		
+		tv_Magnetic.setText(values_str);
+		
 //    	// Log
 //		String msg_Log = "magnetic => event.values.lengthevent = "
 //						+ event.values.length;
