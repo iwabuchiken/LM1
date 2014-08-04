@@ -77,7 +77,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/actv_showlist_LL_swipe_area"
+        android:id="@+id/actv_sensors_LL_swipe_area"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"

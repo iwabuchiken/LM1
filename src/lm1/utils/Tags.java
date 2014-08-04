@@ -120,7 +120,10 @@ public class Tags {
 		SWIPE_ACTV_MAIN,
 		
 		SWIPE_ACTV_SHOWLIST,
-		
+
+		// Sensors
+		ACTV_SENSORS,
+
 	}
 
 }//public class Tags

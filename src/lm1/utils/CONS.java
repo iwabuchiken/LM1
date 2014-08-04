@@ -215,4 +215,10 @@ public class CONS {
 		
 		
 	}
+	
+	public static class Sensors {
+		
+		
+	}
+	
 }//public class CONS

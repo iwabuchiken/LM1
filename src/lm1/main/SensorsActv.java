@@ -1,5 +1,8 @@
 package lm1.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lm1.adapters.Adp_Loc;
 import lm1.listeners.STL;
 import lm1.listeners.buttons.BO_CL;
@@ -16,17 +19,18 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ShowListActv extends ListActivity {
+public class SensorsActv extends ListActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.actv_showlist);
+		setContentView(R.layout.actv_sensors);
 //		setContentView(R.layout.actv_main_orig);
 		
 		this.setTitle(this.getClass().getName());
@@ -107,14 +111,9 @@ public class ShowListActv extends ListActivity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 
-		_Setup_Set_LocationList();
-
-		////////////////////////////////
-
-		// listener
-
-		////////////////////////////////
-		_Setup_Listeners();
+		_Setup_SetList();
+		
+		_Setup_SetListeners();
 		
 		
 		super.onStart();
@@ -122,137 +121,56 @@ public class ShowListActv extends ListActivity {
 
 	}//protected void onStart()
 
-	private void _Setup_Listeners() {
+	private void _Setup_SetListeners() {
 		// TODO Auto-generated method stub
-		////////////////////////////////
-
-		// listview
-
-		////////////////////////////////
-		ListView lv = this.getListView();
 		
-//		lv.setTag(Tags.ListTags.actv_main_lv);
-		lv.setTag(Tags.ListTags.ACTV_MAIN_LV);
+		LinearLayout ll_Swipe = (LinearLayout) findViewById(R.id.actv_sensors_LL_swipe_area);
 		
-		lv.setOnItemLongClickListener(new List_ILCL(this));
+		ll_Swipe.setTag(Tags.SwipeTags.ACTV_SENSORS);
 		
-		////////////////////////////////
-
-		// swipe
-
-		////////////////////////////////
-		LinearLayout ll = 
-				(LinearLayout) this.findViewById(R.id.actv_showlist_LL_buttons);
+		ll_Swipe.setOnTouchListener(new STL(this));
 		
-		ll.setTag(Tags.SwipeTags.SWIPE_ACTV_SHOWLIST);
-		
-		ll.setOnTouchListener(new STL(this));
-
-		LinearLayout ll_swipe = 
-				(LinearLayout) this.findViewById(R.id.actv_sensors_LL_swipe_area);
-		
-		ll_swipe.setTag(Tags.SwipeTags.SWIPE_ACTV_SHOWLIST);
-		
-		ll_swipe.setOnTouchListener(new STL(this));
-		
-		////////////////////////////////
-
-		// button: back
-
-		////////////////////////////////
-		ImageButton ib_Back = 
-				(ImageButton) this.findViewById(R.id.actv_showlist_ib_back);
-		
-		ib_Back.setTag(Tags.ButtonTags.ACTV_SHOWLIST_IB_BACK);
-		
-		ib_Back.setOnClickListener(new BO_CL(this));;
-		
-
 	}
 
 	private void 
-	_Setup_Set_LocationList() {
+	_Setup_SetList() {
 		// TODO Auto-generated method stub
 		
-		////////////////////////////////
-
-		// loc list
-
-		////////////////////////////////
+		String[] choices = {
+//				actv.getString(R.string.dlg_db_admin_item_exec_sql),
+				
+				this.getString(R.string.actv_sensors_photo),
+				this.getString(R.string.actv_sensors_magnetic),
+				this.getString(R.string.actv_sensors_temp),
+				
+		};
 		
-		// Log
-		String msg_Log = "_Setup_Set_LocationList()";
-		Log.d("ShowListActv.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ "]", msg_Log);
+		List<String> list = new ArrayList<String>();
 		
-		CONS.ShowList.loc_List = DBUtils.get_LocList(this);
-
-		if (CONS.ShowList.loc_List != null) {
+		for (String item : choices) {
 			
-			// Log
-			msg_Log = "size() => " + CONS.ShowList.loc_List.size();
-			Log.d("ShowListActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", msg_Log);
+			list.add(item);
 			
-		} else {
-			
-			// Log
-			msg_Log = "CONS.ShowList.loc_List => null";
-			Log.d("ShowListActv.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", msg_Log);
-			
-			String msg = "No location data";
-			Methods_dlg.dlg_ShowMessage(this, msg);
-			
-			return;
-
 		}
 		
-//		//debug
-//		if (CONS.Main.loc_List == null) {
-//		
-//			CONS.Main.loc_List = DBUtils.get_LocList(this);
-//			
-////			// Log
-////			String msg_Log = "loc_List => null";
-////			Log.d("MainActv.java" + "["
-////					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-////					+ "]", msg_Log);
-////			
-////			return;
-//			
-//		}
-
 		////////////////////////////////
 
-		// adp
+		// adapter
 
 		////////////////////////////////
-		CONS.ShowList.adp_Loc = new Adp_Loc(
-//				Adp_Loc adp_LocList = new Adp_Loc(
-						this,
-						R.layout.list_row_loc_list,
-						CONS.ShowList.loc_List
-//						CONS.Main.loc_List
-//						loc_List
-		);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				this,
+//				R.layout.dlg_db_admin,
+//				android.R.layout.simple_list_item_1,
+				R.layout.list_row_simple_1,
+				list
+				);
 
-		////////////////////////////////
-
-		// set
-
-		////////////////////////////////
-		CONS.ShowList.lv_ShowList = this.getListView();
-//		ListView lv = this.getListView();
+		ListView lv = this.getListView();
 		
-		CONS.ShowList.lv_ShowList.setAdapter(CONS.ShowList.adp_Loc);
-//		CONS.ShowList.lv_ShowList.setAdapter(CONS.Main.adp_Loc);
-
-
-	}//_Setup_Set_LocationList()
+		lv.setAdapter(adapter);
+		
+	}//_Setup_SetList()
 
 	@Override
 	protected void onStop() {
@@ -279,4 +197,6 @@ public class ShowListActv extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 	}
 
+
+	
 }

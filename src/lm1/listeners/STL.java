@@ -169,11 +169,69 @@ public class STL implements OnTouchListener {
 		
 	}//onSwipeLeft()
 
-	public void onSwipeTop() {
-	}
+	public void 
+	onSwipeTop() {
+		
+		// Log
+		String msg_Log = "onSwipeTop()";
+		Log.d("STL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
 
-	public void onSwipeBottom() {
-	}
+		switch(this.tag) {
+		
+		case ACTV_SENSORS:
+			
+			actv.finish();
+			
+			actv.overridePendingTransition(0, 0);
+			
+			break;
+			
+		default:
+			
+			// Log
+			msg_Log = "unknown tag => " + this.tag.toString();
+			Log.d("STL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			break;
+			
+		}//switch(this.tag)
+		
+	}//onSwipeTop()
+
+	public void 
+	onSwipeBottom() {
+		
+		// Log
+		String msg_Log = "onSwipeBottom()";
+		Log.d("STL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+
+		switch(this.tag) {
+		
+		case SWIPE_ACTV_MAIN:
+			
+			Methods.start_Activity_Sensor(actv);
+			
+			break;
+			
+		default:
+			
+			// Log
+			msg_Log = "unknown tag => " + this.tag.toString();
+			Log.d("STL.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			break;
+			
+		}//switch(this.tag)
+
+	}//onSwipeBottom()
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {

@@ -14,6 +14,7 @@ import java.util.Date;
 import lm1.listeners.dialog.DL;
 import lm1.main.PrefActv;
 import lm1.main.R;
+import lm1.main.SensorsActv;
 import lm1.main.ShowListActv;
 
 import org.apache.commons.lang.StringUtils;
@@ -881,6 +882,22 @@ public class Methods {
 		}//try
 		
 	}//restore_DB
+
+	public static void 
+	start_Activity_Sensor(Activity actv) {
+		// TODO Auto-generated method stub
+
+		Intent i = new Intent();
+		
+		i.setClass(actv, SensorsActv.class);
+		
+//		i.putExtra(CONS.Intent.iKey_CurrentPath_MainActv, currentPath);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+
+	}//start_Activity_Sensor(Activity actv)
 
 }//public class Methods
 
