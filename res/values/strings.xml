@@ -23,6 +23,10 @@
 		<string name="menu_actvmain_db">DB</string>
 		<string name="menu_actvmain_settings">Settings</string>
 		
+	<!-- menu: actv_sensors -->
+		<string name="menu_actv_sensors_accelero">Accelero</string>
+		<string name="menu_actv_sensors_compass">Compass</string>
+		
 	<!-- dlg_db_admin.xml -->
 	   	<string name="dlg_db_admin_title">DB Admin</string>
 	   	<string name="dlg_db_admin_item_backup_db">Backup DB</string>

@@ -40,8 +40,10 @@ public final class R {
         public static final int actv_al_opt_menu_move_mode_on=0x7f020005;
         public static final int actv_al_top_disenabled_50x50=0x7f020006;
         public static final int actv_al_up_disenabled_50x50=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int proj_icon_48x48=0x7f020009;
+        public static final int actv_sensors_opt_menu_accelero=0x7f020008;
+        public static final int actv_sensors_opt_menu_compass=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int proj_icon_48x48=0x7f02000b;
     }
     public static final class id {
         public static final int TextView01=0x7f0a0021;
@@ -113,6 +115,8 @@ public final class R {
         public static final int listrow_loc_list_tv_memo=0x7f0a0046;
         public static final int listrow_loc_list_tv_time=0x7f0a0043;
         public static final int menu_actvmain_db=0x7f0a0049;
+        public static final int menu_sensors_accelero=0x7f0a004a;
+        public static final int menu_sensors_compass=0x7f0a004b;
         public static final int menu_settings=0x7f0a0048;
         public static final int tableRow1=0x7f0a0002;
         public static final int tableRow2=0x7f0a0005;
@@ -138,6 +142,7 @@ public final class R {
     }
     public static final class menu {
         public static final int actv_main=0x7f090000;
+        public static final int actv_sensors=0x7f090001;
     }
     public static final class raw {
         public static final int audio_nature=0x7f050000;
@@ -149,50 +154,50 @@ public final class R {
     public static final class string {
         /**  actv_main.xml 
          */
-        public static final int actv_main_latitude=0x7f070017;
-        public static final int actv_main_longitude=0x7f070018;
-        public static final int actv_main_tv_base=0x7f07001f;
-        public static final int actv_main_tv_get_data=0x7f070019;
-        public static final int actv_main_tv_monitor=0x7f07001d;
-        public static final int actv_main_tv_post_data=0x7f07001b;
-        public static final int actv_main_tv_ref=0x7f070020;
-        public static final int actv_main_tv_save_data=0x7f07001a;
-        public static final int actv_main_tv_show_map=0x7f07001c;
-        public static final int actv_main_tv_stop_monitor=0x7f07001e;
-        public static final int actv_sensors_magnetic=0x7f070031;
+        public static final int actv_main_latitude=0x7f070019;
+        public static final int actv_main_longitude=0x7f07001a;
+        public static final int actv_main_tv_base=0x7f070021;
+        public static final int actv_main_tv_get_data=0x7f07001b;
+        public static final int actv_main_tv_monitor=0x7f07001f;
+        public static final int actv_main_tv_post_data=0x7f07001d;
+        public static final int actv_main_tv_ref=0x7f070022;
+        public static final int actv_main_tv_save_data=0x7f07001c;
+        public static final int actv_main_tv_show_map=0x7f07001e;
+        public static final int actv_main_tv_stop_monitor=0x7f070020;
+        public static final int actv_sensors_magnetic=0x7f070033;
         /**  actv_sensors.xml 
          */
-        public static final int actv_sensors_photo=0x7f070030;
-        public static final int actv_sensors_temp=0x7f070032;
+        public static final int actv_sensors_photo=0x7f070032;
+        public static final int actv_sensors_temp=0x7f070034;
         public static final int app_name=0x7f070001;
         /**  dlg: delete loc 
          */
-        public static final int dlg_conf_del_loc_message=0x7f07002f;
-        public static final int dlg_db_admin_item_backup_db=0x7f070011;
-        public static final int dlg_db_admin_item_create_table_locations=0x7f070015;
-        public static final int dlg_db_admin_item_drop_table_locations=0x7f070016;
-        public static final int dlg_db_admin_item_exec_sql=0x7f070013;
-        public static final int dlg_db_admin_item_refresh_db=0x7f070012;
-        public static final int dlg_db_admin_item_restore_db=0x7f070014;
+        public static final int dlg_conf_del_loc_message=0x7f070031;
+        public static final int dlg_db_admin_item_backup_db=0x7f070013;
+        public static final int dlg_db_admin_item_create_table_locations=0x7f070017;
+        public static final int dlg_db_admin_item_drop_table_locations=0x7f070018;
+        public static final int dlg_db_admin_item_exec_sql=0x7f070015;
+        public static final int dlg_db_admin_item_refresh_db=0x7f070014;
+        public static final int dlg_db_admin_item_restore_db=0x7f070016;
         /**  dlg_db_admin.xml 
          */
-        public static final int dlg_db_admin_title=0x7f070010;
-        public static final int dlg_edit_locs_date_title=0x7f070025;
-        public static final int dlg_edit_locs_memo_title=0x7f070024;
+        public static final int dlg_db_admin_title=0x7f070012;
+        public static final int dlg_edit_locs_date_title=0x7f070027;
+        public static final int dlg_edit_locs_memo_title=0x7f070026;
         /**  dlg_edit_locs.xml 
          */
-        public static final int dlg_edit_locs_title=0x7f070023;
-        public static final int dlg_mainactv_list_opt_delete=0x7f070029;
-        public static final int dlg_mainactv_list_opt_set_base=0x7f070027;
-        public static final int dlg_mainactv_list_opt_set_ref=0x7f07002a;
-        public static final int dlg_mainactv_list_opt_show_distance=0x7f070028;
+        public static final int dlg_edit_locs_title=0x7f070025;
+        public static final int dlg_mainactv_list_opt_delete=0x7f07002b;
+        public static final int dlg_mainactv_list_opt_set_base=0x7f070029;
+        public static final int dlg_mainactv_list_opt_set_ref=0x7f07002c;
+        public static final int dlg_mainactv_list_opt_show_distance=0x7f07002a;
         /**  dlg: mainactv_list 
          */
-        public static final int dlg_mainactv_list_title=0x7f070026;
-        public static final int drop_table_locations=0x7f070022;
+        public static final int dlg_mainactv_list_title=0x7f070028;
+        public static final int drop_table_locations=0x7f070024;
         /**  drop table 
          */
-        public static final int drop_table_message=0x7f070021;
+        public static final int drop_table_message=0x7f070023;
         public static final int generic_bt_back=0x7f070005;
         public static final int generic_bt_cancel=0x7f070004;
         /**  Generic items 
@@ -207,16 +212,20 @@ public final class R {
         public static final int generic_tv_no_data=0x7f07000b;
         public static final int generic_tv_register=0x7f070008;
         public static final int hello=0x7f070000;
+        /**  menu: actv_sensors 
+         */
+        public static final int menu_actv_sensors_accelero=0x7f070010;
+        public static final int menu_actv_sensors_compass=0x7f070011;
         /**  menu: actv_main 
          */
         public static final int menu_actvmain_db=0x7f07000e;
         public static final int menu_actvmain_settings=0x7f07000f;
-        public static final int prefs_key_bgm=0x7f07002c;
-        public static final int prefs_key_distbuff=0x7f07002e;
+        public static final int prefs_key_bgm=0x7f07002e;
+        public static final int prefs_key_distbuff=0x7f070030;
         /**  preferences.xml 
          */
-        public static final int prefs_title_bgm=0x7f07002b;
-        public static final int prefs_title_distbuff=0x7f07002d;
+        public static final int prefs_title_bgm=0x7f07002d;
+        public static final int prefs_title_distbuff=0x7f07002f;
         public static final int v1_tv_dir_path=0x7f070002;
     }
     public static final class style {

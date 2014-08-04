@@ -1,1 +1,3 @@
 1	proj_icon_48x48.png	1403766573_Map-Marker-Flag--Right-Azure.png	
+2	actv_sensors_opt_menu_accelero.png	1407212197_run_32x32.png	https://www.iconfinder.com/icons/31279/launch_rocket_spaceship_icon#size=128
+3	actv_sensors_opt_menu_compass.png	1407212467_compass_32x32.png	https://www.iconfinder.com/icons/70870/compass_icon#size=128

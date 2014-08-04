@@ -58,7 +58,18 @@ public class SensorsActv extends Activity {
 		
 //		Methods.confirm_quit(this, keyCode);
 		
-		this.onBackPressed();
+//		this.onBackPressed();
+		
+//		this.finish();
+//		
+//		overridePendingTransition(0, 0);
+//
+//		
+		// Log
+		String msg_Log = "onKeyDown";
+		Log.d("SensorsActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
 		
 		return super.onKeyDown(keyCode, event);
 	}
@@ -110,19 +121,17 @@ public class SensorsActv extends Activity {
 		
 		switch (item.getItemId()) {
 		
-		case R.id.menu_actvmain_db://---------------
+		case R.id.menu_sensors_accelero://---------------
 			
-			Methods_dlg.dlg_Db_Activity(this);
-//			Methods.db_backup(this);
+			String msg_Toa = "Accelero";
+			Toast.makeText(this, msg_Toa, Toast.LENGTH_SHORT).show();
 			
 			break;// case R.id.main_opt_menu_backup_db
 
-		case R.id.menu_settings://---------------
+		case R.id.menu_sensors_compass://---------------
 			
-//			this._test();	// ClassCastException
-			
-			Methods.start_Activity_Pref(this);
-//			Methods.db_backup(this);
+			msg_Toa = "Compass";
+			Toast.makeText(this, msg_Toa, Toast.LENGTH_SHORT).show();
 			
 			break;// case R.id.main_opt_menu_backup_db
 			
@@ -498,7 +507,7 @@ public class SensorsActv extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.actv_main, menu);
+		getMenuInflater().inflate(R.menu.actv_sensors, menu);
 		return true;
 	}
 
