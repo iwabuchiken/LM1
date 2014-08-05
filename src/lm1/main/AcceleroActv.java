@@ -45,13 +45,17 @@ public class AcceleroActv extends Activity {
 		
 		this.setTitle(this.getClass().getName());
 		
-        drawableView = new DrawableView(this);
+		setContentView(R.layout.actv_accelero_2);
+		
+        drawableView = (DrawableView) this.findViewById(R.id.actv_accelero_canvas_2);
+//        drawableView = new DrawableView(this);
 
         // �o�b�N���C�g�������������Ȃ��悤�ɐݒ�
         drawableView.setKeepScreenOn(true);
 
         // ��ʂɕ\������DrawableView�C���X�^���X���w��
-        setContentView(drawableView);
+//        setContentView(R.layout.actv_accelero_2);
+//        setContentView(drawableView);
 
         // SensorManager�C���X�^���X�擾
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);

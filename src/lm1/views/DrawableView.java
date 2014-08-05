@@ -319,4 +319,10 @@ public class DrawableView extends View {
         // �[���㑤����󂯂�����x�𔽉f
         movableBallY += y * 2;
     }
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+	}
+    
 }
