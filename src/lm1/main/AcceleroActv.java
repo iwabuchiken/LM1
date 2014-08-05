@@ -3,6 +3,7 @@ package lm1.main;
 import java.util.List;
 
 import lm1.listeners.SEL;
+import lm1.listeners.SEL_Accel;
 import lm1.listeners.STL;
 import lm1.utils.CONS;
 import lm1.utils.Methods;
@@ -32,7 +33,8 @@ public class AcceleroActv extends Activity {
     private SensorManager sensorManager;
 
     // DrawableView�C���X�^���X
-    private DrawableView drawableView;
+    public DrawableView drawableView;
+//    private DrawableView drawableView;
 
 	
 	@Override
@@ -184,6 +186,7 @@ public class AcceleroActv extends Activity {
 	}
 
     private final SensorEventListener sensorEventListener =
+//    						new SEL_Accel(this, drawableView);
             new SensorEventListener() {
                 // ���[�p�X�t�B���^�p�ϐ�
                 private float lowX;

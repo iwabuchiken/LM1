@@ -41,7 +41,7 @@
             
         </activity>
         <activity android:name=".SensorsActv" android:screenOrientation="portrait"></activity>
-        <activity android:name=".AcceleroActv"></activity>
+        <activity android:name=".AcceleroActv" android:screenOrientation="portrait"></activity>
         
     </application>
 
