@@ -123,14 +123,16 @@ public class SensorsActv extends Activity {
 		
 		case R.id.menu_sensors_accelero://---------------
 			
-			String msg_Toa = "Accelero";
-			Toast.makeText(this, msg_Toa, Toast.LENGTH_SHORT).show();
+			Methods.start_Activity_Accelero(this);
+			
+//			String msg_Toa = "Accelero";
+//			Toast.makeText(this, msg_Toa, Toast.LENGTH_SHORT).show();
 			
 			break;// case R.id.main_opt_menu_backup_db
 
 		case R.id.menu_sensors_compass://---------------
 			
-			msg_Toa = "Compass";
+			String msg_Toa = "Compass";
 			Toast.makeText(this, msg_Toa, Toast.LENGTH_SHORT).show();
 			
 			break;// case R.id.main_opt_menu_backup_db

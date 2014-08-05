@@ -219,6 +219,12 @@ public class STL implements OnTouchListener {
 			
 			break;
 			
+		case ACTV_SENSORS:
+			
+			Methods.start_Activity_Accelero(actv);
+			
+			break;
+
 		default:
 			
 			// Log

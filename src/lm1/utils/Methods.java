@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import lm1.listeners.dialog.DL;
+import lm1.main.AcceleroActv;
 import lm1.main.PrefActv;
 import lm1.main.R;
 import lm1.main.SensorsActv;
@@ -940,6 +941,22 @@ public class Methods {
 		actv.startActivity(i);
 
 	}//start_Activity_Sensor(Activity actv)
+
+	public static void 
+	start_Activity_Accelero(Activity actv) {
+		// TODO Auto-generated method stub
+		
+		Intent i = new Intent();
+		
+		i.setClass(actv, AcceleroActv.class);
+		
+//		i.putExtra(CONS.Intent.iKey_CurrentPath_MainActv, currentPath);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+		
+	}//start_Activity_Accelero(Activity actv)
 
 }//public class Methods
 
