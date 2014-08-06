@@ -96,6 +96,19 @@ public class CanvasView_2 extends View {
     // �������{�[�����X�g�b�N���鐔
     private static final int FALL_BALL_STOCKS_SIZE = 20;
 
+    ////////////////////////////////
+
+	// test
+
+	////////////////////////////////
+	private int RadialGradient_OFFSET_RED_X		= 0;
+	private int RadialGradient_OFFSET_RED_Y		= 0;
+	
+	private int Bounds_OFFSET_RED_LEFT			= 0;
+	private int Bounds_OFFSET_RED_TOP			= 0;
+	
+	
+	
 	
 	// �R���X�g���N�^
 	public CanvasView_2(Context context, AttributeSet attrs) {
@@ -267,6 +280,12 @@ public class CanvasView_2 extends View {
 		DIAMETER += 10;
 //		DIAMETER = 80;
 		
+		this.RadialGradient_OFFSET_RED_X += 10;
+		this.RadialGradient_OFFSET_RED_Y += 10;
+
+		this.Bounds_OFFSET_RED_LEFT		+= 10;
+		this.Bounds_OFFSET_RED_TOP		+= 10;
+		
         // Log
 		msg_Log = "_onDraw_DrawLine => done";
 		Log.d("CanvasView_2.java" + "["
@@ -290,6 +309,12 @@ public class CanvasView_2 extends View {
 		
 		DIAMETER -= 10;
 //		DIAMETER = 80;
+
+		this.RadialGradient_OFFSET_RED_X -= 10;
+		this.RadialGradient_OFFSET_RED_Y -= 10;
+
+		this.Bounds_OFFSET_RED_LEFT		-= 10;
+		this.Bounds_OFFSET_RED_TOP		-= 10;
 		
 		// Log
 		msg_Log = "_onDraw_Clear => done";
@@ -352,10 +377,18 @@ public class CanvasView_2 extends View {
 
             // ����\��
             drawables[RED_OVAL].getPaint().setShader(
-                    new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
+                    new RadialGradient(
+                    		25 + this.RadialGradient_OFFSET_RED_X, 
+                    		25 + this.RadialGradient_OFFSET_RED_Y, 
+                    		20, Color.BLACK, Color.RED,
+//                    		new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
                         Shader.TileMode.MIRROR));
 
-            drawables[RED_OVAL].setBounds(left, top, right, bottom);
+            drawables[RED_OVAL].setBounds(
+            					left + this.Bounds_OFFSET_RED_LEFT, 
+            					top + this.Bounds_OFFSET_RED_TOP, 
+            					right, bottom);
+            
             drawables[RED_OVAL].draw(canvas);
 
             // ��ʉE�[�ɗ΋ʂ��󂯂錊
