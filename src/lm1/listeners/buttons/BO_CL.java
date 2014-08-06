@@ -113,11 +113,57 @@ public class BO_CL implements OnClickListener {
 			
 			break;
 			
+		case ACTV_ACCELERO_BT_CLEAR://------------------------------------
+			
+			case_ACTV_ACCELERO_BT_CLEAR();
+			
+			break;
+			
+		case ACTV_ACCELERO_BT_GO://------------------------------------
+			
+			case_ACTV_ACCELERO_BT_GO();
+			
+			break;
+			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void case_ACTV_ACCELERO_BT_CLEAR() {
+		// TODO Auto-generated method stub
+		
+		// Log
+		String msg_Log = "case_ACTV_ACCELERO_BT_CLEAR";
+		Log.d("BO_CL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		lm1.views.CanvasView_2 v_Canvas = 
+				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
+		
+		v_Canvas._onDraw_Clear();
+		
+		
+	}
+	
+	private void case_ACTV_ACCELERO_BT_GO() {
+		// TODO Auto-generated method stub
+		
+		// Log
+		String msg_Log = "case_ACTV_ACCELERO_BT_GO";
+		Log.d("BO_CL.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		lm1.views.CanvasView_2 v_Canvas = 
+				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
+		
+		v_Canvas._onDraw_DrawLine();
+		
+		
+	}
 
 	private void case_ACTV_SHOWLIST_IB_BACK() {
 		// TODO Auto-generated method stub

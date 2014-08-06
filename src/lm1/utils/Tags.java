@@ -69,6 +69,9 @@ public class Tags {
 		// actv_showlist
 		ACTV_SHOWLIST_IB_BACK,
 		
+		// actv_accelero_3
+		ACTV_ACCELERO_BT_CLEAR, ACTV_ACCELERO_BT_GO,
+		
 	}//public static enum ButtonTags
 	
 	public static enum ItemTags {

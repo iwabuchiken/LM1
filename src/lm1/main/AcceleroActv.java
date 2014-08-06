@@ -1,21 +1,16 @@
 package lm1.main;
 
-import java.util.List;
-
 import lm1.listeners.SEL;
-import lm1.listeners.SEL_Accel;
 import lm1.listeners.STL;
+import lm1.listeners.buttons.BO_CL;
 import lm1.utils.CONS;
 import lm1.utils.Methods;
 import lm1.utils.Tags;
-import lm1.views.DrawableView;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,51 +18,27 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class AcceleroActv extends Activity {
 
-    // SensorManager�C���X�^���X
-    private SensorManager sensorManager;
-
-    // DrawableView�C���X�^���X
-    public DrawableView drawableView;
-//    private DrawableView drawableView;
-
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.actv_accelero);
+		setContentView(R.layout.actv_accelero_3);
+//		setContentView(R.layout.actv_accelero);
 //		setContentView(R.layout.actv_main_orig);
 		
-		this.setTitle(this.getClass().getName());
-		
-		setContentView(R.layout.actv_accelero_2);
-		
-        drawableView = (DrawableView) this.findViewById(R.id.actv_accelero_canvas_2);
-//        drawableView = new DrawableView(this);
-
-        // �o�b�N���C�g�������������Ȃ��悤�ɐݒ�
-        drawableView.setKeepScreenOn(true);
-
-        // ��ʂɕ\������DrawableView�C���X�^���X���w��
-//        setContentView(R.layout.actv_accelero_2);
-//        setContentView(drawableView);
-
-        // SensorManager�C���X�^���X�擾
-        sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-
-        // test
-        drawableView._onDraw_Background();
-        
-        // Log
-		String msg_Log = "_onDraw_Background => done";
+		// Log
+		String msg_Log = "view => set";
 		Log.d("AcceleroActv.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
+		
+		this.setTitle(this.getClass().getName());
 		
 	}
 
@@ -76,6 +47,12 @@ public class AcceleroActv extends Activity {
 		// TODO Auto-generated method stub
 		
 //		CONS..mLocationManager.removeUpdates(this);
+		
+		// Log
+		String msg_Log = "onDestroy";
+		Log.d("AcceleroActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
 		
 		super.onDestroy();
 	}
@@ -143,18 +120,6 @@ public class AcceleroActv extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
-        // �����x�Z���T�[�I�u�W�F�N�g�擾
-        List<Sensor> accelerometerSensors =
-            sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
-
-        // �����x�Z���T�[�I�u�W�F�N�g���擾�ł����ꍇ
-        if (accelerometerSensors.size() > 0) {
-            // SensorManager�C���X�^���X�ɃZ���T�[�C�x���g���X�i�[��ݒ�
-            sensorManager.registerListener(sensorEventListener,
-                accelerometerSensors.get(0), SensorManager.SENSOR_DELAY_GAME);
-        }
-        
 	}
 
 	@Override
@@ -163,20 +128,106 @@ public class AcceleroActv extends Activity {
 		
 		_Setup_SetListeners();
 		
+		_test_DrawLine();
+		
 		super.onStart();
 		
 
 	}//protected void onStart()
 
+	private void 
+	_test_DrawLine() {
+		// TODO Auto-generated method stub
+		////////////////////////////////
+
+		// paint
+
+		////////////////////////////////
+		Paint paint = new Paint();
+		paint.setColor(Color.BLUE);
+//		paint.setColor(0xFF4444FF);
+		paint.setStyle(Paint.Style.FILL);
+		paint.setStrokeWidth(30);
+		
+		////////////////////////////////
+
+		// canvas view
+
+		////////////////////////////////
+		
+		lm1.views.CanvasView_2 v_Canvas = 
+				(lm1.views.CanvasView_2) findViewById(R.id.actv_accelero_canvas);
+//		lm1.views.CanvasView_2 v_Canvas = 
+//				(lm1.views.CanvasView_2) findViewById(R.id.actv_accelero_canvas);
+//		View v_Canvas = (View) findViewById(R.id.actv_accelero_canvas);
+		
+		int canvas_Height = v_Canvas.getHeight();
+		
+		// Log
+		String msg_Log = "height => " + canvas_Height;
+		Log.d("AcceleroActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		Canvas c = new Canvas();
+		
+		c.drawLine(10, 10, 100, 100, paint);
+		
+		c.save();
+		
+		
+		
+		v_Canvas.draw(c);
+		
+		v_Canvas.setBackgroundColor(Color.YELLOW);
+		
+		v_Canvas.invalidate();
+		
+//		c.restore();
+		
+		// Log
+		msg_Log = "canvas => line drawn";
+		Log.d("AcceleroActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+	}//_test_DrawLine()
+
 	private void _Setup_SetListeners() {
 		// TODO Auto-generated method stub
 		
+		////////////////////////////////
+
+		// Button: clear
+
+		////////////////////////////////
+		Button bt_Clear = (Button) findViewById(R.id.actv_accelero_bt_clear);
+		
+		bt_Clear.setTag(Tags.ButtonTags.ACTV_ACCELERO_BT_CLEAR);
+		
+		bt_Clear.setOnClickListener(new BO_CL(this));
+		
+		////////////////////////////////
+		
+		// Button: go
+		
+		////////////////////////////////
+		Button bt_Go = (Button) findViewById(R.id.actv_accelero_bt_go);
+		
+		bt_Go.setTag(Tags.ButtonTags.ACTV_ACCELERO_BT_GO);
+		
+		bt_Go.setOnClickListener(new BO_CL(this));
 		
 	}
 
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
+		// Log
+		String msg_Log = "onStop";
+		Log.d("AcceleroActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
 		
 		super.onStop();
 		
@@ -188,58 +239,5 @@ public class AcceleroActv extends Activity {
 		getMenuInflater().inflate(R.menu.actv_sensors, menu);
 		return true;
 	}
-
-    private final SensorEventListener sensorEventListener =
-//    						new SEL_Accel(this, drawableView);
-            new SensorEventListener() {
-                // ���[�p�X�t�B���^�p�ϐ�
-                private float lowX;
-                private float lowY;
-                private float lowZ;
-
-                // ���[�p�X�t�B���^�Ώ۔͈�
-                private static final float FILTERING_VALUE = 0.2f;
-
-                // onAccuracyChanged���\�b�h(���x�ύX���C�x���g)
-                @Override
-                public void onAccuracyChanged(Sensor sensor, int accuracy) {
-                    // �����Ȃ�
-                }
-
-                // onSensorChanged���\�b�h(�Z���T�[���ύX���C�x���g)
-                @Override
-                public void onSensorChanged(SensorEvent event) {
-                    // �Z���T�[�����m�����l���擾
-                    float x = event.values[SensorManager.DATA_X];
-                    float y = event.values[SensorManager.DATA_Y];
-                    float z = event.values[SensorManager.DATA_Z];
-
-                    // ���[�p�X�t�B���^����(����g�U��(��̐k��������ȐU���̉e��)������)
-                    lowX = getLowPassFilterValue(x, lowX);
-                    lowY = getLowPassFilterValue(y, lowY);
-                    lowZ = getLowPassFilterValue(z, lowZ);
-
-                    switch (event.sensor.getType()) {
-
-                    // ���m���ꂽ�Z���T�[��񂪉����x�Z���T�[�̏ꍇ
-                    case Sensor.TYPE_ACCELEROMETER:
-                        drawableView.effectAccelaration(lowX, lowY, lowZ);
-
-                        // ��ʂ��ĕ`��
-                        drawableView.invalidate();
-                        break;
-
-                    // �����x�Z���T�[�ȊO�͖���
-                    default:
-                        break;
-                    }
-                }
-
-                // ���[�p�X�t�B���^����(����g�U��(��̐k��������ȐU���̉e��)������)
-                private float getLowPassFilterValue(float eventValue, float lowValue) {
-                    return eventValue * FILTERING_VALUE + lowValue
-                        * (1.0f - FILTERING_VALUE);
-                }
-            };
-
+	
 }//public class AcceleroActv extends Activity

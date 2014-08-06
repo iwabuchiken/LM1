@@ -90,6 +90,7 @@
 	
 	<!-- actv_accelero.xml -->
 		<string name="actv_accelero_bt_clear">Clear</string>
+		<string name="actv_accelero_bt_go">Go</string>
 		<string name="actv_accelero_ll_swipe">↑ MainActv ↓ Accelero</string>
 	
 </resources>

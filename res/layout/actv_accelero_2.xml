@@ -9,7 +9,7 @@
   <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/actv_accelero_bt_clear"
+    android:id="@+id/actv_accelero_bt_go"
     android:text="@string/actv_accelero_bt_clear"
     android:layout_gravity="center_vertical" />
 
