@@ -4,11 +4,13 @@ import java.io.File;
 
 import lm1.main.R;
 import lm1.utils.CONS;
+import lm1.utils.CONS_Canvas;
 import lm1.utils.DBUtils;
 import lm1.utils.Methods;
 import lm1.utils.Methods_LM1;
 import lm1.utils.Methods_dlg;
 import lm1.utils.Tags;
+import lm1.views.CanvasView_4;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -34,6 +36,8 @@ public class BO_CL implements OnClickListener {
 	Activity actv;
 
 	Button bt_Monitor;	// ACTVMAIN_BT_MONITOR
+
+	CanvasView_4 v_Canvas;
 	
 	//
 	Vibrator vib;
@@ -43,8 +47,14 @@ public class BO_CL implements OnClickListener {
 		//
 		this.actv = actv;
 		
+		this.v_Canvas = 
+				(lm1.views.CanvasView_4) actv.findViewById(R.id.actv_accelero_canvas);
+		
+		
+//		(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
 		//
 		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
+		
 	}
 
 	public BO_CL(Activity actv, Button bt_Monitor) {
@@ -140,8 +150,8 @@ public class BO_CL implements OnClickListener {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
-		lm1.views.CanvasView_2 v_Canvas = 
-				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
+//		lm1.views.CanvasView_2 v_Canvas = 
+//				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
 		
 		v_Canvas._onDraw_Clear();
 		
@@ -157,8 +167,8 @@ public class BO_CL implements OnClickListener {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
-		lm1.views.CanvasView_2 v_Canvas = 
-				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
+//		lm1.views.CanvasView_2 v_Canvas = 
+//				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
 		
 		v_Canvas._onDraw_DrawLine();
 		

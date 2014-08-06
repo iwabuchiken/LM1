@@ -28,7 +28,8 @@ public class AcceleroActv extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.actv_accelero_3);
+		setContentView(R.layout.actv_accelero_4);
+//		setContentView(R.layout.actv_accelero_3);
 //		setContentView(R.layout.actv_accelero);
 //		setContentView(R.layout.actv_main_orig);
 		
@@ -155,8 +156,10 @@ public class AcceleroActv extends Activity {
 
 		////////////////////////////////
 		
-		lm1.views.CanvasView_2 v_Canvas = 
-				(lm1.views.CanvasView_2) findViewById(R.id.actv_accelero_canvas);
+		lm1.views.CanvasView_4 v_Canvas = 
+				(lm1.views.CanvasView_4) findViewById(R.id.actv_accelero_canvas);
+//		lm1.views.CanvasView_2 v_Canvas = 
+//				(lm1.views.CanvasView_2) findViewById(R.id.actv_accelero_canvas);
 //		lm1.views.CanvasView_2 v_Canvas = 
 //				(lm1.views.CanvasView_2) findViewById(R.id.actv_accelero_canvas);
 //		View v_Canvas = (View) findViewById(R.id.actv_accelero_canvas);

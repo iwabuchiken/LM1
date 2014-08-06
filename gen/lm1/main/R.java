@@ -133,21 +133,22 @@ public final class R {
         public static final int actv_accelero=0x7f030000;
         public static final int actv_accelero_2=0x7f030001;
         public static final int actv_accelero_3=0x7f030002;
-        public static final int actv_main=0x7f030003;
-        public static final int actv_main_orig=0x7f030004;
-        public static final int actv_sensors=0x7f030005;
-        public static final int actv_sensors_2=0x7f030006;
-        public static final int actv_showlist=0x7f030007;
-        public static final int dlg_edit_locs=0x7f030008;
-        public static final int dlg_tmpl_confirm_simple=0x7f030009;
-        public static final int dlg_tmpl_list_cancel=0x7f03000a;
-        public static final int dlg_tmpl_list_cancel_with_message=0x7f03000b;
-        public static final int dlg_tmpl_okcancel_simple=0x7f03000c;
-        public static final int dlg_tmpl_toast_duration=0x7f03000d;
-        public static final int dlg_tmpl_toast_ok=0x7f03000e;
-        public static final int list_row_loc_list=0x7f03000f;
-        public static final int list_row_simple_1=0x7f030010;
-        public static final int main_pref=0x7f030011;
+        public static final int actv_accelero_4=0x7f030003;
+        public static final int actv_main=0x7f030004;
+        public static final int actv_main_orig=0x7f030005;
+        public static final int actv_sensors=0x7f030006;
+        public static final int actv_sensors_2=0x7f030007;
+        public static final int actv_showlist=0x7f030008;
+        public static final int dlg_edit_locs=0x7f030009;
+        public static final int dlg_tmpl_confirm_simple=0x7f03000a;
+        public static final int dlg_tmpl_list_cancel=0x7f03000b;
+        public static final int dlg_tmpl_list_cancel_with_message=0x7f03000c;
+        public static final int dlg_tmpl_okcancel_simple=0x7f03000d;
+        public static final int dlg_tmpl_toast_duration=0x7f03000e;
+        public static final int dlg_tmpl_toast_ok=0x7f03000f;
+        public static final int list_row_loc_list=0x7f030010;
+        public static final int list_row_simple_1=0x7f030011;
+        public static final int main_pref=0x7f030012;
     }
     public static final class menu {
         public static final int actv_main=0x7f090000;
