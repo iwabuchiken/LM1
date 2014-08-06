@@ -53,31 +53,6 @@ public class CanvasView_4 extends View {
 
 		_Setup_Drawables();
 		
-//        // ShapeDrawable�̃C���X�^���X����
-//        CONS_Canvas.Main.drawables = new ShapeDrawable[CONS_Canvas.Main.NUM_OF_BALLS];
-////        drawables = new ShapeDrawable[NUM_OF_BALLS];
-//
-//        // ���̕`��
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL] = new ShapeDrawable(new OvalShape());
-////        CONS_Canvas.Main.drawables[RED_OVAL] = new ShapeDrawable(new OvalShape());
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL] = new ShapeDrawable(new OvalShape());
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.BLUE_OVAL] = new ShapeDrawable(new OvalShape());
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.WHITE_OVAL] = new ShapeDrawable(new OvalShape());
-//
-//        // ���̐F�̐ݒ�
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].getPaint().setShader(
-//            new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
-//                Shader.TileMode.MIRROR));
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].getPaint().setShader(
-//            new RadialGradient(25, 25, 20, Color.BLACK, Color.GREEN,
-//                Shader.TileMode.MIRROR));
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.BLUE_OVAL].getPaint().setShader(
-//            new RadialGradient(25, 25, 20, Color.BLACK, Color.BLUE,
-//                Shader.TileMode.MIRROR));
-//        CONS_Canvas.Main.drawables[CONS_Canvas.Main.WHITE_OVAL].getPaint().setShader(
-//            new RadialGradient(25, 25, 20, Color.BLACK, Color.WHITE,
-//                Shader.TileMode.MIRROR));
-
 	}
 
 	private void 
@@ -145,7 +120,7 @@ public class CanvasView_4 extends View {
 
 	}
 
-	public void _onDraw_DrawLine() {
+	public void _go() {
 		
 		// Log
 		String msg_Log = "_onDraw_DrawLine => started";
@@ -162,8 +137,11 @@ public class CanvasView_4 extends View {
 		CONS_Canvas.Main.RadialGradient_OFFSET_RED_X += 10;
 		this.RadialGradient_OFFSET_RED_Y += 10;
 
-		this.Bounds_OFFSET_RED_LEFT		+= 10;
-		this.Bounds_OFFSET_RED_TOP		+= 10;
+		_go__BoundsOffset();
+//		CONS_Canvas.Main.BOUNDS_OFFSET_RED_LEFT		+= 10;
+//		CONS_Canvas.Main.BOUNDS_OFFSET_RED_TOP		+= 10;
+//		this.Bounds_OFFSET_RED_LEFT		+= 10;
+//		this.Bounds_OFFSET_RED_TOP		+= 10;
 		
         // Log
 		msg_Log = "_onDraw_DrawLine => done";
@@ -175,10 +153,32 @@ public class CanvasView_4 extends View {
 		
 	}
 	
-	public void _onDraw_Clear() {
+	private void _go__BoundsOffset() {
+		// TODO Auto-generated method stub
+		
+		CONS_Canvas.Main.BOUNDS_OFFSET_RED_LEFT		+= 10;
+		CONS_Canvas.Main.BOUNDS_OFFSET_RED_TOP		+= 10;
+
+		CONS_Canvas.Main.BOUNDS_OFFSET_GREEN_LEFT		+= 10;
+		CONS_Canvas.Main.BOUNDS_OFFSET_GREEN_TOP		+= 10;
+		
+	}
+	
+	private void _clear__BoundsOffset_() {
+		// TODO Auto-generated method stub
+		
+		CONS_Canvas.Main.BOUNDS_OFFSET_RED_LEFT		-= 10;
+		CONS_Canvas.Main.BOUNDS_OFFSET_RED_TOP		-= 10;
+		
+		CONS_Canvas.Main.BOUNDS_OFFSET_GREEN_LEFT		-= 10;
+		CONS_Canvas.Main.BOUNDS_OFFSET_GREEN_TOP		-= 10;
+		
+	}
+
+	public void _clear() {
 		
 		// Log
-		String msg_Log = "_onDraw_Clear => started";
+		String msg_Log = "_clear => started";
 		Log.d("CanvasView_2.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
@@ -192,11 +192,15 @@ public class CanvasView_4 extends View {
 		CONS_Canvas.Main.RadialGradient_OFFSET_RED_X -= 10;
 		this.RadialGradient_OFFSET_RED_Y -= 10;
 
-		this.Bounds_OFFSET_RED_LEFT		-= 10;
-		this.Bounds_OFFSET_RED_TOP		-= 10;
+		this._clear__BoundsOffset_();
+		
+//		CONS_Canvas.Main.BOUNDS_OFFSET_RED_LEFT		-= 10;
+//		CONS_Canvas.Main.BOUNDS_OFFSET_RED_TOP		-= 10;
+//		this.Bounds_OFFSET_RED_LEFT		-= 10;
+//		this.Bounds_OFFSET_RED_TOP		-= 10;
 		
 		// Log
-		msg_Log = "_onDraw_Clear => done";
+		msg_Log = "_clear => done";
 		Log.d("CanvasView_2.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
@@ -231,21 +235,23 @@ public class CanvasView_4 extends View {
             int right = cX + CONS_Canvas.Main.DIAMETER;
             int bottom = CONS_Canvas.Main.OFFSET_Y + CONS_Canvas.Main.DIAMETER;
 
-            // ����\��
-            CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].getPaint().setShader(
-                    new RadialGradient(
-                    		25 + CONS_Canvas.Main.RadialGradient_OFFSET_RED_X, 
-                    		25 + this.RadialGradient_OFFSET_RED_Y, 
-                    		20, Color.BLACK, Color.RED,
-//                    		new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
-                        Shader.TileMode.MIRROR));
-
-            CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].setBounds(
-            					left + this.Bounds_OFFSET_RED_LEFT, 
-            					top + this.Bounds_OFFSET_RED_TOP, 
-            					right, bottom);
+            _drawColorHole__Red(canvas);
             
-            CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].draw(canvas);
+//            // ����\��
+//            CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].getPaint().setShader(
+//                    new RadialGradient(
+//                    		25 + CONS_Canvas.Main.RadialGradient_OFFSET_RED_X, 
+//                    		25 + this.RadialGradient_OFFSET_RED_Y, 
+//                    		20, Color.BLACK, Color.RED,
+////                    		new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
+//                        Shader.TileMode.MIRROR));
+//
+//            CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].setBounds(
+//            					left + this.Bounds_OFFSET_RED_LEFT, 
+//            					top + this.Bounds_OFFSET_RED_TOP, 
+//            					right, bottom);
+//            
+//            CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].draw(canvas);
 
             // ��ʉE�[�ɗ΋ʂ��󂯂錊
 
@@ -257,9 +263,15 @@ public class CanvasView_4 extends View {
             right = width;
             bottom = cY + CONS_Canvas.Main.DIAMETER;
 
-            // ����\��
-            CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].setBounds(left, top, right, bottom);
-            CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].draw(canvas);
+            ////////////////////////////////
+
+			// Green
+
+			////////////////////////////////
+			this._drawColorHole__Green(canvas);
+//            // ����\��
+//            CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].setBounds(left, top, right, bottom);
+//            CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].draw(canvas);
 
             // ��ʉ��[�ɐʂ��󂯂錊
 
@@ -290,5 +302,75 @@ public class CanvasView_4 extends View {
             CONS_Canvas.Main.drawables[CONS_Canvas.Main.WHITE_OVAL].draw(canvas);
             
 	}//drawColorHole
+
+	private void 
+	_drawColorHole__Red(Canvas canvas) {
+		////////////////////////////////
+
+		// Shader
+
+		////////////////////////////////
+        CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].getPaint().setShader(
+                new RadialGradient(
+                		25 + CONS_Canvas.Main.RadialGradient_OFFSET_RED_X, 
+                		25 + this.RadialGradient_OFFSET_RED_Y, 
+                		20, Color.BLACK, Color.RED,
+//                		new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
+                    Shader.TileMode.MIRROR));
+
+        ////////////////////////////////
+
+		// Bounds
+
+		////////////////////////////////
+        CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].setBounds(
+        					CONS_Canvas.Main.BOUNDS_ORIG_RED_LEFT
+        						+ CONS_Canvas.Main.BOUNDS_OFFSET_RED_LEFT,
+        					CONS_Canvas.Main.BOUNDS_ORIG_RED_TOP
+        						+ CONS_Canvas.Main.BOUNDS_OFFSET_RED_TOP,
+        					CONS_Canvas.Main.BOUNDS_ORIG_RED_LEFT
+        						+ CONS_Canvas.Main.DIAMETER, 
+        						CONS_Canvas.Main.BOUNDS_ORIG_RED_TOP
+        						+ CONS_Canvas.Main.DIAMETER 
+        					);
+        
+        CONS_Canvas.Main.drawables[CONS_Canvas.Main.RED_OVAL].draw(canvas);
+
+	}
+	
+	private void 
+	_drawColorHole__Green(Canvas canvas) {
+		////////////////////////////////
+		
+		// Shader
+		
+		////////////////////////////////
+		CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].getPaint().setShader(
+				new RadialGradient(
+						25 + CONS_Canvas.Main.RadialGradient_OFFSET_GREEN_X, 
+						25 + CONS_Canvas.Main.RadialGradient_OFFSET_GREEN_Y, 
+						20, Color.BLACK, Color.GREEN,
+//                		new RadialGradient(25, 25, 20, Color.BLACK, Color.RED,
+						Shader.TileMode.MIRROR));
+		
+		////////////////////////////////
+		
+		// Bounds
+		
+		////////////////////////////////
+		CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].setBounds(
+				CONS_Canvas.Main.BOUNDS_ORIG_GREEN_LEFT
+					+ CONS_Canvas.Main.BOUNDS_OFFSET_GREEN_LEFT,
+				CONS_Canvas.Main.BOUNDS_ORIG_GREEN_TOP
+					+ CONS_Canvas.Main.BOUNDS_OFFSET_GREEN_TOP,
+				CONS_Canvas.Main.BOUNDS_ORIG_GREEN_LEFT
+					+ CONS_Canvas.Main.DIAMETER, 
+				CONS_Canvas.Main.BOUNDS_ORIG_GREEN_TOP
+					+ CONS_Canvas.Main.DIAMETER 
+				);
+		
+		CONS_Canvas.Main.drawables[CONS_Canvas.Main.GREEN_OVAL].draw(canvas);
+		
+	}//_drawColorHole__Green(Canvas canvas)
 
 }
