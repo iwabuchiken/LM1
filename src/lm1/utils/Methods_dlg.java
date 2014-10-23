@@ -924,4 +924,32 @@ public class Methods_dlg {
 		
 	}//conf_DeleteBM(Activity actv, Dialog dlg1, BM bm)
 
+	public static void
+	dlg_ShowMessage
+	(Activity actv, String message, int colorId) {
+		
+		Dialog dlg = Methods_dlg.dlg_Template_Cancel(
+				actv, R.layout.dlg_tmpl_toast_ok, 
+				R.string.generic_ok, 
+//				R.string.generic_tv_confirm, 
+				R.id.dlg_tmpl_toast_ok_bt_cancel, 
+//				R.id.dlg_db_admin_bt_cancel, 
+				Tags.DialogTags.DLG_GENERIC_DISMISS);
+		
+		TextView tv_Message = 
+				(TextView) dlg.findViewById(R.id.dlg_tmpl_toast_ok_tv_message);
+		
+		tv_Message.setText(message);
+		
+		////////////////////////////////
+
+		// background
+
+		////////////////////////////////
+		tv_Message.setBackgroundColor(actv.getResources().getColor(colorId));
+		
+		dlg.show();
+		
+	}//dlg_ShowMessage
+
 }//public class Methods_dialog

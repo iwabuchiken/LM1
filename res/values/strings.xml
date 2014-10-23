@@ -18,7 +18,9 @@
    		<string name="generic_tv_no_data">No data</string>
    		<string name="generic_bt_quit">終了</string>
    		<string name="generic_go">Go</string>
-    
+
+   		<string name="generic_ok">OK</string>
+   		
 	<!-- menu: actv_main -->
 		<string name="menu_actvmain_db">DB</string>
 		<string name="menu_actvmain_settings">Settings</string>

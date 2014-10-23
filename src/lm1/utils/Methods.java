@@ -1,24 +1,36 @@
 package lm1.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import lm1.items.LogItem;
 import lm1.listeners.dialog.DL;
 import lm1.main.AcceleroActv;
 import lm1.main.PrefActv;
 import lm1.main.R;
 import lm1.main.SensorsActv;
 import lm1.main.ShowListActv;
+import lm1.main.ShowLogActv;
 
 import org.apache.commons.lang.StringUtils;
+
+
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -175,7 +187,8 @@ public class Methods {
 		
 		String db_Dst_Folder = StringUtils.join(
 					new String[]{
-							CONS.DB.dPath_dbFile_backup,
+							CONS.DB.dPath_dbFile_Backup,
+//							CONS.DB.dPath_dbFile_backup,
 							CONS.DB.fname_DB_Backup_Trunk},
 //							CONS.dpath_db_backup,
 //							CONS.fname_db_backup_trunk},
@@ -205,7 +218,7 @@ public class Methods {
 		/****************************
 		 * 2-2. Folder exists?
 			****************************/
-		File db_Backup = new File(CONS.DB.dPath_dbFile_backup);
+		File db_Backup = new File(CONS.DB.dPath_dbFile_Backup);
 //		File db_backup = new File(CONS.dpath_db_backup);
 		
 		if (!db_Backup.exists()) {
@@ -241,7 +254,7 @@ public class Methods {
 		/*********************************
 		 * 2-3. Dst folder => Files within the limit?
 		 *********************************/
-		File[] files_dst_folder = new File(CONS.DB.dPath_dbFile_backup).listFiles();
+		File[] files_dst_folder = new File(CONS.DB.dPath_dbFile_Backup).listFiles();
 //		File[] files_dst_folder = new File(CONS.dpath_db_backup).listFiles();
 		
 		int num_of_files = files_dst_folder.length;
@@ -700,7 +713,7 @@ public class Methods {
 		 * Get the absolute path of the latest backup file
 		 *********************************/
 		// Get the most recently-created db file
-		String src_dir = CONS.DB.dPath_dbFile_backup;
+		String src_dir = CONS.DB.dPath_dbFile_Backup;
 //		String src_dir = "/mnt/sdcard-ext/IFM9_backup";
 		
 		File f_dir = new File(src_dir);
@@ -957,6 +970,213 @@ public class Methods {
 		actv.startActivity(i);
 		
 	}//start_Activity_Accelero(Activity actv)
+
+	public static void 
+	start_Activity_ShowLogActv
+	(Activity actv, String itemName) {
+		
+		
+		// Log
+		String msg_Log = "itemName => " + itemName;
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		Intent i = new Intent();
+		
+		i.setClass(actv, ShowLogActv.class);
+
+		i.putExtra(CONS.Intent.iKey_LogActv_LogFileName, itemName);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+		
+		
+	}//start_Activity_LogActv
+
+	public static List<String> 
+	get_LogLines
+	(Activity actv, String fpath_LogFile) {
+		
+		
+		int count_Lines = 0;
+		int count_Read = 0;
+		
+		List<String> list = new ArrayList<String>();
+		
+	//	File f = new File(fpath_LogFile);
+		
+		try {
+			
+	//		fis = new FileInputStream(fpath_Log);
+	
+			//REF BufferedReader http://stackoverflow.com/questions/7537833/filereader-for-text-file-in-android answered Sep 24 '11 at 8:29
+			BufferedReader br = new BufferedReader(
+						new InputStreamReader(new FileInputStream(fpath_LogFile)));
+	//		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+			
+			String line = null;
+			
+			line = br.readLine();
+					
+			while(line != null) {
+				
+				list.add(line);
+				
+				count_Lines += 1;
+				count_Read += 1;
+				
+				line = br.readLine();
+				
+			}
+			
+			////////////////////////////////
+	
+			// close
+	
+			////////////////////////////////
+			br.close();
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+			
+			String msg = "FileNotFoundException";
+			Methods_dlg.dlg_ShowMessage(actv, msg, R.color.red);
+			
+			return null;
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			
+			count_Lines += 1;
+			
+		}
+	
+		// Log
+		String msg_Log = String.format(
+							Locale.JAPAN,
+							"count_Lines => %d / count_Read => %d", 
+							count_Lines, count_Read);
+		
+		Log.d("ShowLogActv.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+	
+		
+		return list;
+		
+	}//get_LogLines
+
+	public static List<LogItem> 
+	conv_LogLinesList_to_LogItemList
+	(Activity actv, List<String> list_RawLines) {
+		
+		String msg_Log;
+		
+		List<LogItem> list_LogItems = new ArrayList<LogItem>();
+		
+		String reg = "\\[(.+?)\\] \\[(.+?)\\] (.+)";
+//		String reg = "\\[(.+)\\] \\[(.+)\\] (.+)";
+		
+		Pattern p = Pattern.compile(reg);
+		
+		Matcher m = null;
+		
+		LogItem loi = null;
+		
+		for (String string : list_RawLines) {
+			
+			m = p.matcher(string);
+			
+			if (m.find()) {
+
+				loi = _build_LogItem_from_Matcher(actv, m);
+				
+				if (loi != null) {
+					
+					list_LogItems.add(loi);
+					
+				}
+				
+			}//if (m.find())
+			
+		}//for (String string : list_RawLines)
+		
+		/******************************
+			validate
+		 ******************************/
+		if (list_LogItems.size() < 1) {
+			
+			// Log
+			msg_Log = "list_LogItems.size() => " + list_LogItems.size();
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+		}
+		
+		return list_LogItems;
+		
+	}//conv_LogLinesList_to_LogItemList
+
+	/******************************
+		@return
+			null => Matcher.groupCount() != 3
+	 ******************************/
+	private static LogItem 
+	_build_LogItem_from_Matcher
+	(Activity actv, Matcher m) {
+		
+	
+		////////////////////////////////
+	
+		// validate
+	
+		////////////////////////////////
+		if (m.groupCount() != 3) {
+			
+			return null;
+			
+		}
+		
+		////////////////////////////////
+	
+		// prep: data
+	
+		////////////////////////////////
+		String[] tokens_TimeLabel = m.group(1).split(" ");
+		
+		String[] tokens_FileInfo = m.group(2).split(" : ");
+		
+		String text = m.group(3);
+		
+		String date = tokens_TimeLabel[0];
+		
+		String time = tokens_TimeLabel[1].split("\\.")[0];
+		
+		String fileName = tokens_FileInfo[0];
+		
+		String line = tokens_FileInfo[1];
+		
+		////////////////////////////////
+	
+		// LogItem
+	
+		////////////////////////////////
+		LogItem loi = new LogItem.Builder()
+					
+					.setDate(date)
+					.setTime(time)
+					.setMethod(fileName)
+					.setLine(Integer.parseInt(line))
+					.setText(text)
+					.build();
+		
+		return loi;
+		
+	}//_build_LogItem_from_Matcher
 
 }//public class Methods
 

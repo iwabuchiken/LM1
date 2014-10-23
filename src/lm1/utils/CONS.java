@@ -4,8 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 import lm1.adapters.Adp_Loc;
+import lm1.adapters.Adp_LogFileList;
+import lm1.adapters.Adp_ShowLogFile_List;
 import lm1.items.Loc;
+import lm1.items.LogItem;
 import lm1.tasks.TaskAudioTrack;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
@@ -121,7 +126,7 @@ public class CONS {
 		public static String dPath_dbFile;
 //		public static String dPath_dbFile = "/data/data/lm1.main/databases";
 		
-		public static String dPath_dbFile_backup = "/mnt/sdcard-ext/lm1_backup";
+//		public static String dPath_dbFile_backup = "/mnt/sdcard-ext/lm1_backup";
 		
 //		public static String dPath_dbFile = 
 //							Methods.get_DirPath(new MainActv().getFilesDir().getPath());
@@ -130,6 +135,30 @@ public class CONS {
 		
 		public static String fname_DB_Backup_ext = ".bk";
 
+		public static String dirName_ExternalStorage = "/mnt/sdcard-ext";
+		
+		public final static String dPath_Data_Root = 
+									dirName_ExternalStorage + "/lm1_data";
+//		public final static String dPath_Data_Root = "/mnt/sdcard-ext/ta2_data";
+		
+		public static String dPath_dbFile_Backup = dPath_Data_Root + "/backup";
+		
+		public final static String dPath_Data = dPath_Data_Root + "/data";
+		
+		public final static String dPath_Log = dPath_Data_Root + "/log";
+		
+		public final static String fname_Log = "log.txt";
+
+//		public static String dirPath_db = "/data/data/shoppinglist.main/databases";
+		public static String dirPath_db = "/data/data/sl.main/databases";
+		
+		public static String fileName_db_backup_trunk = "shoppinglist_backup";
+
+		public static String fileName_db_backup_ext = ".bk";
+
+		public static String dirPath_dbFile_Backup_SL_1 = 
+						dirName_ExternalStorage + "/ShoppingList_backup";
+		
 		////////////////////////////////
 		
 		// Table: Locations
@@ -204,6 +233,8 @@ public class CONS {
 		
 		public static final int dflt_distance_buffer	= 10;
 		
+		public static String pkey_CurrentPath = "pkey_CurrentPath";
+
 		////////////////////////////////
 
 		// SensorsActv
@@ -214,6 +245,14 @@ public class CONS {
 		public static final String pkey_SensorsActv_GammaVal = 
 											"pkey_SensorsActv_GammaVal";
 		
+		////////////////////////////////
+
+		// LogActv
+
+		////////////////////////////////
+		public static String pkey_CurrentPosition_LogActv = 
+									"pkey_CurrentPosition_LogActv";
+
 	}
 
 	public static class ShowList {
@@ -254,5 +293,93 @@ public class CONS {
 		public static final int RGB_MaxVal	= 255;
 		
 	}
-	
+
+	public static class LogActv {
+		
+		public static List<String> list_LogFiles = null;
+		
+//		public static ArrayAdapter<String> adp_LogFile_List = null;
+		
+		public static Adp_LogFileList adp_LogFile_List;
+		
+	}
+
+	public static class ShowLogActv {
+		
+		public static List<LogItem> list_ShowLog_Files = null;
+		
+//		public static ArrayAdapter<String> adp_LogFile_List = null;
+		
+		public static Adp_ShowLogFile_List adp_ShowLog_File_List;
+		
+		public static String fname_Target_LogFile = null;
+		
+		public static List<String> list_RawLines = null;
+		
+	}
+
+	public static class Intent {
+		
+		////////////////////////////////
+
+		// commons
+
+		////////////////////////////////
+		public static long dflt_LongExtra_value = -1;
+		
+		public static int dflt_IntExtra_value = -1;
+		
+		
+		////////////////////////////////
+
+		// MainActv
+
+		////////////////////////////////
+		public static String iKey_CurrentPath_MainActv = "current_path";
+
+		////////////////////////////////
+		
+		// MemoEditActv
+		
+		////////////////////////////////
+		public static String iKey_Memo_Id = "iKey_Memo_Id";
+		
+		
+		/***************************************
+		 * Request codes
+		 ***************************************/
+		public final static int REQUEST_CODE_SEE_BOOKMARKS = 0;
+		
+		public final static int REQUEST_CODE_HISTORY = 1;
+		
+		/***************************************
+		 * Result code
+		 ***************************************/
+		public final static int RESULT_CODE_SEE_BOOKMARKS_OK = 1;
+		
+		public final static int RESULT_CODE_SEE_BOOKMARKS_CANCEL = 0;
+		
+		////////////////////////////////
+
+		// PlayActv
+
+		////////////////////////////////
+		public final static String iKey_PlayActv_Memo_Id = "iKey_PlayActv_Memo_Id";
+		
+		// Used in Service_ShowProgress
+		public static String iKey_PlayActv_TaskPeriod
+											= "iKey_PlayActv_TaskPeriod";
+
+		
+		////////////////////////////////
+
+		// ShowLogActv
+
+		////////////////////////////////
+		public static final String iKey_LogActv_LogFileName =
+													"iKey_LogActv_LogFileName";
+		
+
+	}//public static class Intent
+
 }//public class CONS

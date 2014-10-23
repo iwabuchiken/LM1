@@ -72,6 +72,8 @@ public class Tags {
 		// actv_accelero_3
 		ACTV_ACCELERO_BT_CLEAR, ACTV_ACCELERO_BT_GO,
 		
+		ACTV_SHOWLOG_IB_BACK, ACTV_SHOWLOG_IB_TOP, ACTV_SHOWLOG_IB_BOTTOM, ACTV_SHOWLOG_IB_DOWN, ACTV_SHOWLOG_IB_UP,
+		
 	}//public static enum ButtonTags
 	
 	public static enum ItemTags {
