@@ -20,7 +20,7 @@ public class Tags {
 		DLG_MONITOR_OUTOFRANGE_OK,
 		
 		// dlg: delete loc
-		DLG_DELETE_LOC_OK,
+		DLG_DELETE_LOC_OK, ACTV_TAB_OPT_ADMIN,
 
 
 	}//public static enum DialogTags
@@ -51,7 +51,7 @@ public class Tags {
 		dlg_bmactv_list_long_click,
 		
 		// dlg: MainActv list
-		DLG_MAINACTV_LIST,
+		DLG_MAINACTV_LIST, ACTV_TAB_OPT_ADMIN,
 		
 		
 	}//public static enum DialogItemTags

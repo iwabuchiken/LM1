@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import lm1.adapters.Adp_ListItems;
+import lm1.items.ListItem;
 import lm1.items.Loc;
 import lm1.listeners.dialog.DB_OCL;
 import lm1.listeners.dialog.DB_OTL;
@@ -26,13 +28,16 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -951,5 +956,191 @@ public class Methods_dlg {
 		dlg.show();
 		
 	}//dlg_ShowMessage
+
+	public static void 
+	dlg_Menu_Main_Admin
+	(Activity actv) {
+		// TODO Auto-generated method stub
+		
+		////////////////////////////////
+
+		// vars
+
+		////////////////////////////////
+		String msg_Log;
+		
+		
+		////////////////////////////////
+
+		// dlg
+
+		////////////////////////////////
+		Dialog d1 = Methods_dlg.dlg_Template_Cancel(
+						actv,
+						R.layout.dlg_tmpl_cancel_lv,
+						R.string.menu_main_admin,
+						
+						R.id.dlg_tmpl_cancel_lv_bt_cancel,
+						Tags.DialogTags.DLG_GENERIC_DISMISS);
+		
+		/****************************
+		* 2. Prep => List
+		****************************/
+//		String[] choices = {
+//					actv.getString(R.string.dlg_actvmain_lv_delete),
+//					};
+		
+		List<ListItem> list = new ArrayList<ListItem>();
+//		List<String> list = new ArrayList<String>();
+		
+		list.add(new ListItem.Builder()
+						.setText(actv.getString(
+									R.string.menu_main_admin_DB))
+						.setIconID(R.drawable.menu_icon_admin_32x32_blue)
+						.setTextColor_ID(R.color.blue1)
+						.build());
+		list.add(new ListItem.Builder()
+						.setText(actv.getString(
+								R.string.menu_main_admin_Ops))
+						.setIconID(R.drawable.menu_icon_admin_32x32_brown)
+						.setTextColor_ID(R.color.black)
+						.build());
+		list.add(new ListItem.Builder()
+						.setText(actv.getString(
+								R.string.menu_main_admin_Log))
+								.setIconID(R.drawable.menu_icon_admin_32x32_purple)
+								.setTextColor_ID(R.color.purple4)
+								.build());
+		
+		list.add(new ListItem.Builder()
+					.setText(actv.getString(
+							R.string.menu_main_admin_LAB))
+							.setIconID(R.drawable.menu_icon_admin_32x32_green)
+							.setTextColor_ID(R.color.darkgreen)
+							.build());
+		
+		/****************************
+		* 3. Adapter
+		****************************/
+		Adp_ListItems adapter = new Adp_ListItems(
+							actv,
+							//R.layout.dlg_db_admin,
+							R.layout.list_row_simple_iv_1,
+							//android.R.layout.simple_list_item_1,
+							list
+		);
+		
+		/****************************
+		* 4. Set adapter
+		****************************/
+		ListView lv = (ListView) d1.findViewById(R.id.dlg_tmpl_cancel_lv_lv);
+		
+		lv.setAdapter(adapter);
+		
+		/****************************
+		* 5. Set listener to list
+		****************************/
+		lv.setTag(Tags.DialogItemTags.ACTV_TAB_OPT_ADMIN);
+		
+		lv.setOnItemClickListener(new DOI_CL(actv, d1));
+		
+		/***************************************
+		* Modify the list view height
+		***************************************/
+//		lv.setLayoutParams(
+//				new LinearLayout.LayoutParams(
+//						300,	//	Width
+//						LayoutParams.WRAP_CONTENT	//	Height
+//				));
+		
+		/***************************************
+		* Modify: Button layout
+		***************************************/
+		LinearLayout llButton =
+					(LinearLayout) d1.findViewById(R.id.dlg_tmpl_cancel_lv_ll_filepath);
+//		(LinearLayout) dlg1.findViewById(R.id.actv_imp_ll_filepath);
+		
+		LinearLayout.LayoutParams params =
+				new LinearLayout.LayoutParams(
+								LayoutParams.WRAP_CONTENT,
+								LayoutParams.WRAP_CONTENT);
+		
+		params.gravity = Gravity.CENTER_HORIZONTAL;
+		
+		llButton.setLayoutParams(params);
+
+		////////////////////////////////
+
+		// get: screen size
+
+		////////////////////////////////
+		//REF size http://stackoverflow.com/questions/19155559/how-to-get-android-device-screen-size answered Oct 3 '13 at 10:00
+		DisplayMetrics displayMetrics = actv.getResources()
+                			.getDisplayMetrics();
+		
+		int w = displayMetrics.widthPixels;
+		
+//		// Log
+//		String msg_Log = "w => " + w;
+//		Log.d("Methods_dlg.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+		
+		int dialog_Width = w * CONS.Admin.ratio_Dialog_to_Screen_W / 100;
+		
+//		// Log
+//		msg_Log = "dialog_Width => " + dialog_Width;
+//		Log.d("Methods_dlg.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+		
+		////////////////////////////////
+
+		// linear layot: main
+
+		////////////////////////////////
+		LinearLayout ll_Main = (LinearLayout) d1.findViewById(R.id.dlg_tmpl_cancel_lv_ll_main);
+		
+		// Log
+		msg_Log = "ll_Main => created";
+		Log.d("Methods_dlg.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		//REF parent layout http://stackoverflow.com/questions/4631966/set-relativelayout-layout-params-programmatically-throws-classcastexception answered Jan 8 '11 at 5:42
+//		08-21 11:30:45.434: E/AndroidRuntime(20722): java.lang.ClassCastException: android.widget.LinearLayout$LayoutParams
+//		08-21 11:30:45.434: E/AndroidRuntime(20722): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:293)
+//		08-21 11:30:45.434: E/AndroidRuntime(20722): 	at android.view.View.layout(View.java:7184)
+
+		FrameLayout.LayoutParams params2 =
+				new FrameLayout.LayoutParams(
+//						LinearLayout.LayoutParams params2 =
+//						new LinearLayout.LayoutParams(
+						dialog_Width,
+//						400,
+//						200,
+//						LayoutParams.WRAP_CONTENT,
+						LayoutParams.WRAP_CONTENT);
+		
+		// Log
+		msg_Log = "setting params...";
+		Log.d("Methods_dlg.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		ll_Main.setLayoutParams(params2);
+		
+		// Log
+		msg_Log = "params => set";
+		Log.d("Methods_dlg.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
+		
+		/****************************
+		* 6. Show dialog
+		****************************/
+		d1.show();
+		
+	}//dlg_Menu_Main_Admin
 
 }//public class Methods_dialog

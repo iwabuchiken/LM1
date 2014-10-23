@@ -1,6 +1,7 @@
 package lm1.listeners.dialog;
 
 
+import lm1.items.ListItem;
 import lm1.items.Loc;
 import lm1.main.R;
 import lm1.utils.CONS;
@@ -21,8 +22,8 @@ public class DOI_CL implements OnItemClickListener {
 
 	//
 	Activity actv;
-	Dialog dlg1;
-	Dialog dlg2;
+	Dialog d1;
+	Dialog d2;
 	
 	//
 	Vibrator vib;
@@ -41,8 +42,8 @@ public class DOI_CL implements OnItemClickListener {
 	public DOI_CL(Activity actv, Dialog dlg, Dialog dlg2) {
 		// 
 		this.actv = actv;
-		this.dlg1 = dlg;
-		this.dlg2 = dlg2;
+		this.d1 = dlg;
+		this.d2 = dlg2;
 		
 		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
 		
@@ -53,7 +54,7 @@ public class DOI_CL implements OnItemClickListener {
 		// TODO Auto-generated constructor stub
 		
 		this.actv	= actv;
-		this.dlg1	= dlg1;
+		this.d1	= dlg1;
 		
 		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -71,7 +72,7 @@ public class DOI_CL implements OnItemClickListener {
 		this.parent	= parent;
 		this.position_InListView	= position_InListView;
 		
-		this.dlg1	= dlg1;
+		this.d1	= dlg1;
 		
 		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
 		
@@ -91,20 +92,35 @@ public class DOI_CL implements OnItemClickListener {
 //		
 		vib.vibrate(CONS.Admin.vibLength_click);
 		
-		String item = (String) parent.getItemAtPosition(position);
+		String item;
+//		String item = (String) parent.getItemAtPosition(position);
+		
+		ListItem li;
 		
 		/*----------------------------
 		 * 3. Switching
 			----------------------------*/
 		switch (tag) {
 		
+		case ACTV_TAB_OPT_ADMIN:
+		
+			li = (ListItem) parent.getItemAtPosition(position);
+			
+			case_ACTV_TAB_OPT_ADMIN(li);
+			
+			break;
+			
 		case DLG_DB_ADMIN_LV:
+			
+			item = (String) parent.getItemAtPosition(position);
 			
 			case_DLG_DB_ADMIN_LV(item);
 			
 			break;
 			
 		case DLG_MAINACTV_LIST:
+			
+			item = (String) parent.getItemAtPosition(position);
 			
 			case_DLG_MAINACTV_LIST(item);
 			
@@ -128,6 +144,40 @@ public class DOI_CL implements OnItemClickListener {
 
 
 	private void 
+	case_ACTV_TAB_OPT_ADMIN
+	(ListItem li) {
+		// TODO Auto-generated method stub
+		if (li.getText().equals(actv.getString(
+				R.string.menu_main_admin_DB))) {
+	
+			String msg = "Sorry. Under construction";
+			Methods_dlg.dlg_ShowMessage(actv, msg, R.color.gold2);
+			
+		} else if (li.getText().equals(actv.getString(
+						R.string.menu_main_admin_Ops))) {//if (choice.equals(actv.getString(R.string.dlg_item_list_long_click_edit)))
+			
+			String msg = "Sorry. Under construction";
+			Methods_dlg.dlg_ShowMessage(actv, msg, R.color.gold2);
+			
+		} else if (li.getText().equals(actv.getString(
+						R.string.menu_main_admin_Log))) {//if (choice.equals(actv.getString(R.string.dlg_item_list_long_click_edit)))
+			
+			Methods.start_Activity_LogActv(actv, this.d1);
+			
+		} else if (li.getText().equals(actv.getString(
+						R.string.menu_main_admin_LAB))) {//if (choice.equals(actv.getString(R.string.dlg_item_list_long_click_edit)))
+			
+			String msg = "Sorry. Under construction";
+			Methods_dlg.dlg_ShowMessage(actv, msg, R.color.gold2);
+			
+		} else {//if (choice.equals(actv.getString(R.string.dlg_item_list_long_click_edit)))
+			
+		}//if (choice.equals(actv.getString(R.string.dlg_item_list_long_click_edit)))
+
+	}
+
+
+	private void 
 	case_DLG_MAINACTV_LIST(String item) {
 		// TODO Auto-generated method stub
 		
@@ -135,29 +185,29 @@ public class DOI_CL implements OnItemClickListener {
 				R.string.dlg_edit_locs_title))) {
 
 			Methods_dlg.dlg_EditLoc(
-					actv, loc, parent, position_InListView, dlg1);
+					actv, loc, parent, position_InListView, d1);
 			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_set_base))) {
 			
-			Methods_LM1.set_Base(actv, loc, parent, position_InListView, dlg1);
+			Methods_LM1.set_Base(actv, loc, parent, position_InListView, d1);
 			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_set_ref))) {
 			
-			Methods_LM1.set_Ref(actv, loc, parent, position_InListView, dlg1);
+			Methods_LM1.set_Ref(actv, loc, parent, position_InListView, d1);
 			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_show_distance))) {
 			
 			Methods_dlg.show_Distance(
-							actv, loc, parent, position_InListView, dlg1);
+							actv, loc, parent, position_InListView, d1);
 			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_mainactv_list_opt_delete))) {
 			
 			Methods_dlg.conf_DeleteLoc(
-					actv, loc, dlg1, parent, position_InListView);
+					actv, loc, d1, parent, position_InListView);
 			
 		} else {
 			
@@ -189,13 +239,13 @@ public class DOI_CL implements OnItemClickListener {
 			
 			Methods.create_Table(actv, CONS.DB.tname_Locations);
 			
-			dlg1.dismiss();
+			d1.dismiss();
 			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_db_admin_item_drop_table_locations))) {
 			
 //			Methods.drop_Table(actv, CONS.DB.tname_Locations, dlg1);
-			Methods_dlg.drop_Table_Confirm(actv, CONS.DB.tname_Locations, dlg1);
+			Methods_dlg.drop_Table_Confirm(actv, CONS.DB.tname_Locations, d1);
 			
 		} else if (item.equals(actv.getString(
 				R.string.dlg_db_admin_item_restore_db))) {
@@ -207,7 +257,7 @@ public class DOI_CL implements OnItemClickListener {
 				String msg = "DB => restored";
 				Methods_dlg.dlg_ShowMessage(actv, msg);
 				
-				dlg1.dismiss();
+				d1.dismiss();
 				
 			} else {
 

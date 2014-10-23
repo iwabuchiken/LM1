@@ -48,6 +48,10 @@ public class CONS {
 		
 		public static final int MaximumFractionDigits	= 9;
 
+		// X out of 100
+		// Usage => e.g. width = screen_width * 100 / ratio_Dialog_to_Screen_W
+		public static final int ratio_Dialog_to_Screen_W = 70;
+		
 	}
 	
 	public static class Main {
@@ -149,6 +153,10 @@ public class CONS {
 		
 		public final static String fname_Log = "log.txt";
 
+		public final static String fname_Log_Trunk = "log";
+		
+		public final static String fname_Log_ext = ".txt";
+
 //		public static String dirPath_db = "/data/data/shoppinglist.main/databases";
 		public static String dirPath_db = "/data/data/sl.main/databases";
 		
@@ -193,6 +201,13 @@ public class CONS {
 			
 		};
 
+		////////////////////////////////
+
+		// others
+
+		////////////////////////////////
+		public static final long logFile_MaxSize = 40000;
+		
 	}
 
 	public static class Enums {

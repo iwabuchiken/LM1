@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_main_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="@string/menu_main_settings"/>
+
+    <item
+        android:id="@+id/menu_main_db"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="@string/menu_main_db"/>
+
+    <item
+        android:id="@+id/menu_main_admin"
+        android:icon="@drawable/general_ib_ball_blue_48x48"
+        android:title="@string/menu_main_admin"
+    	/>
+
+</menu>
