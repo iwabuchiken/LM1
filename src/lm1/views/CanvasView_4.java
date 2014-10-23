@@ -389,6 +389,5 @@ public class CanvasView_4 extends View {
 		this.invalidate();
 		
 	}//drawLine
-	
 
 }
