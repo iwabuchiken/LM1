@@ -70,14 +70,14 @@ public class ShowListActv extends ListActivity {
 		
 		switch (item.getItemId()) {
 		
-		case R.id.menu_actvmain_db://---------------
+		case R.id.menu_main_db://---------------
 			
 			Methods_dlg.dlg_Db_Activity(this);
 //			Methods.db_backup(this);
 			
 			break;// case R.id.main_opt_menu_backup_db
 
-		case R.id.menu_settings://---------------
+		case R.id.menu_main_settings://---------------
 			
 //			this._test();	// ClassCastException
 			
@@ -263,7 +263,7 @@ public class ShowListActv extends ListActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.actv_main, menu);
+		getMenuInflater().inflate(R.menu.menu_main, menu);
 		return true;
 	}
 

@@ -48,6 +48,10 @@ public class CONS {
 		
 		public static final int MaximumFractionDigits	= 9;
 
+		// X out of 100
+		// Usage => e.g. width = screen_width * 100 / ratio_Dialog_to_Screen_W
+		public static final int ratio_Dialog_to_Screen_W = 70;
+		
 	}
 	
 	public static class Main {

@@ -20,7 +20,7 @@ public class Tags {
 		DLG_MONITOR_OUTOFRANGE_OK,
 		
 		// dlg: delete loc
-		DLG_DELETE_LOC_OK,
+		DLG_DELETE_LOC_OK, ACTV_TAB_OPT_ADMIN,
 
 
 	}//public static enum DialogTags

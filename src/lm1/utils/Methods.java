@@ -347,7 +347,7 @@ public class Methods {
 	        				new DL(actv, dialog, 0));
 	        
 	        dialog.setNegativeButton(
-	        				actv.getString(R.string.generic_bt_cancel),
+	        				actv.getString(R.string.generic_cancel),
 	        				new DL(actv, dialog, 1));
 	        
 	        dialog.create();

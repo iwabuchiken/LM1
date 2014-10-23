@@ -50,7 +50,7 @@
         
 		android:layout_gravity="center_horizontal"
         
-        android:text="@string/generic_bt_cancel"
+        android:text="@string/generic_cancel"
         android:textSize="25dp" 
         android:textColor="@color/red"
         
