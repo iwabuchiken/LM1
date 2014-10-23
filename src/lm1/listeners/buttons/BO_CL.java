@@ -153,7 +153,7 @@ public class BO_CL implements OnClickListener {
 //		lm1.views.CanvasView_2 v_Canvas = 
 //				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
 		
-		v_Canvas._onDraw_Clear();
+		v_Canvas._clear();
 		
 		
 	}
@@ -170,7 +170,7 @@ public class BO_CL implements OnClickListener {
 //		lm1.views.CanvasView_2 v_Canvas = 
 //				(lm1.views.CanvasView_2) actv.findViewById(R.id.actv_accelero_canvas);
 		
-		v_Canvas._onDraw_DrawLine();
+		v_Canvas._go();
 		
 		
 	}

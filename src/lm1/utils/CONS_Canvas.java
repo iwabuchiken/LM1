@@ -73,14 +73,49 @@ public class CONS_Canvas {
 		// test
 
 		////////////////////////////////
+	    public static final int NUM_OF_BALLS				= 4;
+
+	    ////////////////////////////////
+	    
+	    // Offset: Radial gradient
+	    
+	    ////////////////////////////////
 		public static int RadialGradient_OFFSET_RED_X		= 0;
 		public static int RadialGradient_OFFSET_RED_Y		= 0;
 		
-		public static int Bounds_OFFSET_RED_LEFT			= 0;
-		public static int Bounds_OFFSET_RED_TOP			= 0;
+		public static int RadialGradient_OFFSET_GREEN_X		= 0;
+		public static int RadialGradient_OFFSET_GREEN_Y		= 0;
 		
-		public static final int NUM_OF_BALLS				= 4;
+		public static int RadialGradient_OFFSET_BLUE_X		= 0;
+		public static int RadialGradient_OFFSET_BLUE_Y		= 0;
 		
+		////////////////////////////////
+		
+		// Offset: Bounds
+		
+		////////////////////////////////
+		public static int BOUNDS_OFFSET_RED_LEFT			= 0;
+		public static int BOUNDS_OFFSET_RED_TOP			= 0;
+		
+		public static int BOUNDS_OFFSET_GREEN_LEFT			= 0;
+		public static int BOUNDS_OFFSET_GREEN_TOP			= 0;
+		
+		public static int BOUNDS_OFFSET_BLUE_LEFT			= 0;
+		public static int BOUNDS_OFFSET_BLUE_TOP			= 0;
+		
+		////////////////////////////////
+
+		// Bounds
+
+		////////////////////////////////
+		public static int BOUNDS_ORIG_RED_LEFT			= 200;
+		public static int BOUNDS_ORIG_RED_TOP			= 100;
+		
+		public static int BOUNDS_ORIG_GREEN_LEFT		= 100;
+		public static int BOUNDS_ORIG_GREEN_TOP		= 100;
+		
+		public static int BOUNDS_ORIG_BLUE_LEFT			= 300;
+		public static int BOUNDS_ORIG_BLUE_TOP			= 100;
 		
 		
 	}//public static class Main
