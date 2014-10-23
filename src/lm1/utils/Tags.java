@@ -51,7 +51,7 @@ public class Tags {
 		dlg_bmactv_list_long_click,
 		
 		// dlg: MainActv list
-		DLG_MAINACTV_LIST,
+		DLG_MAINACTV_LIST, ACTV_TAB_OPT_ADMIN,
 		
 		
 	}//public static enum DialogItemTags

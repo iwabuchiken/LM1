@@ -1040,7 +1040,7 @@ public class Methods_dlg {
 		/****************************
 		* 5. Set listener to list
 		****************************/
-		lv.setTag(Tags.DialogTags.ACTV_TAB_OPT_ADMIN);
+		lv.setTag(Tags.DialogItemTags.ACTV_TAB_OPT_ADMIN);
 		
 		lv.setOnItemClickListener(new DOI_CL(actv, d1));
 		

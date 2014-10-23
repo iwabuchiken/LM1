@@ -1,5 +1,6 @@
 package lm1.utils;
 
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.channels.FileChannel;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +23,7 @@ import java.util.regex.Pattern;
 import lm1.items.LogItem;
 import lm1.listeners.dialog.DL;
 import lm1.main.AcceleroActv;
+import lm1.main.LogActv;
 import lm1.main.PrefActv;
 import lm1.main.R;
 import lm1.main.SensorsActv;
@@ -28,8 +31,6 @@ import lm1.main.ShowListActv;
 import lm1.main.ShowLogActv;
 
 import org.apache.commons.lang.StringUtils;
-
-
 
 
 import android.app.Activity;
@@ -1177,6 +1178,187 @@ public class Methods {
 		return loi;
 		
 	}//_build_LogItem_from_Matcher
+
+	public static void 
+	start_Activity_LogActv
+	(Activity actv, Dialog d1) {
+		// TODO Auto-generated method stub
+		Intent i = new Intent();
+		
+		i.setClass(actv, LogActv.class);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+		
+		////////////////////////////////
+
+		// dismiss
+
+		////////////////////////////////
+		d1.dismiss();
+		
+	}//start_Activity_LogActv
+
+	public static void 
+	write_Log
+	(Activity actv, String message,
+			String fileName, int lineNumber) {
+		
+		
+		////////////////////////////////
+
+		// file
+
+		////////////////////////////////
+		File fpath_Log = new File(CONS.DB.dPath_Log, CONS.DB.fname_Log);
+		
+		////////////////////////////////
+
+		// file exists?
+
+		////////////////////////////////
+		if (!fpath_Log.exists()) {
+			
+			try {
+				
+				fpath_Log.createNewFile();
+				
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				
+				String msg = "Can't create a log file";
+				Methods_dlg.dlg_ShowMessage_Duration(actv, msg, R.color.gold2);
+				
+				return;
+				
+			}
+		} else {
+			
+			// Log
+			String msg_Log = "log file => exists";
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+		}
+		
+		////////////////////////////////
+
+		// validate: size
+
+		////////////////////////////////
+		long len = fpath_Log.length();
+		
+		if (len > CONS.DB.logFile_MaxSize) {
+		
+			fpath_Log.renameTo(new File(
+						fpath_Log.getParent(), 
+						CONS.DB.fname_Log_Trunk
+						+ "_"
+//						+ Methods.get_TimeLabel(Methods.getMillSeconds_now())
+						+ Methods.get_TimeLabel(fpath_Log.lastModified())
+						+ CONS.DB.fname_Log_ext
+						));
+			
+			// new log.txt
+			try {
+				
+				fpath_Log = new File(fpath_Log.getParent(), CONS.DB.fname_Log);
+//				File f = new File(fpath_Log.getParent(), CONS.DB.fname_Log);
+				
+				fpath_Log.createNewFile();
+				
+				// Log
+				String msg_Log = "new log.txt => created";
+				Log.d("Methods.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", msg_Log);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				
+				// Log
+				String msg_Log = "log.txt => can't create!";
+				Log.e("Methods.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", msg_Log);
+				
+				e.printStackTrace();
+				
+				return;
+				
+			}
+			
+		}//if (len > CONS.DB.logFile_MaxSize)
+		
+		////////////////////////////////
+
+		// write
+
+		////////////////////////////////
+		try {
+			
+			//REF append http://stackoverflow.com/questions/8544771/how-to-write-data-with-fileoutputstream-without-losing-old-data answered Dec 17 '11 at 12:37
+			FileOutputStream fos = new FileOutputStream(fpath_Log, true);
+//			FileOutputStream fos = new FileOutputStream(fpath_Log);
+			
+			String text = String.format(Locale.JAPAN,
+							"[%s] [%s : %d] %s\n", 
+							Methods.conv_MillSec_to_TimeLabel(
+											Methods.getMillSeconds_now()),
+							fileName, lineNumber,
+							message
+						);
+			
+			//REF getBytes() http://www.adakoda.com/android/000240.html
+			fos.write(text.getBytes());
+//			fos.write(message.getBytes());
+			
+//			fos.write("\n".getBytes());
+			
+			fos.close();
+			
+			// Log
+			String msg_Log = "log => written";
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+//			FileChannel oChannel = new FileOutputStream(fpath_Log).getChannel();
+//			
+//			oChannel.wri
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}//write_Log
+
+	public static String
+	conv_MillSec_to_TimeLabel(long millSec)
+	{
+		//REF http://stackoverflow.com/questions/7953725/how-to-convert-milliseconds-to-date-format-in-android answered Oct 31 '11 at 12:59
+		String dateFormat = CONS.Admin.format_Date;
+//		String dateFormat = "yyyy/MM/dd hh:mm:ss.SSS";
+		
+		DateFormat formatter = new SimpleDateFormat(dateFormat, Locale.JAPAN);
+//		DateFormat formatter = new SimpleDateFormat(dateFormat);
+
+		// Create a calendar object that will convert the date and time value in milliseconds to date. 
+		Calendar calendar = Calendar.getInstance();
+		
+		calendar.setTimeInMillis(millSec);
+		
+		return formatter.format(calendar.getTime());
+		
+	}//conv_MillSec_to_TimeLabel(long millSec)
 
 }//public class Methods
 
