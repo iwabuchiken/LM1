@@ -154,6 +154,18 @@ public class STL implements OnTouchListener {
 			
 			break;
 			
+		case ACTV_SENSORS:
+
+			Methods.start_Activity_MagneticActv(actv);
+			
+//			// Log
+//			msg_Log = "ACTV_SENSORS";
+//			Log.d("STL.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", msg_Log);
+			
+			break;
+			
 		default:
 			
 			// Log

@@ -46,6 +46,15 @@ public class CanvasView_4 extends View {
 	
 	private int Bounds_OFFSET_RED_LEFT			= 0;
 	private int Bounds_OFFSET_RED_TOP			= 0;
+
+	////////////////////////////////
+
+	// draw line: coordinates
+
+	////////////////////////////////
+	private float line_X1, line_X2, line_Y1, line_Y2;
+	
+	private Paint p;
 	
 	// �R���X�g���N�^
 	public CanvasView_4(Context context, AttributeSet attrs) {
@@ -93,7 +102,7 @@ public class CanvasView_4 extends View {
 		
 		// Log
 		String msg_Log = "Dimension => set";
-		Log.d("CanvasView_2.java" + "["
+		Log.d("CanvasView_4.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
@@ -105,7 +114,7 @@ public class CanvasView_4 extends View {
 		
 		// Log
 		String msg_Log = "onDraw";
-		Log.d("CanvasView_2.java" + "["
+		Log.d("CanvasView_4.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
@@ -117,15 +126,54 @@ public class CanvasView_4 extends View {
 		// DrawableView
 
 		// 4�F�̌�����ʂɕ\��
-        drawColorHole(canvas, 100, 100, 50, 50);
+//        drawColorHole(canvas, 100, 100, 50, 50);
+        
+        ////////////////////////////////
 
+		// line
+
+		////////////////////////////////
+		if (canvas == null) {
+			
+			// Log
+			msg_Log = "canvas => null";
+			Log.d("CanvasView_4.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			return;
+			
+		} else if (this.p == null) {
+			
+			// Log
+			msg_Log = "this.p => null";
+			Log.d("CanvasView_4.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", msg_Log);
+			
+			return;
+			
+		}
+
+		//REF http://stackoverflow.com/questions/5729377/android-canvas-how-do-i-clear-delete-contents-of-a-canvas-bitmaps-livin answered Apr 20 '11 at 12:01
+		canvas.drawColor(Color.WHITE);
+		
+		//REF http://stackoverflow.com/questions/16748146/android-canvas-drawline answered May 25 '13 at 9:41
+		canvas.drawLine(this.line_X1, this.line_Y1, this.line_X2, this.line_Y2, this.p);
+//		this.drawline(this.line_X1, this.line_Y1, this.line_X2, this.line_Y2, this.p);
+
+		// Log
+		msg_Log = "line drawn";
+		Log.d("CanvasView_4.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", msg_Log);
 	}
 
 	public void _go() {
 		
 		// Log
 		String msg_Log = "_onDraw_DrawLine => started";
-		Log.d("CanvasView_2.java" + "["
+		Log.d("CanvasView_4.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
@@ -146,7 +194,7 @@ public class CanvasView_4 extends View {
 		
         // Log
 		msg_Log = "_onDraw_DrawLine => done";
-		Log.d("CanvasView_2.java" + "["
+		Log.d("CanvasView_4.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
@@ -180,7 +228,7 @@ public class CanvasView_4 extends View {
 		
 		// Log
 		String msg_Log = "_clear => started";
-		Log.d("CanvasView_2.java" + "["
+		Log.d("CanvasView_4.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
@@ -202,7 +250,7 @@ public class CanvasView_4 extends View {
 		
 		// Log
 		msg_Log = "_clear => done";
-		Log.d("CanvasView_2.java" + "["
+		Log.d("CanvasView_4.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", msg_Log);
 		
@@ -390,4 +438,27 @@ public class CanvasView_4 extends View {
 		
 	}//drawLine
 
+	public void 
+	draw_Line
+	(float x1, float y1, float x2, float y2, Paint p) {
+
+		this.line_X1 = x1;
+		this.line_X2 = x2;
+		this.line_Y1 = y1;
+		this.line_Y2 = y2;
+
+		this.p = p;
+		
+//		this.drawLine(10, 10, 100, 100, p);
+//		
+//		// Log
+//		String msg_Log = "drawLine() => done";
+//		Log.d("CanvasView_4.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", msg_Log);
+		
+		this.invalidate();
+		
+	}//drawLine
+	
 }

@@ -304,7 +304,7 @@ public class SensorsActv extends Activity {
         
         ////////////////////////////////
         
-        // Sensor: light
+        // Sensor: gyro
         
         ////////////////////////////////
         if (CONS.Sensors.sensor_Gyro.size() > 0) {

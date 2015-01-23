@@ -71,6 +71,7 @@ public class BO_CL implements OnClickListener {
 //		//
 		Tags.ButtonTags tag = (Tags.ButtonTags) v.getTag();
 //
+		vib.vibrate(CONS.Admin.vibLength_click);
 //		vib.vibrate(Methods.vibLength_click);
 		
 		/*********************************
@@ -81,6 +82,12 @@ public class BO_CL implements OnClickListener {
 		//
 		switch (tag) {
 		
+		case ACTV_SHOWLOG_IB_BACK://-----------------------------------------------------------------------------
+			
+			case_ACTV_SHOWLOG_IB_BACK();
+			
+			break;
+
 		case actv_main_bt_go://------------------------------------
 			
 			case_actv_main_bt_go();
@@ -140,6 +147,16 @@ public class BO_CL implements OnClickListener {
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void 
+	case_ACTV_SHOWLOG_IB_BACK() {
+		// TODO Auto-generated method stub
+	
+		actv.finish();
+		
+		actv.overridePendingTransition(0, 0);
+		
+	}
 
 	private void case_ACTV_ACCELERO_BT_CLEAR() {
 		// TODO Auto-generated method stub

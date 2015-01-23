@@ -118,7 +118,8 @@ public class CONS {
 		
 	}//public static class Main
 
-	public static class DB {
+	public static class 
+	DB {
 
 		////////////////////////////////
 
@@ -208,7 +209,7 @@ public class CONS {
 		////////////////////////////////
 		public static final long logFile_MaxSize = 40000;
 		
-	}
+	}//DB
 
 	public static class Enums {
 		
@@ -220,7 +221,8 @@ public class CONS {
 		
 	}
 	
-	public static class Pref {
+	public static class 
+	Pref {
 		
 		////////////////////////////////
 		
@@ -268,7 +270,7 @@ public class CONS {
 		public static String pkey_CurrentPosition_LogActv = 
 									"pkey_CurrentPosition_LogActv";
 
-	}
+	}//Pref
 
 	public static class ShowList {
 		
@@ -283,7 +285,8 @@ public class CONS {
 		
 	}
 	
-	public static class Sensors {
+	public static class 
+	Sensors {
 		
 		public static SensorManager sensorManager;
 		
@@ -298,6 +301,7 @@ public class CONS {
 		public static List<Sensor> sensor_Gyro;
 		
 		public static SensorEventListener sensorEventListener;
+		public static SensorEventListener sel_MagneticActv;
 
 		public static int gammaVal;
 
@@ -307,7 +311,7 @@ public class CONS {
 		
 		public static final int RGB_MaxVal	= 255;
 		
-	}
+	}//Sensors
 
 	public static class LogActv {
 		

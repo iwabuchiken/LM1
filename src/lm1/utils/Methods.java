@@ -24,6 +24,7 @@ import lm1.items.LogItem;
 import lm1.listeners.dialog.DL;
 import lm1.main.AcceleroActv;
 import lm1.main.LogActv;
+import lm1.main.MagneticActv;
 import lm1.main.PrefActv;
 import lm1.main.R;
 import lm1.main.SensorsActv;
@@ -702,6 +703,22 @@ public class Methods {
 
 	}
 
+	public static void 
+	start_Activity_MagneticActv(Activity actv) {
+		// TODO Auto-generated method stub
+		
+		Intent i = new Intent();
+		
+		i.setClass(actv, MagneticActv.class);
+		
+//		i.putExtra(CONS.Intent.iKey_CurrentPath_MainActv, currentPath);
+		
+		i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		
+		actv.startActivity(i);
+		
+	}
+	
 	public static boolean
 	restore_DB(Activity actv) {
     	
